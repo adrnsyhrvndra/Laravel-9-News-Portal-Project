@@ -4,131 +4,265 @@
 
 @endphp
 
-<header class="themesbazar_header">
+<header>
 
-    <div class="container">
+    <div class="container-menu-desktop">
 
-        <div class="row">
+        <div class="topbar">
 
-            <div class="col-lg-5 col-md-5">
+            <div class="content-topbar container h-100">
 
-                <div class="row">
+                <div class="left-topbar">
 
-                    <div class="col-md-6">
+                    <span class="left-topbar-item flex-wr-s-c">
 
-                        <div class="date">
+                        {{-- <img class="m-b-1 m-rl-8" src="images/icons/icon-night.png" alt="IMG"> --}}
 
-                            <i class="lar la-calendar"></i>
+                        <span>
 
                             {{ $cddate->format('l d-m-Y') }}
 
-                        </div>
+                        </span>
 
-                    </div>
+                    </span>
 
-                    <div class="col-md-6">
+                    @auth
 
-                        <select name="" id="" class="form-select changeLang">
+                        <a href="{{ route('user.dashboard') }}" class="left-topbar-item">My Account</a>
 
-                            <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }} >English</option>
+                        <a href="{{ route('user.logout') }}" class="left-topbar-item">Logout</a>
 
-                            <option value="id" {{ session()->get('locale') == 'id' ? 'selected' : '' }} >Indonesia</option>
+                    @else
 
-                            <option value="nl" {{ session()->get('locale') == 'nl' ? 'selected' : '' }} >Belanda</option>
+                        <a href="{{ route('login') }}" class="left-topbar-item">Login</a>
 
-                        </select>
+                        <a href="{{ route('register') }}" class="left-topbar-item">Register</a>
 
-                    </div>
+                    @endauth
+
+                </div>
+
+                <div class="right-topbar">
+
+                    <a href="#">
+
+                        <span class="fab fa-facebook-f"></span>
+
+                    </a>
+
+                    <a href="#">
+
+                        <span class="fab fa-twitter"></span>
+
+                    </a>
+
+                    <a href="#">
+
+                        <span class="fab fa-pinterest-p"></span>
+
+                    </a>
+
+                    <a href="#">
+
+                        <span class="fab fa-vimeo-v"></span>
+
+                    </a>
+
+                    <a href="#">
+
+                        <span class="fab fa-youtube"></span>
+
+                    </a>
 
                 </div>
 
             </div>
 
-            <div class="col-lg-3 col-md-3">
+        </div>
 
-                <form class="header-search" action="{{ route('news.search') }}" method="post">
-
-                    @csrf
-
-                    <input type="text" name="search" placeholder="Search Here" required="">
-
-                    <button type="submit" value="Search"> <i class="las la-search"></i> </button>
-
-                </form>
-
+        <!-- Header Mobile -->
+        <div class="wrap-header-mobile">
+            <!-- Logo moblie -->
+            <div class="logo-mobile">
+                <a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
             </div>
 
+            <!-- Button show menu -->
+            <div class="btn-show-menu-mobile hamburger hamburger--squeeze m-r--8">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </div>
+        </div>
 
-            <div class="col-lg-4 col-md-4">
-                <div class="header-social">
+        <!-- Menu Mobile -->
+        <div class="menu-mobile">
+            <ul class="topbar-mobile">
+                <li class="left-topbar">
+                    <span class="left-topbar-item flex-wr-s-c">
+                        <span>
+                            New York, NY
+                        </span>
 
-                    <ul>
-                        <li> <a href="https://www.facebook.com/" target="_blank" title="facebook"><i
-                                    class="lab la-facebook-f"></i> </a> </li>
-                        <li><a href="https://twitter.com/" target="_blank" title="twitter"><i class="lab la-twitter">
-                                </i> </a></li>
+                        <img class="m-b-1 m-rl-8" src="images/icons/icon-night.png" alt="IMG">
 
-                        @auth
+                        <span>
+                            HI 58° LO 56°
+                        </span>
+                    </span>
+                </li>
 
-                        <li><a href="{{ route('user.logout') }}"><b> Logout </b></a> </li>
+                <li class="left-topbar">
+                    <a href="#" class="left-topbar-item">
+                        About
+                    </a>
 
-                        @else
+                    <a href="#" class="left-topbar-item">
+                        Contact
+                    </a>
 
-                        <li><a href="{{ route('login') }}"><b> Login </b></a> </li>
-                        <li> <a href="{{ route('register') }}"> <b>Register</b> </a> </li>
+                    <a href="#" class="left-topbar-item">
+                        Sing up
+                    </a>
 
-                        @endauth
+                    <a href="#" class="left-topbar-item">
+                        Log in
+                    </a>
+                </li>
 
+                <li class="right-topbar">
+                    <a href="#">
+                        <span class="fab fa-facebook-f"></span>
+                    </a>
+
+                    <a href="#">
+                        <span class="fab fa-twitter"></span>
+                    </a>
+
+                    <a href="#">
+                        <span class="fab fa-pinterest-p"></span>
+                    </a>
+
+                    <a href="#">
+                        <span class="fab fa-vimeo-v"></span>
+                    </a>
+
+                    <a href="#">
+                        <span class="fab fa-youtube"></span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="main-menu-m">
+                <li>
+                    <a href="index.html">Home</a>
+                    <ul class="sub-menu-m">
+                        <li><a href="index.html">Homepage v1</a></li>
+                        <li><a href="home-02.html">Homepage v2</a></li>
+                        <li><a href="home-03.html">Homepage v3</a></li>
                     </ul>
 
-                </div>
-            </div>
+                    <span class="arrow-main-menu-m">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </span>
+                </li>
+
+                <li>
+                    <a href="category-01.html">News</a>
+                </li>
+
+                <li>
+                    <a href="category-02.html">Entertainment </a>
+                </li>
+
+                <li>
+                    <a href="category-01.html">Business</a>
+                </li>
+
+                <li>
+                    <a href="category-02.html">Travel</a>
+                </li>
+
+                <li>
+                    <a href="category-01.html">Life Style</a>
+                </li>
+
+                <li>
+                    <a href="category-02.html">Video</a>
+                </li>
+
+                <li>
+                    <a href="#">Features</a>
+                    <ul class="sub-menu-m">
+                        <li><a href="category-01.html">Category Page v1</a></li>
+                        <li><a href="category-02.html">Category Page v2</a></li>
+                        <li><a href="blog-grid.html">Blog Grid Sidebar</a></li>
+                        <li><a href="blog-list-01.html">Blog List Sidebar v1</a></li>
+                        <li><a href="blog-list-02.html">Blog List Sidebar v2</a></li>
+                        <li><a href="blog-detail-01.html">Blog Detail Sidebar</a></li>
+                        <li><a href="blog-detail-02.html">Blog Detail No Sidebar</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+
+                    <span class="arrow-main-menu-m">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </span>
+                </li>
+            </ul>
         </div>
-    </div>
 
-    <section class="logo-banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4">
-                    <div class="logo">
-                        <a href=" " title="NewsFlash">
+        <div class="wrap-logo container">
 
-                            <img src="{{ asset('frontend/assets/images/logo.png') }}" alt="NewsFlash" title="NewsFlash">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-8">
-                    <div class="banner">
-                        <a href=" " target="_blank">
+            <!-- Logo desktop -->
 
-                        </a>
-                    </div>
-                </div>
+            <div class="logo">
+
+                <a href="index.html"><img src="images/icons/logo-01.png" alt="LOGO"></a>
+
             </div>
+
+            <!-- Banner -->
+
+            <div class="banner-header">
+
+                @php
+
+                    $banner =  App\Models\Banners::find(1);
+
+                @endphp
+
+                <a href="https://themewagon.com/themes/free-bootstrap-4-html5-news-website-template-magnews2/">
+
+                    <img src="{{ asset($banner->home_one) }}" alt="IMG">
+
+                </a>
+
+            </div>
+
         </div>
-    </section>
 
-</header>
 
-<div class="menu_section sticky" id="myHeader">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <div class="mobileLogo">
-                    <a href=" " title="NewsFlash">
-                        <img src="{{ asset('frontend/assets/images/footer_logo.gif') }}" alt="Logo"
-                            title="Logo">
+        <div class="wrap-main-nav">
+
+            <div class="main-nav">
+
+                <!-- Menu desktop -->
+
+                <nav class="menu-desktop">
+
+                    <a class="logo-stick" href="index.html">
+
+                        <img src="images/icons/logo-01.png" alt="LOGO">
+
                     </a>
-                </div>
-                <div class="stellarnav dark desktop"><a href="https://newssitedesign.com/newsflash/#"
-                        class="menu-toggle full"><span
-                            class="bars"><span></span><span></span><span></span></span> </a>
-                    <ul id="menu-main-menu" class="menu">
 
-                        <li id="menu-item-89"
-                            class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-89">
-                            <a href="https://newssitedesign.com/newsflash" aria-current="page"> <i
-                                    class="fa-solid fa-house-user"></i> Home</a>
+                    <ul class="main-menu">
+
+                        <li class="main-menu-active">
+
+                            <a href="{{ route('home.index') }}">Home</a>
+
                         </li>
 
                         @php
@@ -139,9 +273,9 @@
 
                         @foreach ( $categories as $category)
 
-                            <li id="menu-item-291" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-291 has-sub">
+                            <li>
 
-                                <a href="{{ url('news/category/'.$category->id.'/'.$category->category_slug) }} ">{{ GoogleTranslate::trans($category->category_name, app()->getLocale()) }}</a>
+                                <a href="{{ url('news/category/'.$category->id.'/'.$category->category_slug) }}">{{ GoogleTranslate::trans($category->category_name, app()->getLocale()) }}</a>
 
                                 @php
 
@@ -149,37 +283,39 @@
 
                                 @endphp
 
-                                <ul class="sub-menu">
+                                @foreach ($subcategories as $subcategory)
 
-                                    @foreach ($subcategories as $subcategory)
+                                    <ul class="sub-menu">
 
-                                        <li id="menu-item-294" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-294">
+                                        <li>
 
-                                            <a href="{{ url('news/subcategory/'.$subcategory->id.'/'.$subcategory->subcategory_slug) }}">{{ GoogleTranslate::trans($subcategory->subcategory_name, app()->getLocale())  }}</a>
+                                            <a href="{{ url('news/subcategory/'.$subcategory->id.'/'.$subcategory->subcategory_slug) }}">
+
+                                                {{ GoogleTranslate::trans($subcategory->subcategory_name, app()->getLocale())  }}
+
+                                            </a>
 
                                         </li>
 
-                                    @endforeach
+                                    </ul>
 
-                                </ul>
-
-                                <a class="dd-toggle" href=" "><span class="icon-plus"></span></a>
+                                @endforeach
 
                             </li>
 
                         @endforeach
 
-                            </ul>
-
-                            <a class="dd-toggle" href=" "><span class="icon-plus"></span></a>
-
-                        </li>
                     </ul>
-                </div>
+
+                </nav>
+
             </div>
+
         </div>
+
     </div>
-</div>
+
+</header>
 
 <script type="text/javascript">
 
@@ -192,3 +328,5 @@
     });
 
 </script>
+
+
