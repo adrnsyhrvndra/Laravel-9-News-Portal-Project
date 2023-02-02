@@ -58,11 +58,11 @@
 
         @include('frontend.body.header')
 
-        @include('frontend.body.breaking_news')
+        {{-- @include('frontend.body.breaking_news') --}}
 
         @yield('home')
 
-        @include('frontend.body.footer')
+        {{-- @include('frontend.body.footer') --}}
 
     </div>
 

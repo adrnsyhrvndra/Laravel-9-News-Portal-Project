@@ -165,7 +165,7 @@ $adminData =  App\Models\User::find($id);
 
                                     <b>Admin</b>
 
-                                    <small class="text-muted">{{ Carbon\Carbon::parse($notification->created_at->diffForHumans()) }}</small>
+                                    <small class="text-muted">{{ Carbon\Carbon::parse($notification->created_at)->diffForHumans() }}</small>
 
                                 </p>
 
@@ -178,12 +178,17 @@ $adminData =  App\Models\User::find($id);
                     @endforelse
 
                     <!-- All-->
+
                     <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
+
                         View all
+
                         <i class="fe-arrow-right"></i>
+
                     </a>
 
                 </div>
+
             </li>
 
             <li class="dropdown notification-list topbar-dropdown">
