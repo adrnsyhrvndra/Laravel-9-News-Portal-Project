@@ -50,6 +50,10 @@
 
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 
+    <!-- Custom CSS -->
+
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/custombrewok.css') }}">
+
 </head>
 
 <body class="animsition">

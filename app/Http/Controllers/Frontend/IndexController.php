@@ -20,17 +20,21 @@ class IndexController extends Controller{
 
         $skip_cat_0 = Category::skip(0)->first();
 
-        $skip_news_0 = NewsPost::where('status',1)->where('category_id',$skip_cat_0->id)->orderBy('id','DESC')->limit(5)->get();
+        $skip_news_0 = NewsPost::where('status',1)->where('category_id',$skip_cat_0->id)->orderBy('id','DESC')->limit(3)->get();
 
         $skip_cat_2 = Category::skip(2)->first();
 
-        $skip_news_2 = NewsPost::where('status',1)->where('category_id',$skip_cat_2->id)->orderBy('id','DESC')->limit(6)->get();
+        $skip_news_2 = NewsPost::where('status',1)->where('category_id',$skip_cat_2->id)->orderBy('id','DESC')->limit(3)->get();
 
         $skip_cat_1 = Category::skip(1)->first();
 
-        $skip_news_1 = NewsPost::where('status',1)->where('category_id',$skip_cat_1->id)->orderBy('id','DESC')->limit(6)->get();
+        $skip_news_1 = NewsPost::where('status',1)->where('category_id',$skip_cat_1->id)->orderBy('id','DESC')->limit(3)->get();
 
-        return view('frontend.index',compact('skip_cat_0','skip_news_0','skip_cat_2','skip_news_2','skip_cat_1','skip_news_1'));
+        $newnewspost = NewsPost::orderBy('id','DESC')->limit(3)->get();
+
+        $newspopular = NewsPost::orderBy('view_count','DESC')->limit(3)->get();
+
+        return view('frontend.index',compact('skip_cat_0','skip_news_0','skip_cat_2','skip_news_2','skip_cat_1','skip_news_1','newnewspost','newspopular'));
 
     }
 
