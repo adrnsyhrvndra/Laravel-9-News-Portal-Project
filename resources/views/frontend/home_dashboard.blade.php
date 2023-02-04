@@ -36,6 +36,8 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/fonts/iconic/css/material-design-iconic-font.min.css') }}">
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }} ">
+
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/vendor/animate/animate.css') }}">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/vendor/css-hamburgers/hamburgers.min.css') }}">

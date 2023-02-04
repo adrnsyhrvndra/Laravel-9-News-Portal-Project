@@ -4,7 +4,7 @@
 
 @section('title')
 
-    HOME | BREWOK NEWS
+    Home | Brewok News
 
 @endsection
 
@@ -1418,6 +1418,7 @@
 	</div>
 
 	<!-- Latest -->
+
 	<section class="bg0 p-t-60 p-b-35">
 
 		<div class="container">
@@ -1507,7 +1508,9 @@
 				</div>
 
 				<div class="col-md-10 col-lg-4">
+
 					<div class="p-l-10 p-rl-0-sr991 p-b-20">
+
 						<!-- Video -->
 						<div class="p-b-55">
 							<div class="how2 how2-cl4 flex-s-c m-b-35">
@@ -1528,13 +1531,13 @@
 								<div class="p-tb-16 p-rl-25 bg3">
 									<h5 class="p-b-5">
 										<a href="#" class="f1-m-3 cl0 hov-cl10 trans-03">
-											Music lorem ipsum dolor sit amet consectetur
+											Judul Video
 										</a>
 									</h5>
 
 									<span class="cl15">
 										<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-											by John Alvarado
+											by Mas Bewok
 										</a>
 
 										<span class="f1-s-3 m-rl-3">
@@ -1552,11 +1555,13 @@
 						<!-- Subscribe -->
 						<div class="bg10 p-rl-35 p-t-28 p-b-35 m-b-55">
 							<h5 class="f1-m-5 cl0 p-b-10">
-								Subscribe
+								Langganan
 							</h5>
 
 							<p class="f1-s-1 cl0 p-b-25">
-								Get all latest content delivered to your email a few times a month.
+
+								Dapatkan semua berita kami yang terupdate.
+
 							</p>
 
 							<form class="size-a-9 pos-relative">

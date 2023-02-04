@@ -283,23 +283,23 @@
 
                                 @endphp
 
-                                @foreach ($subcategories as $subcategory)
+                                <ul class="sub-menu">
 
-                                    <ul class="sub-menu">
+                                    @foreach ($subcategories as $subcategory)
 
-                                        <li>
+                                    <li>
 
-                                            <a href="{{ url('news/subcategory/'.$subcategory->id.'/'.$subcategory->subcategory_slug) }}">
+                                        <a href="{{ url('news/subcategory/'.$subcategory->id.'/'.$subcategory->subcategory_slug) }}">
 
-                                                {{ GoogleTranslate::trans($subcategory->subcategory_name, app()->getLocale())  }}
+                                            {{ GoogleTranslate::trans($subcategory->subcategory_name, app()->getLocale())  }}
 
-                                            </a>
+                                        </a>
 
-                                        </li>
+                                    </li>
 
-                                    </ul>
+                                    @endforeach
 
-                                @endforeach
+                                </ul>
 
                             </li>
 

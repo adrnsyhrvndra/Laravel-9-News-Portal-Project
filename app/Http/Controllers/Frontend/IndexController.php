@@ -74,9 +74,11 @@ class IndexController extends Controller{
 
         $breadcat = Category::where('id',$id)->first();
 
-        $newstwo = NewsPost::where('status',1)->where('category_id',$id)->orderBy('id','DESC')->limit(2)->get();
+        $newsfour = NewsPost::where('status',1)->where('category_id',$id)->orderBy('id','DESC')->limit(5)->get();
 
-        return view('frontend.news.category_news',compact('news','breadcat','newstwo'));
+        $newsallbycategory = NewsPost::where('status',1)->where('category_id',$id)->orderBy('id','DESC')->get();
+
+        return view('frontend.news.category_news',compact('news','breadcat','newsfour','newsallbycategory'));
 
     }
 
@@ -86,9 +88,9 @@ class IndexController extends Controller{
 
         $breadsubcat = Subcategory::where('id',$id)->first();
 
-        $newstwo = NewsPost::where('status',1)->where('subcategory_id',$id)->orderBy('id','DESC')->limit(2)->get();
+        $newsfour = NewsPost::where('status',1)->where('subcategory_id',$id)->orderBy('id','DESC')->limit(4)->get();
 
-        return view('frontend.news.subcategory_news',compact('news','breadsubcat','newstwo'));
+        return view('frontend.news.subcategory_news',compact('news','breadsubcat','newsfour'));
 
     }
 
