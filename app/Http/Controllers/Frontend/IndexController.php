@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\NewsPost;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
+use App\Models\PhotoGalleries;
 use App\Models\VideoGalleries;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
@@ -38,6 +39,8 @@ class IndexController extends Controller{
 
         $video = VideoGalleries::orderBy('created_at','DESC')->take(3)->get();
 
+        $photo = PhotoGalleries::orderBy('created_at','DESC')->get();
+
         // distinct() berguna agar tidak ada value yang sama itu tampil
 
         $tags = DB::table('news_posts')->select('tags')->limit(15)->distinct()->get();
@@ -52,7 +55,7 @@ class IndexController extends Controller{
 
         $uniqueTags = array_unique($tagArray);
 
-        return view('frontend.index',compact('skip_cat_0','skip_news_0','skip_cat_2','skip_news_2','skip_cat_1','skip_news_1','newnewspost','newspopular','uniqueTags','video'));
+        return view('frontend.index',compact('skip_cat_0','skip_news_0','skip_cat_2','skip_news_2','skip_cat_1','skip_news_1','newnewspost','newspopular','uniqueTags','video','photo'));
 
     }
 

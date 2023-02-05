@@ -46,7 +46,7 @@
 
             <div class="form-group mt-3 mr-2">
 
-                <select class="form-control changeLang bo-1-rad-18 of-hidden bocl11" id="exampleFormControlSelect1">
+                <select class="form-control changeLang bo-1-rad-18 of-hidden bocl11 custom-select-lang-brewok" id="exampleFormControlSelect1">
 
                     <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }} >English</option>
 
@@ -1512,6 +1512,7 @@
 					<div class="p-l-10 p-rl-0-sr991 p-b-20">
 
 						<!-- Video -->
+
 						<div class="p-b-55">
 
 							<div class="how2 how2-cl4 flex-s-c m-b-35">
@@ -1565,6 +1566,74 @@
                                     </div>
 
                                 @endforeach
+
+							</div>
+
+						</div>
+
+                        <!-- Photo -->
+
+						<div class="p-b-55">
+
+							<div class="how2 how2-cl4 flex-s-c m-b-35">
+
+								<h3 class="f1-m-2 cl3 tab01-title">
+
+									Photo Gallery
+
+								</h3>
+
+							</div>
+
+							<div>
+
+                                <div class="wrap-pic-w pos-relative">
+
+                                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+                                        <ol class="carousel-indicators">
+
+                                            @foreach ($photo as $key => $photodata)
+
+                                                <li data-target="#carouselExampleIndicators" data-slide-to="{{ $key+1 }}" class="{{ ($loop->index < 1) ? 'active' : '' }}"></li>
+
+                                            @endforeach
+
+                                        </ol>
+
+                                        <div class="carousel-inner">
+
+                                            @foreach ($photo as $photo_data)
+
+                                                <div class="carousel-item {{ ($loop->index < 1) ? 'active' : '' }}">
+
+                                                    <img class="d-block w-100" src="{{ asset($photo_data->photo_gallery) }}" alt="Second slide">
+
+                                                </div>
+
+                                            @endforeach
+
+                                        </div>
+
+                                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+
+                                            <i class="fas fa-arrow-circle-left fa-2x"></i>
+
+                                            <span class="sr-only">Previous</span>
+
+                                        </a>
+
+                                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+
+                                            <i class="fas fa-arrow-circle-right fa-2x"></i>
+
+                                            <span class="sr-only">Next</span>
+
+                                        </a>
+
+                                    </div>
+
+                                </div>
 
 							</div>
 

@@ -46,6 +46,7 @@ class PhotoGalleryController extends Controller{
 
                 'photo_gallery' => $save_url,
                 'post_date'     => Carbon::now()->format('d F Y'),
+                'created_at'    => Carbon::now(),
 
             ]);
 
