@@ -201,7 +201,7 @@
 
                     @foreach ($newsallbycategory as $item)
 
-                        @if ($loop->index > 4)
+                        @if ($loop->index > 5)
 
                             <div class="col-sm-6 p-r-25 p-r-15-sr991">
 
@@ -251,7 +251,7 @@
 
                                         <p class="f1-s-11 cl6 txt-center p-b-16">
 
-                                            {!! Str::limit($item->news_details,60) !!}
+                                            {!! Str::limit($item->news_details,150) !!}
 
                                         </p>
 
@@ -275,7 +275,7 @@
 
                     @foreach ($newsallbycategory as $item)
 
-                        @if ($loop->index > 6)
+                        @if ($loop->index < 5)
 
                             <div class="col-sm-6 p-r-25 p-r-15-sr991">
 
@@ -325,7 +325,7 @@
 
                                         <p class="f1-s-11 cl6 txt-center p-b-16">
 
-                                            {!! Str::limit($item->news_details,60) !!}
+                                            {!! Str::limit($item->news_details,150) !!}
 
                                         </p>
 

@@ -111,7 +111,9 @@ class IndexController extends Controller{
 
         $newsfour = NewsPost::where('status',1)->where('subcategory_id',$id)->orderBy('id','DESC')->limit(4)->get();
 
-        return view('frontend.news.subcategory_news',compact('news','breadsubcat','newsfour'));
+        $newsallbysubcategory = NewsPost::where('status',1)->where('subcategory_id',$id)->orderBy('id','DESC')->get();
+
+        return view('frontend.news.subcategory_news',compact('news','breadsubcat','newsfour','newsallbysubcategory'));
 
     }
 

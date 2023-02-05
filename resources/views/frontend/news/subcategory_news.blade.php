@@ -2,147 +2,345 @@
 
 @section('home')
 
-<div class="archive-page1">
+@section('title')
+
+    Sub Category Page | {{ $breadsubcat->subcategory_name }}
+
+@endsection
+
+<!-- Breadcrumb -->
+
+<div class="container">
+
+    <div class="bg0 flex-wr-sb-c p-rl-20 p-tb-8">
+
+        <div class="f2-s-1 p-r-30 m-tb-6 size-w-0 flex-wr-s-c">
+
+            <a href="{{ route('home.index') }}" class="breadcrumb-item f1-s-3 cl9">
+
+                Home
+
+            </a>
+
+            <a href="{{ url('news/subcategory/'.$breadsubcat->id.'/'.$breadsubcat->subcategory_slug) }}" class="breadcrumb-item f1-s-3 cl9">
+
+                {{ $breadsubcat->subcategory_name }}
+
+            </a>
+
+        </div>
+
+        <div class="form-group mt-3 mr-2">
+
+            <select class="form-control changeLang bo-1-rad-18 of-hidden bocl11" id="exampleFormControlSelect1">
+
+                <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }} >English</option>
+
+                <option value="id" {{ session()->get('locale') == 'id' ? 'selected' : '' }} >Indonesia</option>
+
+                <option value="ar" {{ session()->get('locale') == 'ar' ? 'selected' : '' }} >Arab</option>
+
+                <option value="nl" {{ session()->get('locale') == 'nl' ? 'selected' : '' }} >Dutch</option>
+
+                <option value="ja" {{ session()->get('locale') == 'ja' ? 'selected' : '' }} >Jepang</option>
+
+            </select>
+
+        </div>
+
+        <div class="pos-relative size-a-2 bo-1-rad-22 of-hidden bocl11 m-tb-6">
+
+            <input class="f1-s-1 cl6 plh9 s-full p-l-25 p-r-45" type="text" name="search" placeholder="Search">
+
+            <button class="flex-c-c size-a-1 ab-t-r fs-20 cl2 hov-cl10 trans-03">
+
+                <i class="zmdi zmdi-search"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Page heading -->
+
+<div class="container p-t-4 p-b-40">
+
+    <h2 class="f1-l-1 cl2">
+
+        {{ $breadsubcat->subcategory_name }}
+
+    </h2>
+
+</div>
+
+<!-- Feature post -->
+
+<section class="bg0">
 
     <div class="container">
 
-        <div class="row">
-        <div class="col-lg-12">
-            <div class="archive-topAdd"></div>
-        </div>
-        </div>
+        <div class="row m-rl--1">
 
-        <div class="row">
+            @foreach ($news as $item)
 
-            <div class="col-lg-8 col-md-8">
+                @if ($loop->index < 1)
 
-                <div class="rachive-info-cats">
+                    <div class="col-12 p-rl-1 p-b-2">
 
-                    <a href=" "><i class="las la-home"></i> </a>
+                        <div class="bg-img1 size-a-3 how1 pos-relative" style="background-image: url({{ asset($item->image) }});">
 
-                    <i class="las la-chevron-right"></i> {{ $breadsubcat->category_name }}
+                            <a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
 
-                </div>
+                            <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
 
-                <div class="row">
+                                <a href="{{ url('news/subcategory/'.$item->id.'/'.$item->subcategory_slug) }}" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
 
-                    @foreach ($news as $item)
+                                    {{ $item['subcategoryRelation']['subcategory_name'] }}
 
-                        @if ($loop->index < 1)
+                                </a>
 
-                            <div class="col-lg-8 col-md-8">
+                                <h3 class="how1-child2 m-t-14 m-b-10">
 
-                                <div class="archive-shadow arch_margin">
+                                    <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}" class="how-txt1 size-a-6 f1-l-1 cl0 hov-cl10 trans-03">
 
-                                    <div class="archive1_image">
+                                        {{ $item->news_title }}
 
-                                        <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} "
-                                        ><img class="lazyload" src="{{ asset($item->image) }}"
-                                        /></a>
-                                        <div class="archive1-meta">
-                                        <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} "
-                                            ><i class="la la-tags"> </i>
-                                            {{ $item->created_at->format('l M d Y') }}
-                                        </a>
-                                        </div>
+                                    </a>
+                                </h3>
 
-                                    </div>
+                                <span class="how1-child2">
 
-                                    <div class="archive1-padding">
+                                    <span class="f1-s-4 cl11">
 
-                                        <div class="archive1-title">
+                                        {{ $item['userRelation']['name'] }}
 
-                                            <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} ">{{ $item->news_title }}</a>
+                                    </span>
 
-                                        </div>
+                                    <span class="f1-s-3 cl11 m-rl-3">
 
-                                        <div class="content-details">
+                                        -
 
-                                            {!! Str::limit($item->news_details,100) !!}
+                                    </span>
 
-                                        </div>
+                                    <span class="f1-s-3 cl11">
 
-                                    </div>
+                                        {{ Carbon\Carbon::parse($item->post_date)->diffForHumans() }}
 
-                                </div>
+                                    </span>
+
+                                </span>
 
                             </div>
-
-                        @endif
-
-                    @endforeach
-
-
-
-                    <div class="col-md-4 col-sm-4">
-
-                        <div class="row">
-
-                            @foreach ($newstwo as $item)
-
-                                @if ($loop->index > 0)
-
-                                    <div class="archive1-custom-col-12">
-                                        <div class="archive-item-wrpp2">
-                                        <div class="archive-shadow arch_margin">
-                                            <div class="archive1_image2">
-                                            <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} "
-                                                ><img
-                                                class="lazyload"
-                                                src="{{ asset($item->image) }}"
-                                            /></a>
-                                            <div class="archive1-meta">
-                                                <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} "
-                                                ><i class="la la-tags"> </i>
-                                                {{ $item->created_at->format('l M d Y') }}
-                                                </a>
-                                            </div>
-                                            </div>
-                                            <div class="archive1-padding">
-                                            <div class="archive1-title2">
-                                                <a href=" {{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}">{{ $item->news_title }}</a>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        </div>
-                                    </div>
-
-                                @endif
-
-                            @endforeach
 
                         </div>
+
                     </div>
 
-                </div>
+                @endif
+
+            @endforeach
+
+            @foreach ($newsfour as $item)
+
+                @if ($loop->index > 0)
+
+                    <div class="col-sm-6 col-md-3 p-rl-1 p-b-2">
+
+                        <div class="bg-img1 size-a-14 how1 pos-relative" style="background-image: url({{ asset($item->image) }});">
+
+                            <a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
+
+                            <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
+
+                                <a href="{{ url('news/subcategory/'.$item->id.'/'.$item->subcategory_slug) }}" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
+
+                                    {{ $item['subcategoryRelation']['subcategory_name'] }}
+
+                                </a>
+
+                                <h3 class="how1-child2 m-t-14">
+
+                                    <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}" class="how-txt1 size-h-1 f1-m-1 cl0 hov-cl10 trans-03">
+
+                                        {{ $item->news_title }}
+
+                                    </a>
+
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                @endif
+
+            @endforeach
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Post -->
+
+<section class="bg0 p-t-110 p-b-25">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-10 col-lg-8 p-b-80">
 
                 <div class="row">
 
-                    @foreach ($news as $item)
+                    @foreach ($newsallbysubcategory as $item)
 
-                        @if ($loop->index > 1)
+                        @if ($loop->index > 5)
 
-                            <div class="archive1-custom-col-3">
-                                <div class="archive-item-wrpp2">
-                                <div class="archive-shadow arch_margin">
-                                    <div class="archive1_image2">
-                                    <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}"
-                                        ><img class="lazyload" src="{{ asset($item->image) }}"
-                                    /></a>
-                                    <div class="archive1-meta">
-                                        <a href=" {{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}"
-                                        ><i class="la la-tags"> </i>
-                                        {{ $item->created_at->format('l M d Y') }}
+                            <div class="col-sm-6 p-r-25 p-r-15-sr991">
+
+                                <!-- Item -->
+
+                                <div class="p-b-53">
+
+                                    <a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
+
+                                        <img src="{{ asset($item->image) }}" alt="IMG">
+
+                                    </a>
+
+                                    <div class="flex-col-s-c p-t-16">
+
+                                        <h5 class="p-b-5 txt-center">
+
+                                            <a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
+
+                                                {{ $item->news_title }}
+
+                                            </a>
+
+                                        </h5>
+
+                                        <div class="cl8 txt-center p-b-17">
+
+                                            <a href="{{ url('news/subcategory/'.$item->id.'/'.$item->subcategory_slug) }}" class="f1-s-4 cl8 hov-cl10 trans-03">
+
+                                                {{ $item['subcategoryRelation']['subcategory_name'] }}
+
+                                            </a>
+
+                                            <span class="f1-s-3 m-rl-3">
+
+                                                -
+
+                                            </span>
+
+                                            <span class="f1-s-3">
+
+                                                {{ Carbon\Carbon::parse($item->post_date)->diffForHumans() }}
+
+                                            </span>
+
+                                        </div>
+
+                                        <p class="f1-s-11 cl6 txt-center p-b-16">
+
+                                            {!! Str::limit($item->news_details,150) !!}
+
+                                        </p>
+
+                                        <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}" class="f1-s-1 cl9 hov-cl10 trans-03">
+
+                                            Read More
+
+                                            <i class="m-l-2 fa fa-long-arrow-alt-right"></i>
+
                                         </a>
+
                                     </div>
-                                    </div>
-                                    <div class="archive1-padding">
-                                    <div class="archive1-title2">
-                                        <a href=" {{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}">{{ $item->news_title }}</a>
-                                    </div>
-                                    </div>
+
                                 </div>
+
+                            </div>
+
+                        @endif
+
+                    @endforeach
+
+                    @foreach ($newsallbysubcategory as $item)
+
+                        @if ($loop->index < 5)
+
+                            <div class="col-sm-6 p-r-25 p-r-15-sr991">
+
+                                <!-- Item -->
+
+                                <div class="p-b-53">
+
+                                    <a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
+
+                                        <img src="{{ asset($item->image) }}" alt="IMG">
+
+                                    </a>
+
+                                    <div class="flex-col-s-c p-t-16">
+
+                                        <h5 class="p-b-5 txt-center">
+
+                                            <a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
+
+                                                {{ $item->news_title }}
+
+                                            </a>
+
+                                        </h5>
+
+                                        <div class="cl8 txt-center p-b-17">
+
+                                            <a href="{{ url('news/subcategory/'.$item->id.'/'.$item->subcategory_slug) }}" class="f1-s-4 cl8 hov-cl10 trans-03">
+
+                                                {{ $item['subcategoryRelation']['subcategory_name'] }}
+
+                                            </a>
+
+                                            <span class="f1-s-3 m-rl-3">
+
+                                                -
+
+                                            </span>
+
+                                            <span class="f1-s-3">
+
+                                                {{ Carbon\Carbon::parse($item->post_date)->diffForHumans() }}
+
+                                            </span>
+
+                                        </div>
+
+                                        <p class="f1-s-11 cl6 txt-center p-b-16">
+
+                                            {!! Str::limit($item->news_details,150) !!}
+
+                                        </p>
+
+                                        <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}" class="f1-s-1 cl9 hov-cl10 trans-03">
+
+                                            Read More
+
+                                            <i class="m-l-2 fa fa-long-arrow-alt-right"></i>
+
+                                        </a>
+
+                                    </div>
+
                                 </div>
+
                             </div>
 
                         @endif
@@ -150,248 +348,43 @@
                     @endforeach
 
                 </div>
-                <div class="archive1-margin">
-                <div class="archive-content">
-                    <div class="row"></div>
-                </div>
+
+                <!-- Pagination -->
+
+                <div class="flex-wr-c-c m-rl--7 p-t-28">
+
+                    <a href="#" class="flex-c-c pagi-item hov-btn1 trans-03 m-all-7 pagi-active">1</a>
+
+                    <a href="#" class="flex-c-c pagi-item hov-btn1 trans-03 m-all-7">2</a>
+
                 </div>
 
-                <div class="row">
-                <div class="col-md-12">
-                    <span aria-current="page" class="page-numbers current"
-                    >1</span
-                    >
-                    <a class="page-numbers" href=" ">2</a>
-                    <a class="next page-numbers" href=" ">Next »</a>
-                </div>
-                </div>
-
-                <br /><br />
-
-                <div class="row">
-                <div class="col-lg-12 col-md-12"></div>
-                </div>
             </div>
 
-            <div class="col-lg-4 col-md-4">
-                <div class="sitebar-fixd" style="position: sticky; top: 0">
-                <div class="archivePopular">
-                    <ul
-                    class="nav nav-pills"
-                    id="archivePopular-tab"
-                    role="tablist"
-                    >
-                    <li class="nav-item" role="presentation">
-                        <div
-                        class="nav-link active"
-                        data-bs-toggle="pill"
-                        data-bs-target="#archiveTab_recent"
-                        role="tab"
-                        aria-controls="archiveRecent"
-                        aria-selected="true"
-                        >
-                        LATEST
-                        </div>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <div
-                        class="nav-link"
-                        data-bs-toggle="pill"
-                        data-bs-target="#archiveTab_popular"
-                        role="tab"
-                        aria-controls="archivePopulars"
-                        aria-selected="false"
-                        >
-                        POPULAR
-                        </div>
-                    </li>
-                    </ul>
-                </div>
-                <div class="tab-content" id="pills-tabContentarchive">
-                    <div
-                    class="tab-pane fade active show"
-                    id="archiveTab_recent"
-                    role="tabpanel"
-                    aria-labelledby="archiveRecent"
-                    >
-                    <div class="archiveTab-sibearNews">
-                        <div class="archive-tabWrpp archiveTab-border">
-                        <div class="archiveTab-image">
-                            <a href=" "
-                            ><img class="lazyload" src="assets/images/lazy.jpg"
-                            /></a>
-                        </div>
-                        <a href=" " class="archiveTab-icon2"
-                            ><i class="la la-play"></i
-                        ></a>
-                        <h4 class="archiveTab_hadding">
-                            <a href=" ">Why people are industry hopping </a>
-                        </h4>
-                        <div class="archive-conut">1</div>
-                        </div>
-                        <div class="archive-tabWrpp archiveTab-border">
-                        <div class="archiveTab-image">
-                            <a href=" "
-                            ><img class="lazyload" src="assets/images/lazy.jpg"
-                            /></a>
-                        </div>
-                        <h4 class="archiveTab_hadding">
-                            <a href=" ">Why people are industry hopping </a>
-                        </h4>
-                        <div class="archive-conut">2</div>
-                        </div>
-                        <div class="archive-tabWrpp archiveTab-border">
-                        <div class="archiveTab-image">
-                            <a href=" "
-                            ><img class="lazyload" src="assets/images/lazy.jpg"
-                            /></a>
-                        </div>
-                        <h4 class="archiveTab_hadding">
-                            <a href=" ">Why people are industry hopping</a>
-                        </h4>
-                        <div class="archive-conut">3</div>
-                        </div>
-                        <div class="archive-tabWrpp archiveTab-border">
-                        <div class="archiveTab-image">
-                            <a href=" "
-                            ><img class="lazyload" src="assets/images/lazy.jpg"
-                            /></a>
-                        </div>
-                        <h4 class="archiveTab_hadding">
-                            <a href=" ">Why people are industry hopping </a>
-                        </h4>
-                        <div class="archive-conut">4</div>
-                        </div>
-                        <div class="archive-tabWrpp archiveTab-border">
-                        <div class="archiveTab-image">
-                            <a href=" "
-                            ><img class="lazyload" src="assets/images/lazy.jpg"
-                            /></a>
-                        </div>
-                        <h4 class="archiveTab_hadding">
-                            <a href=" ">Why people are industry hopping </a>
-                        </h4>
-                        <div class="archive-conut">5</div>
-                        </div>
-                        <div class="archive-tabWrpp archiveTab-border">
-                        <div class="archiveTab-image">
-                            <a href=" "
-                            ><img class="lazyload" src="assets/images/lazy.jpg"
-                            /></a>
-                        </div>
-                        <h4 class="archiveTab_hadding">
-                            <a href=" ">Why people are industry hopping </a>
-                        </h4>
-                        <div class="archive-conut">6</div>
-                        </div>
-                        <div class="archive-tabWrpp archiveTab-border">
-                        <div class="archiveTab-image">
-                            <a href=" "
-                            ><img class="lazyload" src="assets/images/lazy.jpg"
-                            /></a>
-                        </div>
-                        <h4 class="archiveTab_hadding">
-                            <a href=" ">Why people are industry hopping</a>
-                        </h4>
-                        <div class="archive-conut">7</div>
-                        </div>
-                        <div class="archive-tabWrpp archiveTab-border">
-                        <div class="archiveTab-image">
-                            <a href=" "
-                            ><img class="lazyload" src="assets/images/lazy.jpg"
-                            /></a>
-                        </div>
-                        <h4 class="archiveTab_hadding">
-                            <a href=" ">Why people are industry hopping </a>
-                        </h4>
-                        <div class="archive-conut">8</div>
-                        </div>
-                        <div class="archive-tabWrpp archiveTab-border">
-                        <div class="archiveTab-image">
-                            <a href=" "
-                            ><img class="lazyload" src="assets/images/lazy.jpg"
-                            /></a>
-                        </div>
-                        <h4 class="archiveTab_hadding">
-                            <a href=" ">Why people are industry hopping </a>
-                        </h4>
-                        <div class="archive-conut">9</div>
-                        </div>
-                        <div class="archive-tabWrpp archiveTab-border">
-                        <div class="archiveTab-image">
-                            <a href=" "
-                            ><img class="lazyload" src="assets/images/lazy.jpg"
-                            /></a>
-                        </div>
-                        <h4 class="archiveTab_hadding">
-                            <a href=" ">Why people are industry hopping </a>
-                        </h4>
-                        <div class="archive-conut">10</div>
-                        </div>
-                    </div>
-                    </div>
-                    <div
-                    class="tab-pane fade"
-                    id="archiveTab_popular"
-                    role="tabpanel"
-                    aria-labelledby="archivePopulars"
-                    >
-                    <div class="archiveTab-sibearNews">
-                        <div class="archive-tabWrpp archiveTab-border">
-                        <div class="archiveTab-image">
-                            <a href=" "
-                            ><img class="lazyload" src="assets/images/lazy.jpg"
-                            /></a>
-                        </div>
-                        <a href=" " class="archiveTab-icon2"
-                            ><i class="la la-play"></i
-                        ></a>
-                        <h4 class="archiveTab_hadding">
-                            <a href=" ">Why people are industry hopping </a>
-                        </h4>
-                        <div class="archive-conut">1</div>
-                        </div>
+            <div class="col-md-10 col-lg-4 p-b-80">
 
-                        <div class="archive-tabWrpp archiveTab-border">
-                        <div class="archiveTab-image">
-                            <a href=" "
-                            ><img class="lazyload" src="assets/images/lazy.jpg"
-                            /></a>
-                        </div>
-                        <a href=" " class="archiveTab-icon2"
-                            ><i class="la la-play"></i
-                        ></a>
-                        <h4 class="archiveTab_hadding">
-                            <a href=" ">Why people are industry hopping </a>
-                        </h4>
-                        <div class="archive-conut">1</div>
-                        </div>
+                <div class="p-l-10 p-rl-0-sr991">
 
-                        <div class="archive-tabWrpp archiveTab-border">
-                        <div class="archiveTab-image">
-                            <a href=" "
-                            ><img class="lazyload" src="assets/images/lazy.jpg"
-                            /></a>
-                        </div>
-                        <a href=" " class="archiveTab-icon2"
-                            ><i class="la la-play"></i
-                        ></a>
-                        <h4 class="archiveTab_hadding">
-                            <a href=" ">Why people are industry hopping </a>
-                        </h4>
-                        <div class="archive-conut">1</div>
-                        </div>
+                    <!-- Banner -->
+
+                    <div class="flex-c-s">
+
+                        <a href="#">
+
+                            <img class="max-w-full" src="images/banner-02.jpg" alt="BANNER VERTICAL">
+
+                        </a>
+
                     </div>
-                    </div>
+
                 </div>
-                <div class="siteber-add2"></div>
-                </div>
+
             </div>
 
         </div>
 
     </div>
 
-  </div>
+</section>
 
 @endsection
