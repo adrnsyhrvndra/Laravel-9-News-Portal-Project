@@ -2,459 +2,552 @@
 
 @section('home')
 
-    <section class="single-page">
+@section('title')
+
+    News Detail Page | {{$news->news_title }}
+
+@endsection
+
+    <!-- Breadcrumb -->
+	<div class="container">
+
+        <div class="bg0 flex-wr-sb-c p-rl-20 p-tb-8">
+
+            <div class="f2-s-1 p-r-30 m-tb-6 size-w-0 flex-wr-s-c">
+
+                <a href="{{ route('home.index') }}" class="breadcrumb-item f1-s-3 cl9">
+
+                    Home
+
+                </a>
+
+                <a href="{{ url('news/category/'.$news->id.'/'.$news->category_slug) }}" class="breadcrumb-item f1-s-3 cl9">
+
+                    {{ $news->news_title }}
+
+                </a>
+
+            </div>
+
+            <div class="form-group mt-3 mr-2">
+
+                <select class="form-control changeLang bo-1-rad-18 of-hidden bocl11" id="exampleFormControlSelect1">
+
+                    <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }} >English</option>
+
+                    <option value="id" {{ session()->get('locale') == 'id' ? 'selected' : '' }} >Indonesia</option>
+
+                    <option value="ar" {{ session()->get('locale') == 'ar' ? 'selected' : '' }} >Arab</option>
+
+                    <option value="nl" {{ session()->get('locale') == 'nl' ? 'selected' : '' }} >Dutch</option>
+
+                    <option value="ja" {{ session()->get('locale') == 'ja' ? 'selected' : '' }} >Jepang</option>
+
+                </select>
+
+            </div>
+
+            <div class="pos-relative size-a-2 bo-1-rad-22 of-hidden bocl11 m-tb-6">
+
+                <input class="f1-s-1 cl6 plh9 s-full p-l-25 p-r-45" type="text" name="search" placeholder="Search">
+
+                <button class="flex-c-c size-a-1 ab-t-r fs-20 cl2 hov-cl10 trans-03">
+
+                    <i class="zmdi zmdi-search"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <section class="bg0 p-b-140 p-t-10">
 
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-8">
 
-                    <div class="single-add">
-                    </div>
+            <div class="row justify-content-center">
 
-                    <div class="single-cat-info">
+                <!-- Main Content -->
 
-                        <div class="single-home">
+                <div class="col-md-10 col-lg-8 p-b-30">
 
-                            <i class="la la-home"> </i><a href=" {{ route('home.index') }}"> HOME </a>
+                    <div class="p-r-10 p-r-0-sr991">
+
+                        <!-- Blog Detail -->
+
+                        <div class="p-b-70">
+
+                            <a href="#" class="f1-s-10 cl2 hov-cl10 trans-03 text-uppercase">
+
+                                {{$news->category_name }}
+
+                            </a>
+
+                            <h3 class="f1-l-3 cl2 p-b-16 p-t-33 respon2">
+
+                                {{$news->news_title }}
+
+                            </h3>
+
+                            <div class="flex-wr-s-s p-b-40">
+
+                                <span class="f1-s-3 cl8 m-r-15">
+
+                                    <a href="{{ route('reporter.all.news',$news->user_id) }}" class="f1-s-4 cl8 hov-cl10 trans-03">
+
+                                        by {{ $news['userRelation']['name'] }}
+
+                                    </a>
+
+                                    <span class="m-rl-3"> - </span>
+
+                                    <span>
+
+                                        {{ $news->created_at->format('M d Y') }}
+
+                                    </span>
+
+                                </span>
+
+                                <span class="f1-s-3 cl8 m-r-15">
+
+                                    Views : {{ $news->view_count }}
+
+                                </span>
+
+                                <a href="#" class="f1-s-3 cl8 hov-cl10 trans-03 m-r-15">
+
+                                    0 Comment
+
+                                </a>
+
+                            </div>
+
+                            <div class="wrap-pic-max-w p-b-30">
+
+                                <img src="{{ asset($news->image) }}" alt="IMG">
+
+                            </div>
+
+                            <p class="f1-s-11 cl6 p-b-25">
+
+                                {!! $news->news_details !!}
+
+                            </p>
+
+                            <!-- Tag -->
+
+                            <div class="flex-s-s p-t-12 p-b-15">
+
+                                <span class="f1-s-12 cl5 m-r-8">
+
+                                    Tags:
+
+                                </span>
+
+                                <div class="flex-wr-s-s size-w-0">
+
+                                    @foreach ($tags_all as $tag)
+
+                                        <a href="#" class="f1-s-12 cl8 hov-link1 m-r-15">
+
+                                            {{ ucwords($tag) }}
+
+                                        </a>
+
+                                    @endforeach
+
+                                </div>
+
+                            </div>
+
+                            <!-- Share -->
+
+                            <div class="flex-s-s">
+                                <span class="f1-s-12 cl5 p-t-1 m-r-15">
+                                    Share:
+                                </span>
+
+                                <div class="flex-wr-s-s size-w-0">
+                                    <a href="#" class="dis-block f1-s-13 cl0 bg-facebook borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03">
+                                        <i class="fab fa-facebook-f m-r-7"></i>
+                                        Facebook
+                                    </a>
+
+                                    <a href="#" class="dis-block f1-s-13 cl0 bg-twitter borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03">
+                                        <i class="fab fa-twitter m-r-7"></i>
+                                        Twitter
+                                    </a>
+
+                                    <a href="#" class="dis-block f1-s-13 cl0 bg-google borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03">
+                                        <i class="fab fa-google-plus-g m-r-7"></i>
+                                        Google+
+                                    </a>
+
+                                    <a href="#" class="dis-block f1-s-13 cl0 bg-pinterest borad-3 p-tb-4 p-rl-18 hov-btn1 m-r-3 m-b-3 trans-03">
+                                        <i class="fab fa-pinterest-p m-r-7"></i>
+                                        Pinterest
+                                    </a>
+                                </div>
+                            </div>
 
                         </div>
 
-                        <div class="single-cats">
 
-                            <i class="la la-bars"></i> <a href=" " rel="category tag">{{ $news['categoryRelation']['category_name'] }}</a>,
 
-                            @if ($news->subcategory_id == NULL)
+                        @php
 
-                                <a href=" " rel="category tag"></a>
+                            $review = App\Models\Reviews::where('news_id',$news->id)->latest()->limit(5)->get();
+
+                        @endphp
+
+                        @foreach ($review as $item)
+
+                            @if ($item->status == 0)
 
                             @else
 
-                                <a href=" " rel="category tag">{{ $news['subcategoryRelation']['subcategory_name'] }}</a>
 
                             @endif
-
-                        </div>
-
-                    </div>
-
-                    <h1 class="single-page-title">
-
-                        {{$news->news_title }}
-
-                    </h1>
-
-                    <div class="row g-2">
-                        <div class="col-lg-1 col-md-2 ">
-                            <div class="reportar-image">
-                                <img src="{{ (!empty($news->userRelation->photo)) ? url('upload/admin_images/'.$news->userRelation->photo) : url('upload/no_image.jpg') }}">
-                            </div>
-                        </div>
-                        <div class="col-lg-11 col-md-10">
-
-                            <div class="reportar-title">
-
-                                Posted By <a href="{{ route('reporter.all.news',$news->user_id) }}"> {{ $news['userRelation']['name'] }} </a>
-
-                            </div>
-
-                            <div class="viwe-count">
-
-                                <ul>
-
-                                    <li>
-
-                                        <i class="la la-clock-o"></i> Created {{ $news->created_at->format('M d Y') }}
-
-                                    </li>
-
-                                    <li> / <i class="la la-eye"></i>
-
-                                        {{ $news->view_count }}
-
-                                        Read
-
-                                    </li>
-
-                                </ul>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="single-image">
-                        <a href=" "><img class="lazyload" src="{{ asset($news->image) }}"></a>
-                        <h2 class="single-caption2">
-                            {{ $news->news_title }}
-                        </h2>
-                    </div>
-
-                    <div class="single-page-add2">
-                        <div class="themesBazar_widget">
-                            <div class="textwidget">
-                                <p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button id="inc">A+</button>
-
-                    <button id="dec">A-</button>
-
-                    <news-font>
-
-                    <div class="single-details">
-
-                        {!! $news->news_details !!}
-
-                    </div>
-
-                    </news-font>
-
-                    <div class="singlePage2-tag">
-
-                        <span> Tags : </span>
-
-                        @foreach ($tags_all as $tag)
-
-                            <a href=" " rel="tag">{{ ucwords($tag) }}</a>
 
                         @endforeach
 
-                    </div>
+                        <!-- Leave a comment -->
 
-                    <div class="single-add">
-                        <div class="themesBazar_widget">
-                            <div class="textwidget">
-                                <p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
-                            </div>
-                        </div>
-                    </div>
+                        @guest
 
-                    <h3 class="single-social-title">
-                        Share News </h3>
-                    <div class="single-page-social">
-                        <a href=" " target="_blank" title="Facebook"><i class="lab la-facebook-f"></i></a><a
-                            href=" " target="_blank"><i class="lab la-twitter"></i></a><a href=" "
-                            target="_blank"><i class="lab la-linkedin-in"></i></a><a href=" " target="_blank"><i
-                                class="lab la-digg"></i></a><a href=" " target="_blank"><i
-                                class="lab la-pinterest-p"></i></a><a onclick="printFunction()" target="_blank"><i
-                                class="las la-print"></i>
-                            <script>
-                                function printFunction() {
-                                    window.print();
-                                }
-                            </script>
-                        </a>
-                    </div>
+                            <p>
 
-                    @php
+                                <b> For Add Product Review,You Need To Login First <a href="{{ route('login') }}"></a> </b>
 
-                        $review = App\Models\Reviews::where('news_id',$news->id)->latest()->limit(5)->get();
-
-                    @endphp
-
-                    @foreach ($review as $item)
-
-                        @if ($item->status == 0)
-
+                            </p>
 
                         @else
 
-                            <div class="author2">
+                            <form action="{{ route('store.review') }}" method="post">
 
-                                <div class="author-content2">
+                                @csrf
 
-                                    <h6 class="author-caption2">
+                                @if (session('status'))
 
-                                        <span> COMMENTS </span>
+                                    <div class="alert alert-success" role="alert">
 
-                                    </h6>
-
-                                    <div class="author-image2">
-                                        <img alt="" src="{{ (!empty($item->UserRelation->photo)) ? url('upload/user_images/'.$item->UserRelation->photo) : url('upload/no_image.jpg') }}" class="avatar avatar-96 photo" height="96" width="96" loading="lazy">
-                                    </div>
-
-                                    <div class="authorContent">
-
-                                        <h1 class="author-name2">
-
-                                            <a href=" "> {{ $item->UserRelation->name }} </a>
-
-                                        </h1>
-
-                                        <p> {{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }} </p>
-
-                                        <div class="author-details">{{ $item->comment }}</div>
+                                        {{ session('status') }}
 
                                     </div>
+
+                                @elseif(session('error'))
+
+                                    <div class="alert alert-danger" role="alert">
+
+                                        {{ session('error') }}
+
+                                    </div>
+
+                                @endif
+
+                                <div>
+
+                                    <h4 class="f1-l-4 cl3 p-b-12">
+
+                                        Leave a Comment
+
+                                    </h4>
+
+                                    <p class="f1-s-13 cl8 p-b-40">
+
+                                        Your email address will not be published. Required fields are marked *
+
+                                    </p>
+
+                                    <form>
+
+                                        <textarea class="bo-1-rad-3 bocl13 size-a-15 f1-s-13 cl5 plh6 p-rl-18 p-tb-14 m-b-20" name="msg" placeholder="Comment..."></textarea>
+
+                                        <input class="bo-1-rad-3 bocl13 size-a-16 f1-s-13 cl5 plh6 p-rl-18 m-b-20" type="text" name="name" placeholder="Name*">
+
+                                        <input class="bo-1-rad-3 bocl13 size-a-16 f1-s-13 cl5 plh6 p-rl-18 m-b-20" type="text" name="email" placeholder="Email*">
+
+                                        <input class="bo-1-rad-3 bocl13 size-a-16 f1-s-13 cl5 plh6 p-rl-18 m-b-20" type="text" name="website" placeholder="Website">
+
+                                        <button class="size-a-17 bg2 borad-3 f1-s-12 cl0 hov-btn1 trans-03 p-rl-15 m-t-10">
+
+                                            Post Comment
+
+                                        </button>
+
+                                    </form>
 
                                 </div>
+
+                            </form>
+
+                        @endguest
+
+                    </div>
+
+
+                </div>
+
+                <!-- Sidebar -->
+
+                <div class="col-md-10 col-lg-4 p-b-30">
+
+                    <div class="p-l-10 p-rl-0-sr991 p-t-70">
+
+                        <!-- Category -->
+
+                        <div class="p-b-60">
+
+                            <div class="how2 how2-cl4 flex-s-c">
+
+                                <h3 class="f1-m-2 cl3 tab01-title">
+
+                                    Category
+
+                                </h3>
 
                             </div>
 
-                        @endif
+                            <ul class="p-t-35">
 
-                    @endforeach
+                                @foreach ($allcategories as $categoryitem)
 
-                    <hr>
+                                    <li class="how-bor3 p-rl-4">
 
-                    @guest
+                                        <a href="#" class="dis-block f1-s-10 text-uppercase cl2 hov-cl10 trans-03 p-tb-13">
 
-                        <p>
+                                            {{ $categoryitem->category_name }}
 
-                            <b> For Add Product Review,You Need To Login First <a href="{{ route('login') }}"></a> </b>
+                                        </a>
 
-                        </p>
+                                    </li>
 
-                    @else
+                                @endforeach
 
-                        <form action="{{ route('store.review') }}" method="post" class="wpcf7-form init" enctype="multipart/form-data" novalidate="novalidate" data-status="init">
+                            </ul>
 
-                            @csrf
+                        </div>
 
-                            @if (session('status'))
+                        <!-- Archive -->
 
-                                <div class="alert alert-success" role="alert">
+                        {{-- <div class="p-b-37">
+                            <div class="how2 how2-cl4 flex-s-c">
+                                <h3 class="f1-m-2 cl3 tab01-title">
+                                    Archive
+                                </h3>
+                            </div>
 
-                                    {{ session('status') }}
+                            <ul class="p-t-32">
+                                <li class="p-rl-4 p-b-19">
+                                    <a href="#" class="flex-wr-sb-c f1-s-10 text-uppercase cl2 hov-cl10 trans-03">
+                                        <span>
+                                            July 2018
+                                        </span>
 
-                                </div>
+                                        <span>
+                                            (9)
+                                        </span>
+                                    </a>
+                                </li>
 
-                            @elseif(session('error'))
+                                <li class="p-rl-4 p-b-19">
+                                    <a href="#" class="flex-wr-sb-c f1-s-10 text-uppercase cl2 hov-cl10 trans-03">
+                                        <span>
+                                            June 2018
+                                        </span>
 
-                                <div class="alert alert-danger" role="alert">
+                                        <span>
+                                            (39)
+                                        </span>
+                                    </a>
+                                </li>
 
-                                    {{ session('error') }}
+                                <li class="p-rl-4 p-b-19">
+                                    <a href="#" class="flex-wr-sb-c f1-s-10 text-uppercase cl2 hov-cl10 trans-03">
+                                        <span>
+                                            May 2018
+                                        </span>
 
-                                </div>
+                                        <span>
+                                            (29)
+                                        </span>
+                                    </a>
+                                </li>
 
-                            @endif
+                                <li class="p-rl-4 p-b-19">
+                                    <a href="#" class="flex-wr-sb-c f1-s-10 text-uppercase cl2 hov-cl10 trans-03">
+                                        <span>
+                                            April  2018
+                                        </span>
 
-                            <div style="display: none;"></div>
+                                        <span>
+                                            (35)
+                                        </span>
+                                    </a>
+                                </li>
 
-                            <div class="main_section">
+                                <li class="p-rl-4 p-b-19">
+                                    <a href="#" class="flex-wr-sb-c f1-s-10 text-uppercase cl2 hov-cl10 trans-03">
+                                        <span>
+                                            March 2018
+                                        </span>
 
-                                <div class="row">
+                                        <span>
+                                            (22)
+                                        </span>
+                                    </a>
+                                </li>
 
-                                    <div class="col-lg-12">
+                                <li class="p-rl-4 p-b-19">
+                                    <a href="#" class="flex-wr-sb-c f1-s-10 text-uppercase cl2 hov-cl10 trans-03">
+                                        <span>
+                                            February 2018
+                                        </span>
 
-                                        <div class="contact-title">
+                                        <span>
+                                            (32)
+                                        </span>
+                                    </a>
+                                </li>
 
-                                            Comments *
+                                <li class="p-rl-4 p-b-19">
+                                    <a href="#" class="flex-wr-sb-c f1-s-10 text-uppercase cl2 hov-cl10 trans-03">
+                                        <span>
+                                            January 2018
+                                        </span>
 
-                                        </div>
+                                        <span>
+                                            (21)
+                                        </span>
+                                    </a>
+                                </li>
 
-                                        <div class="contact-form">
+                                <li class="p-rl-4 p-b-19">
+                                    <a href="#" class="flex-wr-sb-c f1-s-10 text-uppercase cl2 hov-cl10 trans-03">
+                                        <span>
+                                            December 2017
+                                        </span>
 
-                                            <input type="hidden" name="news_id" value="{{ $news->id }}">
+                                        <span>
+                                            (26)
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div> --}}
 
-                                            <span class="wpcf7-form-control-wrap news_details">
+                        <!-- Popular Posts -->
 
-                                                <textarea name="comment" cols="20" rows="5"
-                                                    class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false"
-                                                    placeholder="News Details...."></textarea>
+                        <div class="p-b-30">
+
+                            <div class="how2 how2-cl4 flex-s-c">
+
+                                <h3 class="f1-m-2 cl3 tab01-title">
+
+                                    Popular Post
+
+                                </h3>
+
+                            </div>
+
+                            <ul class="p-t-35">
+
+                                @foreach ($newspopular as $newspopularitem)
+
+                                    <li class="flex-wr-sb-s p-b-30">
+
+                                        <a href="#" class="size-w-10 wrap-pic-w hov1 trans-03">
+
+                                            <img src="{{ asset($newspopularitem->image) }}" alt="IMG">
+
+                                        </a>
+
+                                        <div class="size-w-11">
+
+                                            <h6 class="p-b-4">
+
+                                                <a href="blog-detail-02.html" class="f1-s-5 cl3 hov-cl10 trans-03">
+
+                                                    {{ $newspopularitem->news_title }}
+
+                                                </a>
+
+                                            </h6>
+
+                                            <span class="cl8 txt-center p-b-24">
+
+                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
+
+                                                    {{ $newspopularitem['categoryRelation']['category_name'] }}
+
+                                                </a>
+
+                                                <span class="f1-s-3 m-rl-3">
+
+                                                    -
+
+                                                </span>
+
+                                                <span class="f1-s-3">
+
+                                                    {{ $newspopularitem->created_at->format('M d Y') }}
+
+                                                </span>
+
                                             </span>
 
                                         </div>
 
-                                    </div>
+                                    </li>
 
-                                </div>
+                                @endforeach
 
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="contact-btn">
-                                        <input type="submit" value="Submit Comments"
-                                            class="wpcf7-form-control has-spinner wpcf7-submit"><span
-                                            class="wpcf7-spinner"></span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="wpcf7-response-output" aria-hidden="true"></div>
-
-                        </form>
-
-                    @endguest
-
-
-                    <div class="single_relatedCat">
-                        <a href=" ">Related News </a>
-                    </div>
-
-                    <div class="row">
-
-                        @foreach ($relatedNews as $item )
-
-                            <div class="themesBazar-3 themesBazar-m2">
-                                <div class="related-wrpp">
-                                    <div class="related-image">
-                                        <a href=" {{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}"><img class="lazyload" src="{{ asset($item->image) }}"></a>
-                                    </div>
-                                    <h4 class="related-title">
-                                        <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} ">{{ $item->news_title }} </a>
-                                    </h4>
-                                    <div class="related-meta">
-                                        <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} "><i class="la la-tags"> </i>
-                                            {{ $news->created_at->format('M d Y') }}
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        @endforeach
-
-
-
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="sitebar-fixd" style="position: sticky; top: 0;">
-                        <div class="siteber-add">
-                            <div class="themesBazar_widget">
-                                <div class="textwidget">
-                                    <p><img loading="lazy" class="aligncenter size-full wp-image-74"
-                                            src="assets/images/biggapon-1.gif" alt="" width="100%"
-                                            height="auto"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="singlePopular">
-                            <ul class="nav nav-pills" id="singlePopular-tab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <div class="nav-link active" data-bs-toggle="pill"
-                                        data-bs-target="#archiveTab_recent" role="tab" aria-controls="archiveRecent"
-                                        aria-selected="true"> LATEST </div>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <div class="nav-link" data-bs-toggle="pill" data-bs-target="#archiveTab_popular"
-                                        role="tab" aria-controls="archivePopulars" aria-selected="false"> POPULAR
-                                    </div>
-                                </li>
                             </ul>
+
                         </div>
-                        <div class="tab-content" id="pills-tabContentarchive">
 
-                            <div class="tab-pane fade active show" id="archiveTab_recent" role="tabpanel" aria-labelledby="archiveRecent">
+                        <!-- Tag -->
 
-                                <div class="archiveTab-sibearNews">
+                        <div>
 
-                                    @foreach ($newnewspost as $key => $newsitem)
+                            <div class="how2 how2-cl4 flex-s-c m-b-30">
 
-                                        <div class="archive-tabWrpp archiveTab-border">
+                                <h3 class="f1-m-2 cl3 tab01-title">
 
-                                            <div class="archiveTab-image ">
+                                    Tags
 
-                                                <a href=" {{ url('news/details/'.$newsitem->id.'/'.$newsitem->news_title_slug) }}"><img class="lazyload" src="{{ asset($newsitem->image) }}"></a>
-
-                                            </div>
-
-                                            <a href=" {{ url('news/details/'.$newsitem->id.'/'.$newsitem->news_title_slug) }}" class="archiveTab-icon2"><i class="la la-play"></i></a>
-
-                                            <h4 class="archiveTab_hadding">
-
-                                                <a href="{{ url('news/details/'.$newsitem->id.'/'.$newsitem->news_title_slug) }} ">{{ $newsitem->news_title }}</a>
-
-                                            </h4>
-
-                                            <div class="archive-conut">
-
-                                                {{ $key+1 }}
-
-                                            </div>
-
-                                        </div>
-
-                                    @endforeach
-
-                                </div>
+                                </h3>
 
                             </div>
 
-                            <div class="tab-pane fade" id="archiveTab_popular" role="tabpanel" aria-labelledby="archivePopulars">
+                            <div class="flex-wr-s-s m-rl--5">
 
-                                <div class="archiveTab-sibearNews">
+                                @foreach ($uniqueTags as $uniqueTag)
 
-                                    @foreach ($newspopular as $key => $newsitem)
+                                    <a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">
 
-                                        <div class="archive-tabWrpp archiveTab-border">
+                                        {{ $uniqueTag }}
 
-                                            <div class="archiveTab-image ">
+                                    </a>
 
-                                                <a href=" {{ url('news/details/'.$newsitem->id.'/'.$newsitem->news_title_slug) }}"><img class="lazyload" src="{{ asset($newsitem->image) }}"></a>
+                                @endforeach
 
-                                            </div>
-
-                                            <a href=" {{ url('news/details/'.$newsitem->id.'/'.$newsitem->news_title_slug) }}" class="archiveTab-icon2"><i class="la la-play"></i></a>
-
-                                            <h4 class="archiveTab_hadding">
-
-                                                <a href="{{ url('news/details/'.$newsitem->id.'/'.$newsitem->news_title_slug) }} ">{{ $newsitem->news_title }}</a>
-
-                                            </h4>
-
-                                            <div class="archive-conut">
-
-                                                {{ $key+1 }}
-
-                                            </div>
-
-                                        </div>
-
-                                    @endforeach
-
-                                </div>
 
                             </div>
 
                         </div>
-                        <div class="siteber-add2">
-                        </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
-        </div>
+
     </section>
-
-    <script>
-
-        // Button untuk tambah font size dan kurangin font size
-
-        var size = 16;
-
-        function setFontSize(s){
-
-            size = s;
-
-            $('news-font').css('font-size','' + size + 'px');
-        }
-
-        function increaseFontSize(){
-
-            setFontSize(size + 5);
-        }
-
-        function decreaseFontSize(){
-
-            if (size > 5) {
-
-                setFontSize(size - 5);
-
-            }
-
-        }
-
-        $('#inc').click(increaseFontSize);
-
-        $('#dec').click(decreaseFontSize);
-
-        setFontSize(size);
-
-    </script>
 
 @endsection

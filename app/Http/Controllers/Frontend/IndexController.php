@@ -73,6 +73,24 @@ class IndexController extends Controller{
 
         $newsKey = 'blog' . $news->id;
 
+        $allcategories = Category::all();
+
+        // distinct() berguna agar tidak ada value yang sama itu tampil
+
+        $tags = DB::table('news_posts')->select('tags')->limit(15)->distinct()->get();
+
+        $tagArray = [];
+
+        foreach ($tags as $tag) {
+
+            $tagArray = array_merge($tagArray, explode(',', $tag->tags));
+
+        }
+
+        $uniqueTags = array_unique($tagArray);
+
+        // Logika Untuk Menghitung View Count
+
         if (!Session::has($newsKey)) {
 
             $news->increment('view_count');
@@ -85,7 +103,7 @@ class IndexController extends Controller{
 
         $newspopular = NewsPost::orderBy('view_count','DESC')->limit(8)->get();
 
-        return view('frontend.news.news_details',compact('news','tags_all','relatedNews','newnewspost','newspopular'));
+        return view('frontend.news.news_details',compact('news','tags_all','relatedNews','newnewspost','newspopular','allcategories','uniqueTags'));
 
     }
 
