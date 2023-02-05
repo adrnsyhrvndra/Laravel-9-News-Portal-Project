@@ -1513,49 +1513,70 @@
 
 						<!-- Video -->
 						<div class="p-b-55">
+
 							<div class="how2 how2-cl4 flex-s-c m-b-35">
+
 								<h3 class="f1-m-2 cl3 tab01-title">
+
 									Featured Video
+
 								</h3>
+
 							</div>
 
 							<div>
-								<div class="wrap-pic-w pos-relative">
-									<img src="images/video-01.jpg" alt="IMG">
 
-									<button class="s-full ab-t-l flex-c-c fs-32 cl0 hov-cl10 trans-03" data-toggle="modal" data-target="#modal-video-01">
-										<span class="fab fa-youtube"></span>
-									</button>
-								</div>
+                                @foreach ($video as $video_data)
 
-								<div class="p-tb-16 p-rl-25 bg3">
-									<h5 class="p-b-5">
-										<a href="#" class="f1-m-3 cl0 hov-cl10 trans-03">
-											Judul Video
-										</a>
-									</h5>
+                                    <div class="wrap-pic-w pos-relative">
 
-									<span class="cl15">
-										<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-											by Mas Bewok
-										</a>
+                                        <img src="{{ asset($video_data->video_image) }}" alt="IMG">
 
-										<span class="f1-s-3 m-rl-3">
-											-
-										</span>
+                                        <button class="s-full ab-t-l flex-c-c fs-32 cl0 hov-cl10 trans-03" data-toggle="modal" data-target="#modal-video-01">
 
-										<span class="f1-s-3">
-											Feb 18
-										</span>
-									</span>
-								</div>
+                                            <span class="fab fa-youtube"></span>
+
+                                        </button>
+
+                                    </div>
+
+                                    <div class="p-tb-16 p-rl-25 bg3">
+
+                                        <h5 class="p-b-5">
+
+                                            <a href="#" class="f1-m-3 cl0 hov-cl10 trans-03">
+
+                                                {{ $video_data->video_title }}
+
+                                            </a>
+
+                                        </h5>
+
+                                        <span class="cl15">
+
+                                            <span class="f1-s-3">
+
+                                                {{ $video_data->created_at->format('M d Y') }}
+
+                                            </span>
+
+                                        </span>
+
+                                    </div>
+
+                                @endforeach
+
 							</div>
+
 						</div>
 
 						<!-- Subscribe -->
 						<div class="bg10 p-rl-35 p-t-28 p-b-35 m-b-55">
+
 							<h5 class="f1-m-5 cl0 p-b-10">
+
 								Langganan
+
 							</h5>
 
 							<p class="f1-s-1 cl0 p-b-25">
@@ -1565,12 +1586,18 @@
 							</p>
 
 							<form class="size-a-9 pos-relative">
+
 								<input class="s-full f1-m-6 cl6 plh9 p-l-20 p-r-55" type="text" name="email" placeholder="Email">
 
+
 								<button class="size-a-10 flex-c-c ab-t-r fs-16 cl9 hov-cl10 trans-03">
+
 									<i class="fa fa-arrow-right"></i>
+
 								</button>
+
 							</form>
+
 						</div>
 
 						<!-- Tag -->
