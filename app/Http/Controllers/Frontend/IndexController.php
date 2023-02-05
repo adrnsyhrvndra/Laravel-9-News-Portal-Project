@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\NewsPost;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
@@ -34,7 +35,21 @@ class IndexController extends Controller{
 
         $newspopular = NewsPost::orderBy('view_count','DESC')->limit(3)->get();
 
-        return view('frontend.index',compact('skip_cat_0','skip_news_0','skip_cat_2','skip_news_2','skip_cat_1','skip_news_1','newnewspost','newspopular'));
+        // distinct() berguna agar tidak ada value yang sama itu tampil
+
+        $tags = DB::table('news_posts')->select('tags')->limit(10)->distinct()->get();
+
+        $tagArray = [];
+
+        foreach ($tags as $tag) {
+
+            $tagArray = array_merge($tagArray, explode(',', $tag->tags));
+
+        }
+
+        $uniqueTags = array_unique($tagArray);
+
+        return view('frontend.index',compact('skip_cat_0','skip_news_0','skip_cat_2','skip_news_2','skip_cat_1','skip_news_1','newnewspost','newspopular','uniqueTags'));
 
     }
 
