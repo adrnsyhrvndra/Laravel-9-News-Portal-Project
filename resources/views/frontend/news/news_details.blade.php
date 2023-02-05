@@ -195,8 +195,6 @@
 
                         </div>
 
-
-
                         @php
 
                             $review = App\Models\Reviews::where('news_id',$news->id)->latest()->limit(5)->get();
@@ -288,6 +286,91 @@
 
                     </div>
 
+                    <div class="p-r-10 p-r-0-sr991 p-t-95">
+
+                        <!-- Related News -->
+
+                        <div class="m-t--40 p-b-40">
+
+							<!-- Item post -->
+
+                            <div class="how2 how2-cl4 flex-s-c">
+
+                                <h3 class="f1-m-2 cl3 tab01-title">
+
+                                    Related News
+
+                                </h3>
+
+                            </div>
+
+                            @foreach ($relatedNews as $related)
+
+                                <div class="flex-wr-sb-s p-t-40 p-b-15 how-bor2">
+
+                                    <a href="blog-detail-02.html" class="size-w-8 wrap-pic-w hov1 trans-03 w-full-sr575 m-b-25">
+
+                                        <img src="{{ asset($related->image) }}" alt="IMG">
+
+                                    </a>
+
+                                    <div class="size-w-9 w-full-sr575 m-b-25">
+
+                                        <h5 class="p-b-12">
+
+                                            <a href="blog-detail-02.html" class="f1-l-1 cl2 hov-cl10 trans-03 respon2">
+
+                                                {{ $related->news_title }}
+
+                                            </a>
+
+                                        </h5>
+
+                                        <div class="cl8 p-b-18">
+
+                                            <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
+
+                                                by {{ $related['userRelation']['name'] }}
+
+                                            </a>
+
+                                            <span class="f1-s-3 m-rl-3">
+
+                                                -
+
+                                            </span>
+
+                                            <span class="f1-s-3">
+
+                                                {{ $related->created_at->format('M d Y') }}
+
+                                            </span>
+
+                                        </div>
+
+                                        <a href="blog-detail-02.html" class="f1-s-1 cl9 hov-cl10 trans-03">
+
+                                            Read More
+
+                                            <i class="m-l-2 fa fa-long-arrow-alt-right"></i>
+
+                                        </a>
+
+                                    </div>
+
+                                </div>
+
+                            @endforeach
+
+						</div>
+
+						<a href="#" class="flex-c-c size-a-13 bo-all-1 bocl11 f1-m-6 cl6 hov-btn1 trans-03">
+
+							Load More
+
+						</a>
+
+                    </div>
 
                 </div>
 
@@ -330,114 +413,6 @@
                             </ul>
 
                         </div>
-
-                        <!-- Archive -->
-
-                        {{-- <div class="p-b-37">
-                            <div class="how2 how2-cl4 flex-s-c">
-                                <h3 class="f1-m-2 cl3 tab01-title">
-                                    Archive
-                                </h3>
-                            </div>
-
-                            <ul class="p-t-32">
-                                <li class="p-rl-4 p-b-19">
-                                    <a href="#" class="flex-wr-sb-c f1-s-10 text-uppercase cl2 hov-cl10 trans-03">
-                                        <span>
-                                            July 2018
-                                        </span>
-
-                                        <span>
-                                            (9)
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="p-rl-4 p-b-19">
-                                    <a href="#" class="flex-wr-sb-c f1-s-10 text-uppercase cl2 hov-cl10 trans-03">
-                                        <span>
-                                            June 2018
-                                        </span>
-
-                                        <span>
-                                            (39)
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="p-rl-4 p-b-19">
-                                    <a href="#" class="flex-wr-sb-c f1-s-10 text-uppercase cl2 hov-cl10 trans-03">
-                                        <span>
-                                            May 2018
-                                        </span>
-
-                                        <span>
-                                            (29)
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="p-rl-4 p-b-19">
-                                    <a href="#" class="flex-wr-sb-c f1-s-10 text-uppercase cl2 hov-cl10 trans-03">
-                                        <span>
-                                            April  2018
-                                        </span>
-
-                                        <span>
-                                            (35)
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="p-rl-4 p-b-19">
-                                    <a href="#" class="flex-wr-sb-c f1-s-10 text-uppercase cl2 hov-cl10 trans-03">
-                                        <span>
-                                            March 2018
-                                        </span>
-
-                                        <span>
-                                            (22)
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="p-rl-4 p-b-19">
-                                    <a href="#" class="flex-wr-sb-c f1-s-10 text-uppercase cl2 hov-cl10 trans-03">
-                                        <span>
-                                            February 2018
-                                        </span>
-
-                                        <span>
-                                            (32)
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="p-rl-4 p-b-19">
-                                    <a href="#" class="flex-wr-sb-c f1-s-10 text-uppercase cl2 hov-cl10 trans-03">
-                                        <span>
-                                            January 2018
-                                        </span>
-
-                                        <span>
-                                            (21)
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="p-rl-4 p-b-19">
-                                    <a href="#" class="flex-wr-sb-c f1-s-10 text-uppercase cl2 hov-cl10 trans-03">
-                                        <span>
-                                            December 2017
-                                        </span>
-
-                                        <span>
-                                            (26)
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div> --}}
 
                         <!-- Popular Posts -->
 
@@ -534,7 +509,6 @@
                                     </a>
 
                                 @endforeach
-
 
                             </div>
 
