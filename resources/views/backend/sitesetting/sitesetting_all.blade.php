@@ -59,9 +59,69 @@
 
                             <div class="mb-3 form-group">
 
-                                <img id="showImage" src="{{ asset($site->image) }}" class="img-fluid rounded" width="200" alt="profile-image">
+                                <img id="showImage" src="{{ asset($site->site_logo) }}" class="img-fluid rounded" width="200" alt="site_logo">
 
                             </div>
+
+                            <div class="mb-3 form-group">
+
+                                <label for="site_logo_footer" class="form-label">Site Logo Footer</label>
+
+                                <input type="file" id="site_logo_footer" name="site_logo_footer" class="form-control">
+
+                            </div>
+
+                            <div class="mb-3 form-group">
+
+                                <img id="showImage2" src="{{ asset($site->site_logo_footer) }}" class="img-fluid rounded" width="200" alt="site_logo_footer">
+
+                            </div>
+
+                            <div class="mb-3 form-group">
+
+                                <label for="site_logo_admin" class="form-label">Site Logo Admin</label>
+
+                                <input type="file" id="site_logo_admin" name="site_logo_admin" class="form-control">
+
+                            </div>
+
+                            <div class="mb-3 form-group">
+
+                                <img id="showImage3" src="{{ asset($site->site_logo_admin) }}" class="img-fluid rounded" width="200" alt="site_logo_admin">
+
+                            </div>
+
+                            <div class="mb-3 form-group">
+
+                                <label for="favicon" class="form-label">Favicon Website</label>
+
+                                <input type="file" id="favicon" name="favicon" class="form-control">
+
+                            </div>
+
+                            <div class="mb-3 form-group">
+
+                                <img id="showImage4" src="{{ asset($site->favicon) }}" class="img-fluid rounded" width="200" alt="favicon">
+
+                            </div>
+
+                            @if ($errors->any())
+
+                                <div class="alert alert-danger">
+
+                                    <ul>
+
+                                        @foreach ($errors->all() as $error)
+
+                                            <li>{{ $error }}</li>
+
+                                        @endforeach
+
+                                    </ul>
+
+                                </div>
+
+                            @endif
 
                             <div class="mb-3 form-group">
 
@@ -144,6 +204,8 @@
 
     // Code untuk mengganti foto sesuai dengan input type file dengan change event jquery.
 
+    // ================ Show Image Site Logo
+
     $(document).ready(function() {
 
         $('#site_logo').change(function(e) {
@@ -153,6 +215,66 @@
             reader.onload = function(e) {
 
                 $('#showImage').attr('src',e.target.result);
+
+            }
+
+            reader.readAsDataURL(e.target.files['0']);
+
+        });
+
+    });
+
+    // ================ Show Image Site Logo Footer
+
+    $(document).ready(function() {
+
+        $('#site_logo_footer').change(function(e) {
+
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+
+                $('#showImage2').attr('src',e.target.result);
+
+            }
+
+            reader.readAsDataURL(e.target.files['0']);
+
+        });
+
+    });
+
+    // ================ Show Image Site Logo Admin
+
+    $(document).ready(function() {
+
+        $('#site_logo_admin').change(function(e) {
+
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+
+                $('#showImage3').attr('src',e.target.result);
+
+            }
+
+            reader.readAsDataURL(e.target.files['0']);
+
+        });
+
+    });
+
+    // ================ Show Image Favicon Website
+
+    $(document).ready(function() {
+
+        $('#favicon').change(function(e) {
+
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+
+                $('#showImage4').attr('src',e.target.result);
 
             }
 

@@ -20,7 +20,7 @@
 
                         <a href="index.html">
 
-                            <img class="max-s-full" src="{{ asset($sitesetting->site_logo) }}" alt="LOGO">
+                            <img class="max-s-full" src="{{ asset($sitesetting->site_logo_footer) }}" alt="LOGO">
 
                         </a>
 

@@ -9,6 +9,12 @@ $adminData =  App\Models\User::find($id);
 
 @endphp
 
+@php
+
+    $sitesetting =  App\Models\Sitesetting::find(1);
+
+@endphp
+
 <div class="navbar-custom">
 
     <div class="container-fluid">
@@ -271,7 +277,7 @@ $adminData =  App\Models\User::find($id);
 
                 <span class="logo-sm">
 
-                    <img src="{{ asset('backend/assets/images/logo-sm.png') }}" alt="" height="22">
+                    <img src="{{ asset($sitesetting->site_logo_admin) }}" alt="" height="22">
 
                     <!-- <span class="logo-lg-text-light">UBold</span> -->
 
@@ -279,7 +285,7 @@ $adminData =  App\Models\User::find($id);
 
                 <span class="logo-lg">
 
-                    <img src="{{ asset('backend/assets/images/logo-dark.png') }}" alt="" height="20">
+                    <img src="{{ asset($sitesetting->site_logo_admin) }}" alt="" height="20">
 
                     <!-- <span class="logo-lg-text-light">U</span> -->
 
@@ -292,13 +298,13 @@ $adminData =  App\Models\User::find($id);
 
                 <span class="logo-sm">
 
-                    <img src="{{ asset('backend/assets/images/logo-sm.png') }}" alt="" height="22">
+                    <img src="{{ asset($sitesetting->site_logo_admin) }}" alt="" height="22">
 
                 </span>
 
                 <span class="logo-lg">
 
-                    <img src="{{ asset('backend/assets/images/logo-light.png') }}" alt="" height="20">
+                    <img src="{{ asset($sitesetting->site_logo_admin) }}" alt="" height="20">
 
                 </span>
 

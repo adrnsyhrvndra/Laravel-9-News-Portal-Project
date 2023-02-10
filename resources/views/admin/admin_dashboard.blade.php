@@ -17,7 +17,13 @@
 
         <!-- App favicon -->
 
-        <link rel="shortcut icon" href=" {{ asset('backend/') }} assets/images/favicon.ico">
+        @php
+
+            $sitesetting =  App\Models\Sitesetting::find(1);
+
+        @endphp
+
+        <link rel="shortcut icon" href="{{ $sitesetting->favicon }}">
 
         <!-- Plugins css -->
 
