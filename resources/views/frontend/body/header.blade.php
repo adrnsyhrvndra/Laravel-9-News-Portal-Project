@@ -218,7 +218,13 @@
 
             <div class="logo">
 
-                <a href="index.html"><img src="images/icons/logo-01.png" alt="LOGO"></a>
+                @php
+
+                    $logoapp =  App\Models\Sitesetting::find(1);
+
+                @endphp
+
+                <a href="index.html"><img src="{{ asset($logoapp->site_logo) }}" alt="LOGO" width="90"></a>
 
             </div>
 

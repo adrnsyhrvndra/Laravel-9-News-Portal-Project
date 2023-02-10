@@ -1,87 +1,229 @@
-<footer class="footer-area">
-    <div class="container">
-        <div class="footer-menu">
-            <div class="menu-footer-menu-container">
-                <ul id="menu-footer-menu" class="menu">
-                    <li id="menu-item-550"
-                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-550"><a
-                            href=" ">ABOUT ALL</a></li>
-                    <li id="menu-item-551"
-                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-551"><a
-                            href=" ">COMPANY</a></li>
-                    <li id="menu-item-552"
-                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-552"><a
-                            href=" ">ABOUT US</a></li>
-                    <li id="menu-item-553"
-                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-553"><a
-                            href=" ">PHOTO GALLERY</a></li>
-                    <li id="menu-item-554"
-                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-554"><a
-                            href=" ">VIDOE GALLERY</a></li>
-                    <li id="menu-item-555"
-                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-555"><a
-                            href=" ">SUPPORT</a></li>
-                    <li id="menu-item-556"
-                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-556"><a
-                            href=" ">CONTACT</a></li>
-                    <li id="menu-item-557"
-                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-557"><a
-                            href=" ">REGISTER</a></li>
-                    <li id="menu-item-558"
-                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-558"><a
-                            href=" ">SEND NEWS </a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footerColor">
+@php
+
+    $sitesetting =  App\Models\Sitesetting::find(1);
+
+@endphp
+
+<!-- Footer -->
+
+<footer>
+
+    <div class="bg2 p-t-40 p-b-25">
+
+        <div class="container">
+
             <div class="row">
-                <div class="col-lg-5 col-md-5">
-                    <h3 class="footer-title">
-                        OFFICE : </h3>
-                    <div class="footer-content">
-                        <p style="text-align: left;">Ga-130/A Pragati Sarani, Middle Badda </p>
-                        <p style="text-align: left;">EMAIL : support@easylearningbd.com</p>
-                        <p style="text-align: left;">MOBILE : 4334343434</p>
+
+                <div class="col-lg-4 p-b-20">
+
+                    <div class="size-h-3 flex-s-c">
+
+                        <a href="index.html">
+
+                            <img class="max-s-full" src="{{ asset($sitesetting->site_logo) }}" alt="LOGO">
+
+                        </a>
+
                     </div>
-                </div>
-                <div class="col-lg-7 col-md-7">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6">
-                            <h3 class="footer-title">
-                                DEMO TEXT </h3>
-                            <div class="footer-content">
-                                <p style="text-align: left;">DEMO TEXT : DEMO TEXT</p>
-                                <p style="text-align: left;">DEMO TEXT : DEMO TEXT</p>
-                                <p style="text-align: left;">DEMO TEXT : DEMO TEXT</p>
-                            </div>
+
+                    <div>
+
+                        <div class="f1-s-1 cl11 p-b-16">
+
+                            {!! $sitesetting->footer_description !!}
+
                         </div>
-                        <div class="col-lg-6 col-md-6">
-                            <h3 class="footer-title">
-                                DEMO TEXT </h3>
-                            <div class="footer-content">
-                                <p style="text-align: left;">DEMO TEXT : DEMO TEXT</p>
-                                <p style="text-align: left;">DEMO TEXT :DEMO TEXT</p>
-                                <p style="text-align: left;">DEMO TEXT : DEMO TEXT</p>
-                            </div>
+
+                        <div class="p-t-15">
+
+                            <a href="{{ $sitesetting->facebook_url }}" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
+
+                                <span class="fab fa-facebook-f"></span>
+
+                            </a>
+
+                            <a href="{{ $sitesetting->instagram_url }}" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
+
+                                <span class="fab fa-instagram"></span>
+
+                            </a>
+
+                            <a href="{{ $sitesetting->pinterest_url }}" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
+
+                                <span class="fab fa-pinterest-p"></span>
+
+                            </a>
+
+                            <a href="{{ $sitesetting->youtube_url }}" class="fs-18 cl11 hov-cl10 trans-03 m-r-8">
+
+                                <span class="fab fa-youtube"></span>
+
+                            </a>
+
                         </div>
+
                     </div>
+
                 </div>
+
+                <div class="col-sm-6 col-lg-4 p-b-20">
+
+                    <div class="size-h-3 flex-s-c">
+
+                        <h5 class="f1-m-7 cl0">
+
+                            Popular Posts
+
+                        </h5>
+
+                    </div>
+
+                    <ul>
+
+                        @php
+
+                            $popular_news = App\Models\NewsPost::orderBy('view_count','DESC')->limit(3)->get();
+
+                        @endphp
+
+                        @foreach ($popular_news as $news_popular)
+
+                            <li class="flex-wr-sb-s p-b-20">
+
+                                <a href="#" class="size-w-4 wrap-pic-w hov1 trans-03">
+
+                                    <img src="{{ $news_popular->image }}" alt="IMG">
+
+                                </a>
+
+                                <div class="size-w-5">
+
+                                    <h6 class="p-b-5">
+
+                                        <a href="#" class="f1-s-5 cl11 hov-cl10 trans-03">
+
+                                            {{ $news_popular->news_title }}
+
+                                        </a>
+                                    </h6>
+
+                                    <span class="f1-s-3 cl6">
+
+                                        {{ Carbon\Carbon::parse($news_popular->post_date)->diffForHumans() }}
+
+                                    </span>
+
+                                </div>
+
+                            </li>
+
+                        @endforeach
+
+                    </ul>
+
+                </div>
+
+                <div class="col-sm-6 col-lg-4 p-b-20">
+
+                    <div class="size-h-3 flex-s-c">
+
+                        <h5 class="f1-m-7 cl0">
+
+                            Category
+
+                        </h5>
+
+                    </div>
+
+                    <ul class="m-t--12">
+
+                        @php
+
+                            $category = App\Models\Category::orderBy('category_name','ASC')->limit(7)->get();
+
+                        @endphp
+
+                        @foreach ($category as $allcategory)
+
+                            <li class="how-bor1 p-rl-5 p-tb-10">
+
+                                <a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
+
+                                    {{ $allcategory->category_name }}
+
+                                </a>
+
+                            </li>
+
+                        @endforeach
+
+                    </ul>
+
+                </div>
+
             </div>
-            <div class="copy_right_section">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <div class="copy-right">
-                            © All rights reserved © EasyNews </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="design-developed">
-                            Theme Developed BY <a href=" " target="_blank">easylearningbd.Com</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
-        <a href=" " class="scrollToTop" style=""><i
-                class="las la-long-arrow-alt-up"></i></a>
+
     </div>
+
+    <div class="bg11">
+
+        <div class="container size-h-4 flex-c-c p-tb-15">
+
+            <span class="f1-s-1 cl0 txt-center">
+
+                {!! $sitesetting->footer_copyright !!}
+
+            </span>
+
+        </div>
+
+    </div>
+
 </footer>
+
+<!-- Back to top -->
+
+<div class="btn-back-to-top" id="myBtn">
+
+    <span class="symbol-btn-back-to-top">
+
+        <span class="fas fa-angle-up"></span>
+
+    </span>
+
+</div>
+
+<!-- Modal Video 01-->
+
+@php
+
+    $video = App\Models\VideoGalleries::orderBy('created_at','DESC')->take(3)->get();
+
+@endphp
+
+@foreach ($video as $video_data)
+
+    <div class="modal fade" id="modal-video-01" tabindex="-1" role="dialog" aria-hidden="true">
+
+        <div class="modal-dialog" role="document" data-dismiss="modal">
+
+            <div class="close-mo-video-01 trans-0-4" data-dismiss="modal" aria-label="Close">&times;</div>
+
+            <div class="wrap-video-mo-01">
+
+                <div class="video-mo-01">
+
+                    <iframe src="{{ $video_data->video_url }}" allowfullscreen></iframe>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+@endforeach
+

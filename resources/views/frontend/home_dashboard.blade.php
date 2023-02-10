@@ -68,7 +68,7 @@
 
         @yield('home')
 
-        {{-- @include('frontend.body.footer') --}}
+        @include('frontend.body.footer')
 
     </div>
 
