@@ -36,7 +36,7 @@ class SitesettingController extends Controller{
 
              // resize() dikarenakan sudah memakai package Image Intervention.
 
-            Image::make($site_logo)->resize(784,436)->save('upload/logo/'.$name_gen);
+            Image::make($site_logo)->resize(222,32)->save('upload/logo/'.$name_gen);
 
             $save_url = 'upload/logo/'.$name_gen;
 

@@ -224,7 +224,7 @@
 
                 @endphp
 
-                <a href="index.html"><img src="{{ asset($logoapp->site_logo) }}" alt="LOGO" width="90"></a>
+                <a href="index.html"><img src="{{ asset($logoapp->site_logo) }}" alt="LOGO"></a>
 
             </div>
 

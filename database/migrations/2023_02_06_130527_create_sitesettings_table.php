@@ -18,6 +18,9 @@ return new class extends Migration
             $table->text('footer_description')->nullable();
             $table->text('footer_copyright')->nullable();
             $table->string('site_logo')->nullable();
+            $table->string('site_logo_footer')->nullable();
+            $table->string('site_logo_admin')->nullable();
+            $table->string('favicon')->nullable();
             $table->string('instagram_url')->nullable();
             $table->string('facebook_url')->nullable();
             $table->string('pinterest_url')->nullable();
