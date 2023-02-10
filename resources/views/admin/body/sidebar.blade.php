@@ -19,7 +19,7 @@
 
             <ul id="side-menu">
 
-                <li class="menu-title">Navigation</li>
+                <li class="menu-title">Main Menu</li>
 
                 <li>
 
@@ -35,7 +35,7 @@
 
                 @if ($status == 'active')
 
-                    <li class="menu-title mt-2">Menu</li>
+                    <li class="menu-title mt-2">Category News</li>
 
                     {{-- can() adalah fungsi dari laravel spattie --}}
 
@@ -45,7 +45,7 @@
 
                             <a href="#sidebarEcommerce" data-bs-toggle="collapse">
 
-                                <i class="mdi mdi-cart-outline"></i>
+                                <i class="mdi mdi-format-list-checkbox"></i>
 
                                 <span> Category </span>
 
@@ -89,7 +89,7 @@
 
                         <a href="#subcategory" data-bs-toggle="collapse">
 
-                            <i class="mdi mdi-cart-outline"></i>
+                            <i class="mdi mdi-format-list-bulleted-square"></i>
 
                             <span> Sub Category </span>
 
@@ -119,11 +119,13 @@
 
                     </li>
 
+                    <li class="menu-title">News Page Setting</li>
+
                     <li>
 
                         <a href="#newspost" data-bs-toggle="collapse">
 
-                            <i class="mdi mdi-cart-outline"></i>
+                            <i class="mdi mdi-newspaper-variant-multiple-outline"></i>
 
                             <span> News Post Setting </span>
 
@@ -155,9 +157,93 @@
 
                     <li>
 
+                        <a href="#photoSetting" data-bs-toggle="collapse">
+
+                            <i class="mdi mdi-camera-wireless-outline"></i>
+
+                            <span> Photo Setting </span>
+
+                            <span class="menu-arrow"></span>
+
+                        </a>
+
+                        <div class="collapse" id="photoSetting">
+
+                            <ul class="nav-second-level">
+
+                                <li>
+
+                                    <a href="{{ route('all.photo.gallery') }}">Photo Gallery</a>
+
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </li>
+
+                    <li>
+
+                        <a href="#videoSetting" data-bs-toggle="collapse">
+
+                            <i class="mdi mdi-file-video-outline"></i>
+
+                            <span> Video Setting </span>
+
+                            <span class="menu-arrow"></span>
+
+                        </a>
+
+                        <div class="collapse" id="videoSetting">
+
+                            <ul class="nav-second-level">
+
+                                <li>
+
+                                    <a href="{{ route('all.video.gallery') }}">Video Gallery</a>
+
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </li>
+
+                    <li>
+
+                        <a href="#livetvsetting" data-bs-toggle="collapse">
+
+                            <i class="mdi mdi-youtube-tv"></i>
+
+                            <span> Live Tv Setting </span>
+
+                            <span class="menu-arrow"></span>
+
+                        </a>
+
+                        <div class="collapse" id="livetvsetting">
+
+                            <ul class="nav-second-level">
+
+                                <li>
+
+                                    <a href="{{ route('edit.live.tv') }}">Live TV</a>
+
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </li>
+
+                    <li>
+
                         <a href="#banner" data-bs-toggle="collapse">
 
-                            <i class="mdi mdi-cart-outline"></i>
+                            <i class="mdi mdi-image-area-close"></i>
 
                             <span> Banner Setting </span>
 
@@ -181,57 +267,18 @@
 
                     </li>
 
-                    <li>
-                        <a href="#photoSetting" data-bs-toggle="collapse">
-                            <i class="mdi mdi-email-multiple-outline"></i>
-                            <span> Photo Setting </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <div class="collapse" id="photoSetting">
-                            <ul class="nav-second-level">
-                                <li>
-                                    <a href="{{ route('all.photo.gallery') }}">Photo Gallery</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li>
-                        <a href="#videoSetting" data-bs-toggle="collapse">
-                            <i class="mdi mdi-email-multiple-outline"></i>
-                            <span> Video Setting </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <div class="collapse" id="videoSetting">
-                            <ul class="nav-second-level">
-                                <li>
-                                    <a href="{{ route('all.video.gallery') }}">Video Gallery</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li>
-                        <a href="#livetvsetting" data-bs-toggle="collapse">
-                            <i class="mdi mdi-email-multiple-outline"></i>
-                            <span> Live Tv Setting </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <div class="collapse" id="livetvsetting">
-                            <ul class="nav-second-level">
-                                <li>
-                                    <a href="{{ route('edit.live.tv') }}">Live TV</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+                    <li class="menu-title">Admin Authority Setting</li>
 
                     <li>
 
                         <a href="#reviewcomment" data-bs-toggle="collapse">
-                            <i class="mdi mdi-email-multiple-outline"></i>
+
+                            <i class="mdi mdi-comment-multiple-outline"></i>
+
                             <span> Review Setting </span>
+
                             <span class="menu-arrow"></span>
+
                         </a>
 
                         <div class="collapse" id="reviewcomment">
@@ -255,9 +302,13 @@
                     <li>
 
                         <a href="#seosetting" data-bs-toggle="collapse">
-                            <i class="mdi mdi-email-multiple-outline"></i>
+
+                            <i class="mdi mdi-code-tags-check"></i>
+
                             <span> SEO Setting </span>
+
                             <span class="menu-arrow"></span>
+
                         </a>
 
                         <div class="collapse" id="seosetting">
@@ -265,7 +316,9 @@
                             <ul class="nav-second-level">
 
                                 <li>
+
                                     <a href="{{ route('seo.setting') }}">Update SEO</a>
+
                                 </li>
 
                             </ul>
@@ -274,13 +327,11 @@
 
                     </li>
 
-                    <li class="menu-title mt-2">Setting</li>
-
                     <li>
 
                         <a href="#sidebarAuth" data-bs-toggle="collapse">
 
-                            <i class="mdi mdi-account-circle-outline"></i>
+                            <i class="mdi mdi-account-multiple-outline"></i>
 
                             <span> Setting Admin User </span>
 
@@ -314,7 +365,7 @@
 
                         <a href="#roles" data-bs-toggle="collapse">
 
-                            <i class="mdi mdi-text-box-multiple-outline"></i>
+                            <i class="mdi mdi-account-cog-outline"></i>
 
                             <span> Roles And Permission </span>
 
@@ -356,11 +407,13 @@
 
                     </li>
 
+                    <li class="menu-title mt-2">App Profile Setting</li>
+
                     <li>
 
                         <a href="#site" data-bs-toggle="collapse">
 
-                            <i class="mdi mdi-text-box-multiple-outline"></i>
+                            <i class="mdi mdi-web-box"></i>
 
                             <span> Site Setting </span>
 
