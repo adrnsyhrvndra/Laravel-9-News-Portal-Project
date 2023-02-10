@@ -274,28 +274,6 @@
 
                     </li>
 
-                    <li>
-
-                        <a href="#seosetting" data-bs-toggle="collapse">
-                            <i class="mdi mdi-email-multiple-outline"></i>
-                            <span> Site Setting </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-
-                        <div class="collapse" id="seosetting">
-
-                            <ul class="nav-second-level">
-
-                                <li>
-                                    <a href="{{ route('seo.setting') }}">Update SEO</a>
-                                </li>
-
-                            </ul>
-
-                        </div>
-
-                    </li>
-
                     <li class="menu-title mt-2">Setting</li>
 
                     <li>
@@ -333,117 +311,77 @@
                     </li>
 
                     <li>
+
                         <a href="#roles" data-bs-toggle="collapse">
+
                             <i class="mdi mdi-text-box-multiple-outline"></i>
+
                             <span> Roles And Permission </span>
+
                             <span class="menu-arrow"></span>
+
                         </a>
+
                         <div class="collapse" id="roles">
+
                             <ul class="nav-second-level">
+
                                 <li>
+
                                     <a href="{{ route('all.permission') }}">All Permission</a>
+
                                 </li>
+
                                 <li>
+
                                     <a href="{{ route('all.roles') }}">All Roles</a>
+
                                 </li>
+
                                 <li>
+
                                     <a href="{{ route('add.roles.permission') }}">Roles In Permission</a>
+
                                 </li>
+
                                 <li>
+
                                     <a href="{{ route('all.roles.permission') }}">All Roles In Permission</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
 
-                    <li class="menu-title mt-2">Components</li>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </li>
 
                     <li>
 
-                        <a href="#sidebarIcons" data-bs-toggle="collapse">
+                        <a href="#site" data-bs-toggle="collapse">
 
-                            <i class="mdi mdi-bullseye"></i>
+                            <i class="mdi mdi-text-box-multiple-outline"></i>
 
-                            <span> Icons </span>
+                            <span> Site Setting </span>
 
                             <span class="menu-arrow"></span>
 
                         </a>
 
-                        <div class="collapse" id="sidebarIcons">
+                        <div class="collapse" id="site">
 
                             <ul class="nav-second-level">
-                                <li>
-                                    <a href="icons-material-symbols.html">Material Symbols Icons</a>
-                                </li>
-                                <li>
-                                    <a href="icons-two-tone.html">Two Tone Icons</a>
-                                </li>
-                                <li>
-                                    <a href="icons-feather.html">Feather Icons</a>
-                                </li>
-                                <li>
-                                    <a href="icons-mdi.html">Material Design Icons</a>
-                                </li>
-                                <li>
-                                    <a href="icons-dripicons.html">Dripicons</a>
-                                </li>
-                                <li>
-                                    <a href="icons-font-awesome.html">Font Awesome 5</a>
-                                </li>
-                                <li>
-                                    <a href="icons-themify.html">Themify</a>
-                                </li>
-                                <li>
-                                    <a href="icons-simple-line.html">Simple Line</a>
-                                </li>
-                                <li>
-                                    <a href="icons-weather.html">Weather</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
 
-                    <li>
-                        <a href="#sidebarForms" data-bs-toggle="collapse">
-                            <i class="mdi mdi-bookmark-multiple-outline"></i>
-                            <span> Forms </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <div class="collapse" id="sidebarForms">
-                            <ul class="nav-second-level">
                                 <li>
-                                    <a href="forms-elements.html">General Elements</a>
+
+                                    <a href="{{ route('edit.sitesetting') }}">Site Setting</a>
+
                                 </li>
-                                <li>
-                                    <a href="forms-advanced.html">Advanced</a>
-                                </li>
-                                <li>
-                                    <a href="forms-validation.html">Validation</a>
-                                </li>
-                                <li>
-                                    <a href="forms-pickers.html">Pickers</a>
-                                </li>
-                                <li>
-                                    <a href="forms-wizard.html">Wizard</a>
-                                </li>
-                                <li>
-                                    <a href="forms-masks.html">Masks</a>
-                                </li>
-                                <li>
-                                    <a href="forms-quilljs.html">Quilljs Editor</a>
-                                </li>
-                                <li>
-                                    <a href="forms-file-uploads.html">File Uploads</a>
-                                </li>
-                                <li>
-                                    <a href="forms-x-editable.html">X Editable</a>
-                                </li>
-                                <li>
-                                    <a href="forms-image-crop.html">Image Crop</a>
-                                </li>
+
                             </ul>
+
                         </div>
+
                     </li>
 
                 @else

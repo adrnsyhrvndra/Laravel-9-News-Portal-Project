@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\NewsPostController;
 use App\Http\Controllers\Frontend\ReviewsController;
 use App\Http\Controllers\Backend\SeoSettingController;
+use App\Http\Controllers\Backend\SitesettingController;
 use App\Http\Controllers\Backend\SubcategoryController;
 use App\Http\Controllers\Backend\PhotoGalleryController;
 use App\Http\Controllers\Backend\VideoGalleriesController;
@@ -257,6 +258,14 @@ Route::middleware('auth','role:admin')->group(function () {
 
     });
 
+    // Site Setting Controller
+
+    Route::controller(SitesettingController::class)->group(function () {
+
+        Route::get('/edit/sitesetting/', 'EditSiteSetting')->name('edit.sitesetting');
+        Route::post('/update/sitesetting', 'UpdateSiteSetting')->name('update.sitesetting');
+
+    });
 
 });
 
