@@ -34,7 +34,7 @@
 
     @endphp
 
-	<link rel="icon" type="image/png" href="{{ $sitesetting->favicon }}"/>
+	<link rel="icon" type="image/png" href="{{ asset($sitesetting->favicon) }}"/>
 
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/vendor/bootstrap/css/bootstrap.min.css') }}">
 

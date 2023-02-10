@@ -277,7 +277,7 @@ $adminData =  App\Models\User::find($id);
 
                 <span class="logo-sm">
 
-                    <img src="{{ asset($sitesetting->site_logo_admin) }}" alt="" height="22">
+                    <img src="{{ asset($sitesetting->site_logo_admin) }}" alt="">
 
                     <!-- <span class="logo-lg-text-light">UBold</span> -->
 
@@ -285,7 +285,7 @@ $adminData =  App\Models\User::find($id);
 
                 <span class="logo-lg">
 
-                    <img src="{{ asset($sitesetting->site_logo_admin) }}" alt="" height="20">
+                    <img src="{{ asset($sitesetting->site_logo_admin) }}" alt="">
 
                     <!-- <span class="logo-lg-text-light">U</span> -->
 
@@ -298,13 +298,13 @@ $adminData =  App\Models\User::find($id);
 
                 <span class="logo-sm">
 
-                    <img src="{{ asset($sitesetting->site_logo_admin) }}" alt="" height="22">
+                    <img src="{{ asset($sitesetting->site_logo_admin) }}" alt="">
 
                 </span>
 
                 <span class="logo-lg">
 
-                    <img src="{{ asset($sitesetting->site_logo_admin) }}" alt="" height="20">
+                    <img src="{{ asset($sitesetting->site_logo_admin) }}" alt="">
 
                 </span>
 

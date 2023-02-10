@@ -28,7 +28,7 @@
 
                     <div>
 
-                        <div class="f1-s-1 cl11 p-b-16">
+                        <div class="f1-s-1 cl11 p-b-16 p-t-20">
 
                             {!! $sitesetting->footer_description !!}
 
@@ -92,7 +92,7 @@
 
                                 <a href="#" class="size-w-4 wrap-pic-w hov1 trans-03">
 
-                                    <img src="{{ $news_popular->image }}" alt="IMG">
+                                    <img src="{{ asset($news_popular->image) }}" alt="IMG">
 
                                 </a>
 

@@ -38,7 +38,11 @@ class SitesettingController extends Controller{
 
                 // resize() dikarenakan sudah memakai package Image Intervention.
 
-                Image::make($site_logo)->resize(222,32)->save('upload/logo/'.$name_gen);
+                Image::make($site_logo)->resize(222,null, function ($constraint) {
+
+                    $constraint->aspectRatio();
+
+                })->save('upload/logo/'.$name_gen);
 
                 $save_url = 'upload/logo/'.$name_gen;
 
@@ -63,7 +67,11 @@ class SitesettingController extends Controller{
 
                 // resize() dikarenakan sudah memakai package Image Intervention.
 
-                Image::make($site_logo_footer)->resize(222,32)->save('upload/logo/'.$name_gen);
+                Image::make($site_logo_footer)->resize(170,null, function ($constraint) {
+
+                    $constraint->aspectRatio();
+
+                })->save('upload/logo/'.$name_gen);
 
                 $save_url = 'upload/logo/'.$name_gen;
 
@@ -87,7 +95,11 @@ class SitesettingController extends Controller{
 
                 // resize() dikarenakan sudah memakai package Image Intervention.
 
-                Image::make($site_logo_admin)->resize(404,83)->save('upload/logo/'.$name_gen);
+                Image::make($site_logo_admin)->resize(100,null, function ($constraint) {
+
+                    $constraint->aspectRatio();
+
+                })->save('upload/logo/'.$name_gen);
 
                 $save_url = 'upload/logo/'.$name_gen;
 
@@ -122,7 +134,11 @@ class SitesettingController extends Controller{
 
                 // resize() dikarenakan sudah memakai package Image Intervention.
 
-                Image::make($favicon)->resize(64,64)->save('upload/logo/'.$name_gen);
+                Image::make($favicon)->resize(64,null, function ($constraint) {
+
+                    $constraint->aspectRatio();
+
+                })->save('upload/logo/'.$name_gen);
 
                 $save_url = 'upload/logo/'.$name_gen;
 
