@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('home_four')->nullable();
             $table->string('news_category_one')->nullable();
             $table->string('news_details_one')->nullable();
+            $table->string('vertical_banner')->nullable();
             $table->timestamps();
         });
     }

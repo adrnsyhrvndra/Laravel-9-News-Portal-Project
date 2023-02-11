@@ -164,7 +164,7 @@ class BannerController extends Controller{
 
             return redirect()->back()->with($notification);
 
-        } else{
+        } elseif($request->file('news_details_one')){
 
             $image6      = $request->file('news_details_one');
 
@@ -185,6 +185,38 @@ class BannerController extends Controller{
             $notification = array(
 
                 'message' => 'News Details One Added Successfuly',
+
+                'alert-type' => 'success'
+
+            );
+
+            return redirect()->back()->with($notification);
+
+        } else{
+
+            $image7      = $request->file('vertical_banner');
+
+            $name_gen7   = hexdec(uniqid()).'.'.$image7->getClientOriginalExtension();
+
+            // resize() dikarenakan sudah memakai package Image Intervention.
+
+            Image::make($image7)->resize(300,null, function ($constraint) {
+
+                $constraint->aspectRatio();
+
+            })->save('upload/banner/'.$name_gen7);
+
+            $save_url7 = 'upload/banner/'.$name_gen7;
+
+            Banners::findOrFail($banner_id)->update([
+
+                'vertical_banner' => $save_url7,
+
+            ]);
+
+            $notification = array(
+
+                'message' => 'Vertical Banner Added Successfuly',
 
                 'alert-type' => 'success'
 

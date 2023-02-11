@@ -1301,11 +1301,22 @@
 
 						</div>
 
-						<!--  -->
+						<!-- Banner Vertical -->
+
 						<div class="flex-c-s p-t-8">
+
 							<a href="#">
-								<img class="max-w-full" src="images/banner-02.jpg" alt="IMG">
+
+                                @php
+
+                                    $banners_vertical = App\Models\Banners::find(1);
+
+                                @endphp
+
+								<img class="max-w-full" src="{{ asset($banners_vertical->vertical_banner) }}" alt="IMG">
+
 							</a>
+
 						</div>
 
 						<!--  -->

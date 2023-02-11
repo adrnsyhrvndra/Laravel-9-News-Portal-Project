@@ -10,11 +10,6 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box">
-                    <div class="page-title-right">
-                        <a href="{{ route('add.category') }}" class="btn btn-success waves-effect waves-light">
-                            Add Category<span class="btn-label-right"><i class="mdi mdi-check-all"></i></span>
-                        </a>
-                    </div>
                     <h4 class="page-title">Datatables</h4>
                 </div>
             </div>
@@ -116,6 +111,20 @@
                             <div class="mb-3 form-group">
 
                                 <img id="showImage6" src="{{ (!empty($banner->news_details_one)) ?  url($banner->news_details_one) : url('upload/no_image.jpg') }}" class="img-fluid rounded" width="200" alt="profile-image">
+
+                            </div>
+
+                            <div class="mb-3 form-group">
+
+                                <label for="image" class="form-label">Vertical Banner</label>
+
+                                <input type="file" id="image7" name="vertical_banner" class="form-control">
+
+                            </div>
+
+                            <div class="mb-3 form-group">
+
+                                <img id="showImage7" src="{{ (!empty($banner->vertical_banner)) ?  url($banner->vertical_banner) : url('upload/no_image.jpg') }}" class="img-fluid rounded" width="200" alt="profile-image">
 
                             </div>
 
@@ -268,6 +277,31 @@
             reader.onload = function(e) {
 
                 $('#showImage6').attr('src',e.target.result);
+
+            }
+
+            reader.readAsDataURL(e.target.files['0']);
+
+        });
+
+    });
+
+
+</script>
+
+<script type="text/javascript">
+
+    // Code untuk mengganti foto sesuai dengan input type file dengan change event jquery.
+
+    $(document).ready(function() {
+
+        $('#image7').change(function(e) {
+
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+
+                $('#showImage7').attr('src',e.target.result);
 
             }
 
