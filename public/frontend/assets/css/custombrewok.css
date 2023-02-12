@@ -17,3 +17,49 @@
     text-transform: uppercase;
 
 }
+
+.warna-hitam-tulisan-brewok{
+
+    color:#333333;
+
+}
+
+/* ========= CUSTOM BREWOK PROFILE CIRCLE IMAGE ================= */
+
+.profile-header-container-brewok{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.profile-header-img {
+    padding: 24px;
+}
+
+.profile-header-img-brewok > img.img-circle-brewok {
+    width: 50%;
+    height: 50%;
+    border: 2px solid #51D2B7;
+    border-radius: 270px;
+}
+
+.profile-header-brewok {
+    margin-top: 43px;
+}
+
+/**
+ * Ranking component
+ */
+.rank-label-container-brewok {
+    margin-top: -19px;
+    /* z-index: 1000; */
+    text-align: center;
+}
+
+.label.label-default.rank-label {
+    background-color: #17B978;
+    padding: 5px 10px 5px 10px;
+    border-radius: 27px;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+}

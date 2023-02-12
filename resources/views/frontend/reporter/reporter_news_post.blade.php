@@ -2,144 +2,310 @@
 
 @section('home')
 
-<section class="author-page">
+@section('title')
+
+    Reporter Page | {{ $reporter->name }}
+
+@endsection
+
+
+<!-- Breadcrumb -->
+
+<div class="container">
+
+    <div class="bg0 flex-wr-sb-c p-rl-20 p-tb-8">
+
+        <div class="f2-s-1 p-r-30 m-tb-6 size-w-0 flex-wr-s-c">
+
+            <a href="{{ route('home.index') }}" class="breadcrumb-item f1-s-3 cl9">
+
+                Home
+
+            </a>
+
+            <a href="#" class="breadcrumb-item f1-s-3 cl9">
+
+                {{ $reporter->name }} All News Page
+
+            </a>
+
+        </div>
+
+        <div class="form-group mt-3 mr-2">
+
+            <select class="form-control changeLang bo-1-rad-18 of-hidden bocl11" id="exampleFormControlSelect1">
+
+                <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }} >English</option>
+
+                <option value="id" {{ session()->get('locale') == 'id' ? 'selected' : '' }} >Indonesia</option>
+
+                <option value="ar" {{ session()->get('locale') == 'ar' ? 'selected' : '' }} >Arab</option>
+
+                <option value="nl" {{ session()->get('locale') == 'nl' ? 'selected' : '' }} >Dutch</option>
+
+                <option value="ja" {{ session()->get('locale') == 'ja' ? 'selected' : '' }} >Jepang</option>
+
+            </select>
+
+        </div>
+
+        <div class="pos-relative size-a-2 bo-1-rad-22 of-hidden bocl11 m-tb-6">
+
+            <input class="f1-s-1 cl6 plh9 s-full p-l-25 p-r-45" type="text" name="search" placeholder="Search">
+
+            <button class="flex-c-c size-a-1 ab-t-r fs-20 cl2 hov-cl10 trans-03">
+
+                <i class="zmdi zmdi-search"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<!-- Page heading -->
+
+<div class="container p-t-4 p-b-40">
+
+    <h2 class="f1-l-1 cl2">
+
+        All News By {{ $reporter->name }}
+
+    </h2>
+
+</div>
+
+<!-- Post -->
+
+<section class="bg0 p-b-55">
 
     <div class="container">
 
-        <div class="row">
+        <div class="row justify-content-center">
 
-            <div class="col-lg-8 col-md-8">
+            <div class="col-md-10 col-lg-8 p-b-80">
 
                 <div class="row">
 
                     @foreach ($news as $item)
 
-                        <div class="custom-col-6">
+                        <div class="col-sm-6 p-r-25 p-r-15-sr991">
 
-                            <div class="author-wrpp">
+                            <div class="m-b-45">
 
-                            <div class="authorNews-image">
-                                <a href=" " ><img class="lazyload" src="{{ asset($item->image) }}"/></a>
-                            </div>
+                                <a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
 
-                            <div class="authorPage-content">
-                                <h2 class="authorPage-title">
-                                <a href=" ">{{ $item->news_title }}</a>
-                                </h2>
-                                <div class="author-date">
-                                <a href=" "> {{ $item->userRelation_name }} </a>
-                                <span>
-                                    <i class="las la-clock"></i>
-                                    {{ $item->created_at->format('l M d Y') }}
-                                </span>
+                                    <img src="{{ asset($item->image) }}" alt="IMG">
+
+                                </a>
+
+                                <div class="p-t-16">
+
+                                    <h5 class="p-b-5">
+
+                                        <a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
+
+                                            {{ $item->news_title }}
+
+                                        </a>
+
+                                    </h5>
+
+                                    <span class="cl8">
+
+                                        <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
+
+                                            by {{ $item['userRelation']['name'] }}
+
+                                        </a>
+
+                                        <span class="f1-s-3 m-rl-3">
+
+                                            -
+
+                                        </span>
+
+                                        <span class="f1-s-3">
+
+                                            {{ $item->created_at->format('l M d Y') }}
+
+                                        </span>
+
+                                    </span>
+
                                 </div>
+
                             </div>
-                            </div>
+
                         </div>
 
                     @endforeach
 
                 </div>
 
-                <div class="row">
+                <!-- Pagination -->
 
-                    <div class="col-lg-8 col-md-8">
-                        <div class="post-nav">
-                        <ul class="pager">
-                            <li class="previous">
-                            <a href=" "><i class="las la-step-backward"></i> </a>
-                            </li>
-                            <li>
-                            <a href=" " title="previous"
-                                ><i class="la la-backward" aria-hidden="true"></i>
-                            </a>
-                            </li>
-                            <li><a href=" ">01</a></li>
-                            <li class="active"><span class="active">02</span></li>
-                            <li><a href=" ">03</a></li>
-                            <li><a href=" ">04</a></li>
-                            <li>
-                            <a href=" " title="next"
-                                ><i class="la la-forward" aria-hidden="true"></i>
-                            </a>
-                            </li>
-                            <li class="next">
-                            <a href=" "><i class="las la-step-forward"></i> </a>
-                            </li>
-                        </ul>
-                        </div>
-                    </div>
+                <div class="flex-wr-s-c m-rl--7 p-t-15">
+
+                    <a href="#" class="flex-c-c pagi-item hov-btn1 trans-03 m-all-7 pagi-active">1</a>
+
+                    <a href="#" class="flex-c-c pagi-item hov-btn1 trans-03 m-all-7">2</a>
 
                 </div>
 
             </div>
 
-            <div class="col-lg-4 col-md-4">
-                <div class="fixd-sitebar" style="position: sticky; top: 0">
-                <div
-                    class="authorPage-content"
-                    style="
-                    background: #fbf7f7;
-                    border: 2px solid #e1dfdf;
-                    border-radius: 5px;
-                    "
-                >
-                    <figure class="authorPage-image">
-                    <img
-                        alt=""
-                        src="{{ (!empty($reporter->photo)) ? url('upload/admin_images/'.$reporter->photo) : url('upload/no_image.jpg') }}"
-                        class="avatar avatar-96 photo"
-                        height="96"
-                        width="96"
-                        loading="lazy"
-                    />
-                    </figure>
-                    <h1 class="authorPage-name">
-                    <a href=" "> {{ $reporter->name }} </a>
-                    </h1>
-                    <div class="author-social">
-                    <a
-                        href="https://www.facebook.com//"
-                        target="_black"
-                        title="Facebook"
-                        ><i class="lab la-facebook-f"></i
-                    ></a>
-                    <a
-                        href="https://www.twitter.com//"
-                        target="_black"
-                        title="Twitter"
-                        ><i class="lab la-twitter"></i
-                    ></a>
-                    <a
-                        href="https://www.youtube.com//"
-                        target="_black"
-                        title="Youtube"
-                        ><i class="lab la-youtube"></i
-                    ></a>
-                    <a
-                        href="https://www.linkedin.com//"
-                        target="_black"
-                        title="Linkedin"
-                        ><i class="lab la-linkedin-in"></i
-                    ></a>
-                    <a
-                        href="https://www.instagram.com//"
-                        target="_black"
-                        title="Instagram"
-                        ><i class="lab la-instagram"></i
-                    ></a>
+            <div class="col-md-10 col-lg-4 p-b-80">
+
+                <div class="p-l-10 p-rl-0-sr991">
+
+                    <div class="p-rl-35 p-t-28 p-b-15 m-b-20 txt-center clblack">
+
+                        <div class="profile-header-container-brewok">
+
+                            <div class="profile-header-img-brewok">
+
+                                <img class="img-circle-brewok" src="{{ (!empty($reporter->photo)) ? url('upload/admin_images/'.$reporter->photo) : url('upload/no_image.jpg') }}" />
+
+                                <!-- badge -->
+
+                                <div class="rank-label-container-brewok">
+
+                                    <span class="label label-default rank-label">{{ count($newsallbyreporter) }} News</span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <h5 class="f1-m-5 cl0 p-b-10 m-t-20 clblack warna-hitam-tulisan-brewok">
+
+                            {{ $reporter->name }}
+
+                        </h5>
+
+                        <p class="f1-s-1 cl0 p-b-25 clblack warna-hitam-tulisan-brewok">
+
+                            {{ $reporter->email }}
+
+                        </p>
+
                     </div>
-                    <div class="author-details" style="text-align: justify">
-                    Earlier, on Sunday morning, Prime Minister Sheikh Hasina
-                    along with her younger sister Sheikh Rehana went to the
-                    Palace of Westminster to pay their last respect to the late
-                    Queen where the body of Elizabeth II was kept in the
-                    Lying-in-State.
+
+                    <!-- Subscribe -->
+
+                    <div class="bg10 p-rl-35 p-t-28 p-b-35 m-b-50">
+                        <h5 class="f1-m-5 cl0 p-b-10">
+                            Subscribe
+                        </h5>
+
+                        <p class="f1-s-1 cl0 p-b-25">
+                            Get all latest content delivered to your email a few times a month.
+                        </p>
+
+                        <form class="size-a-9 pos-relative">
+                            <input class="s-full f1-m-6 cl6 plh9 p-l-20 p-r-55" type="text" name="email" placeholder="Email">
+
+                            <button class="size-a-10 flex-c-c ab-t-r fs-16 cl9 hov-cl10 trans-03">
+                                <i class="fa fa-arrow-right"></i>
+                            </button>
+                        </form>
                     </div>
+
+                    <!-- Most Popular -->
+
+                    <div class="p-b-23">
+
+                        <div class="how2 how2-cl4 flex-s-c">
+
+                            <h3 class="f1-m-2 cl3 tab01-title">
+
+                                Most Popular
+
+                            </h3>
+
+                        </div>
+
+                        <ul class="p-t-35">
+
+                            @foreach ($newspopular as $key => $newsitem)
+
+                                <li class="flex-wr-sb-s p-b-22">
+
+                                    <div class="size-a-8 flex-c-c borad-3 size-a-8 bg9 f1-m-4 cl0 m-b-6">
+
+                                        {{ $key+1 }}
+
+                                    </div>
+
+                                    <a href="{{ url('news/details/'.$newsitem->id.'/'.$newsitem->news_title_slug) }}" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
+
+                                        {{ $newsitem->news_title }}
+
+                                    </a>
+
+                                </li>
+
+                            @endforeach
+
+                        </ul>
+
+                    </div>
+
+                    <!-- Vertical Banner -->
+
+                    <div class="flex-c-s p-b-50">
+
+                        <a href="#">
+
+                            @php
+
+                                $banners_vertical = App\Models\Banners::find(1);
+
+                            @endphp
+
+                            <img class="max-w-full" src="{{ asset($banners_vertical->vertical_banner) }}" alt="IMG">
+
+                        </a>
+
+                    </div>
+
+                    <!-- Tag -->
+
+                    <div>
+
+                        <div class="how2 how2-cl4 flex-s-c m-b-30">
+
+                            <h3 class="f1-m-2 cl3 tab01-title">
+
+                                Tags
+
+                            </h3>
+
+                        </div>
+
+                        <div class="flex-wr-s-s m-rl--5">
+
+                            @foreach ($uniqueTags as $uniqueTag)
+
+                                <a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">
+
+                                    {{ $uniqueTag }}
+
+                                </a>
+
+                            @endforeach
+
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <div class="authorPopular_item"></div>
-                </div>
             </div>
 
         </div>

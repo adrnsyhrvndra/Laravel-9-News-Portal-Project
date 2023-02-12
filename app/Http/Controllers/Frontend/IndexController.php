@@ -177,9 +177,29 @@ class IndexController extends Controller{
 
         $reporter = User::findOrFail($id);
 
-        $news = NewsPost::where('user_id',$id)->get();
+        $news = NewsPost::where('user_id',$id)->limit(14)->get();
 
-        return view('frontend.reporter.reporter_news_post',compact('news','reporter'));
+        $newsallbyreporter = NewsPost::where('user_id',$id)->get();
+
+        $newnewspost = NewsPost::orderBy('id','DESC')->limit(3)->get();
+
+        $newspopular = NewsPost::orderBy('view_count','DESC')->limit(3)->get();
+
+        // distinct() berguna agar tidak ada value yang sama itu tampil
+
+        $tags = DB::table('news_posts')->select('tags')->limit(15)->distinct()->get();
+
+        $tagArray = [];
+
+        foreach ($tags as $tag) {
+
+            $tagArray = array_merge($tagArray, explode(',', $tag->tags));
+
+        }
+
+        $uniqueTags = array_unique($tagArray);
+
+        return view('frontend.reporter.reporter_news_post',compact('news','reporter','newspopular','uniqueTags','newsallbyreporter'));
 
     }
 

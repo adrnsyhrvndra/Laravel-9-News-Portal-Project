@@ -1525,7 +1525,7 @@
 
                                             <img class="img-rounded-small-post-custom-brewok" src="{{  url('upload/admin_images/'.$latestnews['userRelation']['photo']) }}" alt="">
 
-                                            <a href="#" class="padding-left-name-custom-brewok f1-s-4 cl8 hov-cl10 trans-03">
+                                            <a href="{{ route('reporter.all.news',$latestnews['userRelation']['id']) }}" class="padding-left-name-custom-brewok f1-s-4 cl8 hov-cl10 trans-03">
 
                                                 {{ $latestnews['userRelation']['name'] }}
 
