@@ -30,7 +30,11 @@ class BannerController extends Controller{
 
             // resize() dikarenakan sudah memakai package Image Intervention.
 
-            Image::make($image1)->resize(725,100)->save('upload/banner/'.$name_gen1);
+            Image::make($image1)->resize(null,90, function ($constraint) {
+
+                $constraint->aspectRatio();
+
+            })->save('upload/banner/'.$name_gen1);
 
             $save_url1 = 'upload/banner/'.$name_gen1;
 
@@ -51,7 +55,9 @@ class BannerController extends Controller{
             return redirect()->back()->with($notification);
 
 
-        } elseif($request->file('home_two')){
+        }
+
+        if($request->file('home_two')){
 
             $image2      = $request->file('home_two');
 
@@ -59,7 +65,11 @@ class BannerController extends Controller{
 
             // resize() dikarenakan sudah memakai package Image Intervention.
 
-            Image::make($image2)->resize(725,100)->save('upload/banner/'.$name_gen2);
+            Image::make($image2)->resize(null,90, function ($constraint) {
+
+                $constraint->aspectRatio();
+
+            })->save('upload/banner/'.$name_gen2);
 
             $save_url2 = 'upload/banner/'.$name_gen2;
 
@@ -80,7 +90,9 @@ class BannerController extends Controller{
             return redirect()->back()->with($notification);
 
 
-        } elseif($request->file('home_three')){
+        }
+
+        if($request->file('home_three')){
 
             $image3      = $request->file('home_three');
 
@@ -88,7 +100,11 @@ class BannerController extends Controller{
 
             // resize() dikarenakan sudah memakai package Image Intervention.
 
-            Image::make($image3)->resize(725,100)->save('upload/banner/'.$name_gen3);
+            Image::make($image3)->resize(null,90, function ($constraint) {
+
+                $constraint->aspectRatio();
+
+            })->save('upload/banner/'.$name_gen3);
 
             $save_url3 = 'upload/banner/'.$name_gen3;
 
@@ -108,7 +124,9 @@ class BannerController extends Controller{
 
             return redirect()->back()->with($notification);
 
-        } elseif($request->file('home_four')){
+        }
+
+        if($request->file('home_four')){
 
             $image4      = $request->file('home_four');
 
@@ -116,7 +134,11 @@ class BannerController extends Controller{
 
             // resize() dikarenakan sudah memakai package Image Intervention.
 
-            Image::make($image4)->resize(725,100)->save('upload/banner/'.$name_gen4);
+            Image::make($image4)->resize(null,90, function ($constraint) {
+
+                $constraint->aspectRatio();
+
+            })->save('upload/banner/'.$name_gen4);
 
             $save_url4 = 'upload/banner/'.$name_gen4;
 
@@ -136,7 +158,9 @@ class BannerController extends Controller{
 
             return redirect()->back()->with($notification);
 
-        } elseif($request->file('news_category_one')){
+        }
+
+        if($request->file('news_category_one')){
 
             $image5      = $request->file('news_category_one');
 
@@ -144,7 +168,11 @@ class BannerController extends Controller{
 
             // resize() dikarenakan sudah memakai package Image Intervention.
 
-            Image::make($image5)->resize(725,100)->save('upload/banner/'.$name_gen5);
+            Image::make($image5)->resize(null,90, function ($constraint) {
+
+                $constraint->aspectRatio();
+
+            })->save('upload/banner/'.$name_gen5);
 
             $save_url5 = 'upload/banner/'.$name_gen5;
 
@@ -164,7 +192,9 @@ class BannerController extends Controller{
 
             return redirect()->back()->with($notification);
 
-        } elseif($request->file('news_details_one')){
+        }
+
+        if($request->file('news_details_one')){
 
             $image6      = $request->file('news_details_one');
 
@@ -172,7 +202,11 @@ class BannerController extends Controller{
 
             // resize() dikarenakan sudah memakai package Image Intervention.
 
-            Image::make($image6)->resize(725,100)->save('upload/banner/'.$name_gen6);
+            Image::make($image6)->resize(null,90, function ($constraint) {
+
+                $constraint->aspectRatio();
+
+            })->save('upload/banner/'.$name_gen6);
 
             $save_url6 = 'upload/banner/'.$name_gen6;
 
@@ -192,7 +226,9 @@ class BannerController extends Controller{
 
             return redirect()->back()->with($notification);
 
-        } else{
+        }
+
+        if($request->file('vertical_banner')){
 
             $image7      = $request->file('vertical_banner');
 
@@ -200,7 +236,7 @@ class BannerController extends Controller{
 
             // resize() dikarenakan sudah memakai package Image Intervention.
 
-            Image::make($image7)->resize(300,null, function ($constraint) {
+            Image::make($image7)->resize(null,90, function ($constraint) {
 
                 $constraint->aspectRatio();
 
