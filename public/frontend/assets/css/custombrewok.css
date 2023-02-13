@@ -40,6 +40,7 @@
     height: 50%;
     border: 2px solid #51D2B7;
     border-radius: 270px;
+    z-index: 20;
 }
 
 .profile-header-brewok {
@@ -62,4 +63,17 @@
     color: white;
     font-size: 0.8rem;
     font-weight: bold;
+}
+
+.padding-custom-card-profile-account{
+
+    padding: 10%;
+
+}
+
+.padding-top-custom-brewok-profile-page{
+
+    padding-top: 3%;
+    padding-bottom: 6%;
+
 }
