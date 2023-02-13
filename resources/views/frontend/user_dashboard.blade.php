@@ -2,6 +2,12 @@
 
 @section('home')
 
+@section('title')
+
+    Account Information Page | {{ $userData->name }}
+
+@endsection
+
     <!-- Headline -->
 
 	<div class="container">

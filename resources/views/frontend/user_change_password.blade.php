@@ -2,228 +2,180 @@
 
 @section('home')
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="row">
-            <div class="col-lg-12 col-md-12">
-              <div class="contact-wrpp">
-                <figure class="authorPage-image">
-                  <img
-                    alt=""
-                    src="{{ (!empty($userData->photo)) ? url('upload/user_images/'.$userData->photo) : url('upload/no_image.jpg') }}"
-                    class="avatar avatar-96 photo"
-                    height="96"
-                    width="96"
-                    loading="lazy"
-                  />
-                </figure>
-                <h1 class="authorPage-name">
-                  <a href=" "> {{ $userData->name }} </a>
-                </h1>
-                <h6 class="authorPage-name">{{ $userData->email }}</h6>
+@section('title')
 
-                <ul>
-                  <li>
-                    <a href=""><b>🟢 Your Profile </b></a>
-                  </li>
-                  <li>
-                    <a href=""> <b>🟠 Read Later List </b> </a>
-                  </li>
-                  <li>
-                    <a href="{{ route('user.logout') }}"> <b>🟠 Logout </b> </a>
-                  </li>
-                </ul>
-              </div>
+    Change Password Page | {{ $userData->name }}
+
+@endsection
+
+    <!-- Headline -->
+
+	<div class="container">
+
+		<div class="bg0 flex-wr-sb-c p-rl-20 p-tb-8">
+
+			<div class="f2-s-1 p-r-30 size-w-0 m-tb-6 flex-wr-s-c">
+
+				<span class="text-uppercase cl2 p-r-8">
+
+					Breaking News:
+
+				</span>
+
+                @php
+
+                    $breaking_news = App\Models\NewsPost::where('status',1)->where('breaking_news',1)->orderBy('created_at','DESC')->limit(3)->get();
+
+                @endphp
+
+                <span class="dis-inline-block cl6 slide100-txt pos-relative size-w-0" data-in="fadeInDown" data-out="fadeOutDown">
+
+                    @foreach ($breaking_news as $beritabreaking)
+
+                        <span class="dis-inline-block slide100-txt-item animated visible-false">
+
+                            {{ Str::limit($beritabreaking->news_title,70) }}
+
+                        </span>
+
+                    @endforeach
+
+                </span>
+
+			</div>
+
+            <div class="form-group mt-3 mr-2">
+
+                <select class="form-control changeLang bo-1-rad-18 of-hidden bocl11 custom-select-lang-brewok" id="exampleFormControlSelect1">
+
+                    <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }} >English</option>
+
+                    <option value="id" {{ session()->get('locale') == 'id' ? 'selected' : '' }} >Indonesia</option>
+
+                    <option value="ar" {{ session()->get('locale') == 'ar' ? 'selected' : '' }} >Arab</option>
+
+                    <option value="nl" {{ session()->get('locale') == 'nl' ? 'selected' : '' }} >Dutch</option>
+
+                    <option value="ja" {{ session()->get('locale') == 'ja' ? 'selected' : '' }} >Jepang</option>
+
+                </select>
+
             </div>
-          </div>
-        </div>
 
-        <div class="col-md-8">
-          <div class="row">
-            <div class="col-lg-12 col-md-12">
-              <div class="contact-wrpp">
-                <h4 class="contactAddess-title text-center">
-                  Change Password
-                </h4>
-                <div
-                  role="form"
-                  class="wpcf7"
-                  id="wpcf7-f437-o1"
-                  lang="en-US"
-                  dir="ltr"
-                >
-                  <div class="screen-reader-response">
-                    <p
-                      role="status"
-                      aria-live="polite"
-                      aria-atomic="true"
-                    ></p>
-                    <ul></ul>
-                  </div>
+			<div class="pos-relative size-a-2 bo-1-rad-22 of-hidden bocl11 m-tb-6">
 
-                    <div style="display: none"></div>
+				<input class="f1-s-1 cl6 plh9 s-full p-l-25 p-r-45" type="text" name="search" placeholder="Search">
 
-                    <form action="{{ route('user.change.password.store') }}" method="post" enctype="multipart/form-data">
+				<button class="flex-c-c size-a-1 ab-t-r fs-20 cl2 hov-cl10 trans-03">
+
+					<i class="zmdi zmdi-search"></i>
+
+				</button>
+
+			</div>
+
+		</div>
+
+	</div>
+
+    <div class="container">
+
+        <div class="row padding-top-custom-brewok-profile-page">
+
+            <div class="col-md-6">
+
+                <div class="p-rl-35 p-t-28 p-b-15 m-b-20 txt-center clblack">
+
+                    <div class="profile-header-container-brewok">
+
+                        <div class="profile-header-img-brewok">
+
+                            <img class="img-circle-brewok" src="{{ (!empty($userData->photo)) ? url('upload/user_images/'.$userData->photo) : url('upload/no_image.jpg') }}" width="40">
+
+                            <!-- badge -->
+
+                            <div class="rank-label-container-brewok">
+
+                                <span class="label label-default rank-label"> {{ $userData->username }} </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <h5 class="f1-m-5 cl0 p-b-10 m-t-20 clblack warna-hitam-tulisan-brewok">
+
+                        {{ $userData->name }}
+
+                    </h5>
+
+                    <p class="f1-s-1 cl0 p-b-25 clblack warna-hitam-tulisan-brewok">
+
+                        {{ $userData->email }}
+
+                    </p>
+
+                    <ul class="list-group list-group-flush">
+
+                        <li class="list-group-item">
+
+                            <a href="{{ route('user.dashboard') }}">Back To Profile Account Information</a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6">
+
+                <div class="p-r-10 p-r-0-sr991">
+
+                    <form action="{{ route('user.change.password.store') }}" method="post">
 
                         @csrf
 
-                        <div class="main_section">
+                        @if (session('status'))
 
-                        <div class="row">
+                            <div class="alert alert-success" role="alert">
 
-                            @if (session('status'))
+                                {{ session('status') }}
 
-                                <div class="alert alert-success" role="alert">
-
-                                    {{ session('status') }}
-
-                                </div>
-
-                            @elseif(session('error'))
-
-                                <div class="alert alert-danger" role="alert">
-
-                                    {{ session('error') }}
-
-                                </div>
-
-                            @endif
-
-                            <div class="col-md-12 col-sm-12">
-                                <div class="contact-title">Old Password</div>
-                                <div class="contact-form">
-                                    <span class="wpcf7-form-control-wrap sub_title"
-                                    ><input
-                                        type="password"
-                                        name="old_password"
-                                        value=""
-                                        size="40"
-                                        class="wpcf7-form-control wpcf7-text @error('old_password') is-invalid @enderror"
-                                        aria-invalid="false"
-                                        placeholder="old_password"
-                                    /></span>
-
-                                    @error('old_password')
-
-                                            <span class="text-danger">
-
-                                                {{ $message }}
-
-                                            </span>
-
-                                        @enderror
-
-                                </div>
                             </div>
 
-                            <div class="col-md-12 col-sm-12">
-                                <div class="contact-title">New Password</div>
-                                <div class="contact-form">
-                                    <span class="wpcf7-form-control-wrap sub_title"><input
-                                        type="password"
-                                        name="new_password"
-                                        value=""
-                                        size="40"
-                                        class="wpcf7-form-control wpcf7-text @error('new_password') is-invalid @enderror"
-                                        aria-invalid="false"
-                                        placeholder="new_password"/>
-                                    </span>
+                        @elseif(session('error'))
 
-                                    @error('new_password')
+                            <div class="alert alert-danger" role="alert">
 
-                                        <span class="text-danger">
+                                {{ session('error') }}
 
-                                            {{ $message }}
-
-                                        </span>
-
-                                    @enderror
-
-                                </div>
                             </div>
 
-                            <div class="col-md-12 col-sm-12">
-                                <div class="contact-title">Password Confirmation</div>
-                                <div class="contact-form">
-                                    <span class="wpcf7-form-control-wrap sub_title"
-                                    ><input
-                                        type="password"
-                                        name="password_confirmation"
-                                        value=""
-                                        size="40"
-                                        class="wpcf7-form-control wpcf7-text @error('password_confirmation') is-invalid @enderror"
-                                        aria-invalid="false"
-                                        placeholder="password_confirmation"
-                                    /></span>
+                        @endif
 
-                                    @error('password_confirmation')
+                        <input class="bo-1-rad-3 bocl13 size-a-19 f1-s-13 cl5 plh6 p-rl-18 m-b-20" type="password" name="old_password" placeholder="Old Password*">
 
-                                            <span class="text-danger">
+                        <input class="bo-1-rad-3 bocl13 size-a-19 f1-s-13 cl5 plh6 p-rl-18 m-b-20" type="password" name="new_password" placeholder="New Password*">
 
-                                                {{ $message }}
+                        <input class="bo-1-rad-3 bocl13 size-a-19 f1-s-13 cl5 plh6 p-rl-18 m-b-20" type="password" name="password_confirmation" placeholder="Password Confirmation*">
 
-                                            </span>
+                        <button type="submit" class="size-a-20 bg2 borad-3 f1-s-12 cl0 hov-btn1 trans-03 p-rl-15 m-t-20">
 
-                                        @enderror
+                            Send
 
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                            <div class="contact-btn">
-                                <input
-                                type="submit"
-                                value="Save Changes"
-                                class="wpcf7-form-control has-spinner wpcf7-submit"
-                                /><span class="wpcf7-spinner"></span>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
+                        </button>
 
                     </form>
 
-                    <div
-                      class="wpcf7-response-output"
-                      aria-hidden="true"
-                    ></div>
-
                 </div>
-              </div>
+
             </div>
-          </div>
+
         </div>
-      </div>
-      <!--  // end row -->
+
     </div>
-
-    <script type="text/javascript">
-
-        // Code untuk mengganti foto sesuai dengan input type file dengan change event jquery.
-
-        $(document).ready(function() {
-
-            $('#image').change(function(e) {
-
-                var reader = new FileReader();
-
-                reader.onload = function(e) {
-
-                    $('#showImage').attr('src',e.target.result);
-
-                }
-
-                reader.readAsDataURL(e.target.files['0']);
-
-            });
-
-        });
-
-    </script>
-
 
 @endsection
