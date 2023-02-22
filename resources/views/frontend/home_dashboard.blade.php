@@ -52,7 +52,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/util.min.css') }}">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/main.min.css') }}">
 
     <!-- Jquery -->
 

@@ -71,13 +71,13 @@
 
                 <!-- Main Content -->
 
-                <div class="col-md-10 col-lg-8 p-b-30">
+                <div class="col-md-10 col-lg-8 p-b-20">
 
                     <div class="p-r-10 p-r-0-sr991">
 
                         <!-- Blog Detail -->
 
-                        <div class="p-b-70">
+                        <div class="p-b-45">
 
                             <a href="#" class="f1-s-10 cl2 hov-cl10 trans-03 text-uppercase">
 
@@ -131,11 +131,19 @@
 
                             </div>
 
-                            <p class="f1-s-11 cl6 p-b-25">
+                            <button id="inc" class="btn btn-dark">A+</button>
 
-                                {!! $news->news_details !!}
+                            <button id="dec" class="btn btn-dark">A-</button>
 
-                            </p>
+                            <news-font>
+
+                                <p class="f1-s-11 cl6 p-b-25">
+
+                                    {!! $news->news_details !!}
+
+                                </p>
+
+                            </news-font>
 
                             <!-- Tag -->
 
@@ -542,5 +550,41 @@
         </div>
 
     </section>
+
+    <script>
+
+        // Button untuk tambah font size dan kurangin font size
+
+        var size = 14;
+
+        function setFontSize(s){
+
+            size = s;
+
+            $('news-font').css('font-size','' + size + 'px');
+        }
+
+        function increaseFontSize(){
+
+            setFontSize(size + 3);
+        }
+
+        function decreaseFontSize(){
+
+            if (size > 5) {
+
+                setFontSize(size - 3);
+
+            }
+
+        }
+
+        $('#inc').click(increaseFontSize);
+
+        $('#dec').click(decreaseFontSize);
+
+        setFontSize(size);
+
+    </script>
 
 @endsection

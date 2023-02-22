@@ -38,7 +38,7 @@ class SitesettingController extends Controller{
 
                 // resize() dikarenakan sudah memakai package Image Intervention.
 
-                Image::make($site_logo)->resize(222,null, function ($constraint) {
+                Image::make($site_logo)->resize(215,null, function ($constraint) {
 
                     $constraint->aspectRatio();
 
