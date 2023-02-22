@@ -205,8 +205,35 @@
 
                             @if ($item->status == 0)
 
+
+
                             @else
 
+                                <div class='container p-b-50'>
+
+                                    <div class="media comment-box">
+
+                                        <div class="media-left">
+
+                                            <a href="#">
+
+                                                <img class="img-responsive user-photo" src="{{ (!empty($item->UserRelation->photo)) ? url('upload/user_images/'.$item->UserRelation->photo) : url('upload/no_image.jpg') }}">
+
+                                            </a>
+
+                                        </div>
+
+                                        <div class="media-body">
+
+                                            <h4 class="media-heading">{{ $item->UserRelation->name }} - {{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</h4>
+
+                                            <p>{{ $item->comment }}</p>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
 
                             @endif
 
@@ -218,7 +245,7 @@
 
                             <p>
 
-                                <b> For Add Product Review,You Need To Login First <a href="{{ route('login') }}"></a> </b>
+                                <b> To Post A Comment,You Need To Login First <a href="{{ route('login') }}"></a> </b>
 
                             </p>
 
@@ -260,23 +287,15 @@
 
                                     </p>
 
-                                    <form>
+                                    <input type="hidden" name="news_id" value="{{ $news->id }}">
 
-                                        <textarea class="bo-1-rad-3 bocl13 size-a-15 f1-s-13 cl5 plh6 p-rl-18 p-tb-14 m-b-20" name="msg" placeholder="Comment..."></textarea>
+                                    <textarea class="bo-1-rad-3 bocl13 size-a-15 f1-s-13 cl5 plh6 p-rl-18 p-tb-14 m-b-20" name="comment" placeholder="Comment..."></textarea>
 
-                                        <input class="bo-1-rad-3 bocl13 size-a-16 f1-s-13 cl5 plh6 p-rl-18 m-b-20" type="text" name="name" placeholder="Name*">
+                                    <button type="submit" class="size-a-17 bg2 borad-3 f1-s-12 cl0 hov-btn1 trans-03 p-rl-15 m-t-10">
 
-                                        <input class="bo-1-rad-3 bocl13 size-a-16 f1-s-13 cl5 plh6 p-rl-18 m-b-20" type="text" name="email" placeholder="Email*">
+                                        Post Comment
 
-                                        <input class="bo-1-rad-3 bocl13 size-a-16 f1-s-13 cl5 plh6 p-rl-18 m-b-20" type="text" name="website" placeholder="Website">
-
-                                        <button class="size-a-17 bg2 borad-3 f1-s-12 cl0 hov-btn1 trans-03 p-rl-15 m-t-10">
-
-                                            Post Comment
-
-                                        </button>
-
-                                    </form>
+                                    </button>
 
                                 </div>
 
