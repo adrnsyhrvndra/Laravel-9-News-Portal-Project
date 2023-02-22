@@ -30,7 +30,7 @@ class BannerController extends Controller{
 
             // resize() dikarenakan sudah memakai package Image Intervention.
 
-            Image::make($image1)->resize(null,90, function ($constraint) {
+            Image::make($image1)->resize(728,null, function ($constraint) {
 
                 $constraint->aspectRatio();
 

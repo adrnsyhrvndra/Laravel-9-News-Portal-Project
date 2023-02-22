@@ -46,7 +46,7 @@
 
                             <div class="mb-3 form-group">
                                 <label for="video_url" class="form-label">Video URL</label>
-                                <input type="text" class="form-control" name="video_url" id="video_url" placeholder="1234 Main St">
+                                <textarea class="form-control" name="video_url" id="video_url" rows="5">{{ $video->video_url }}</textarea>
                             </div>
 
                             <div class="mb-3 form-group">
