@@ -145,6 +145,8 @@
 
                                     <th>Category</th>
 
+                                    <th>Sub Category</th>
+
                                     <th>User</th>
 
                                     <th>Date</th>
@@ -175,6 +177,20 @@
                                     <td>{{ Str::limit($item->news_title,20)  }}</td>
 
                                     <td>{{ $item['categoryRelation']['category_name'] }}</td>
+
+                                    <td>
+
+                                        @if (empty($item['subcategoryRelation']))
+
+                                        <span class="badge bg-danger text-white">Tidak Ada Sub Kategori</span>
+
+                                        @else
+
+                                            {{ $item['subcategoryRelation']['subcategory_name'] }}
+
+                                        @endif
+
+                                    </td>
 
                                     <td>{{ $item['userRelation']['name'] }}</td>
 

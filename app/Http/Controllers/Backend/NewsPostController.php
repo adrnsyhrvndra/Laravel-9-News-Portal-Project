@@ -15,7 +15,7 @@ class NewsPostController extends Controller{
 
     public function AllNewsPost(){
 
-        $allnews = NewsPost::latest()->get();
+        $allnews = NewsPost::all();
 
         return view('backend.news.all_news_post',compact('allnews'));
 
