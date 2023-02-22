@@ -116,7 +116,7 @@ class SitesettingController extends Controller{
 
                 ]);
 
-            } else{
+            } elseif($request->file('favicon')){
 
                 $favicon  = $request->file('favicon');
 
@@ -155,37 +155,37 @@ class SitesettingController extends Controller{
 
                 ]);
 
+            } else{
+
+                // Without tanpa Logo
+
+                Sitesetting::findOrFail($site_id)->update([
+
+                    'footer_description'       => $request->footer_description,
+                    'footer_copyright'         => $request->footer_copyright,
+                    'instagram_url'            => $request->instagram_url,
+                    'facebook_url'             => $request->facebook_url,
+                    'pinterest_url'            => $request->pinterest_url,
+                    'youtube_url'              => $request->youtube_url,
+                    'updated_at'               => Carbon::now(),
+
+                ]);
+
+                $notification = array(
+
+                    'message' => 'Site Update Without Logo Successfuly',
+
+                    'alert-type' => 'success'
+
+                );
+
+                return redirect()->back()->with($notification);
+
             }
 
             $notification = array(
 
                 'message' => 'Site Update With Logo Successfuly',
-
-                'alert-type' => 'success'
-
-            );
-
-            return redirect()->back()->with($notification);
-
-        } else{
-
-            // Without tanpa Logo
-
-            Sitesetting::findOrFail($site_id)->update([
-
-                'footer_description'       => $request->footer_description,
-                'footer_copyright'         => $request->footer_copyright,
-                'instagram_url'            => $request->instagram_url,
-                'facebook_url'             => $request->facebook_url,
-                'pinterest_url'            => $request->pinterest_url,
-                'youtube_url'              => $request->youtube_url,
-                'updated_at'               => Carbon::now(),
-
-            ]);
-
-            $notification = array(
-
-                'message' => 'Site Update Without Logo Successfuly',
 
                 'alert-type' => 'success'
 
