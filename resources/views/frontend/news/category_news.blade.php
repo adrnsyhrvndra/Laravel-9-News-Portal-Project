@@ -363,15 +363,125 @@
 
             <div class="col-md-10 col-lg-4 p-b-80">
 
+                <!-- Category -->
+
+                <div class="p-b-60">
+
+                    <div class="how2 how2-cl4 flex-s-c">
+
+                        <h3 class="f1-m-2 cl3 tab01-title">
+
+                            Category
+
+                        </h3>
+
+                    </div>
+
+                    <ul class="p-t-35">
+
+                        @foreach ($allcategories as $categoryitem)
+
+                            <li class="how-bor3 p-rl-4">
+
+                                <a href="#" class="dis-block f1-s-10 text-uppercase cl2 hov-cl10 trans-03 p-tb-13">
+
+                                    {{ $categoryitem->category_name }}
+
+                                </a>
+
+                            </li>
+
+                        @endforeach
+
+                    </ul>
+
+                </div>
+
+                <!-- Popular Posts -->
+
+                <div class="p-b-30">
+
+                    <div class="how2 how2-cl4 flex-s-c">
+
+                        <h3 class="f1-m-2 cl3 tab01-title">
+
+                            Popular Post
+
+                        </h3>
+
+                    </div>
+
+                    <ul class="p-t-35">
+
+                        @foreach ($newspopular as $newspopularitem)
+
+                            <li class="flex-wr-sb-s p-b-30">
+
+                                <a href="#" class="size-w-10 wrap-pic-w hov1 trans-03">
+
+                                    <img src="{{ asset($newspopularitem->image) }}" alt="IMG">
+
+                                </a>
+
+                                <div class="size-w-11">
+
+                                    <h6 class="p-b-4">
+
+                                        <a href="blog-detail-02.html" class="f1-s-5 cl3 hov-cl10 trans-03">
+
+                                            {{ $newspopularitem->news_title }}
+
+                                        </a>
+
+                                    </h6>
+
+                                    <span class="cl8 txt-center p-b-24">
+
+                                        <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
+
+                                            {{ $newspopularitem['categoryRelation']['category_name'] }}
+
+                                        </a>
+
+                                        <span class="f1-s-3 m-rl-3">
+
+                                            -
+
+                                        </span>
+
+                                        <span class="f1-s-3">
+
+                                            {{ $newspopularitem->created_at->format('M d Y') }}
+
+                                        </span>
+
+                                    </span>
+
+                                </div>
+
+                            </li>
+
+                        @endforeach
+
+                    </ul>
+
+                </div>
+
                 <div class="p-l-10 p-rl-0-sr991">
 
                     <!-- Banner -->
 
-                    <div class="flex-c-s">
+                    <div class="flex-c-s p-t-8">
 
                         <a href="#">
 
-                            <img class="max-w-full" src="images/banner-02.jpg" alt="BANNER VERTICAL">
+                            @php
+
+                                $banners_vertical = App\Models\Banners::find(1);
+
+                            @endphp
+
+                            <img class="max-w-full" src="{{ asset($banners_vertical->vertical_banner) }}" alt="IMG">
 
                         </a>
 

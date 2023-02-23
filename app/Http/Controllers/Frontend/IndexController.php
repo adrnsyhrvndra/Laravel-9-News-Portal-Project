@@ -113,11 +113,15 @@ class IndexController extends Controller{
 
         $breadcat = Category::where('id',$id)->first();
 
+        $allcategories = Category::all();
+
+        $newspopular = NewsPost::orderBy('view_count','DESC')->limit(8)->get();
+
         $newsfour = NewsPost::where('status',1)->where('category_id',$id)->orderBy('id','DESC')->limit(5)->get();
 
         $newsallbycategory = NewsPost::where('status',1)->where('category_id',$id)->orderBy('id','DESC')->get();
 
-        return view('frontend.news.category_news',compact('news','breadcat','newsfour','newsallbycategory'));
+        return view('frontend.news.category_news',compact('news','breadcat','newsfour','newsallbycategory','allcategories','newspopular'));
 
     }
 
