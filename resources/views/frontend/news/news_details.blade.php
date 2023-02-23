@@ -335,7 +335,7 @@
 
                                 <div class="flex-wr-sb-s p-t-40 p-b-15 how-bor2">
 
-                                    <a href="blog-detail-02.html" class="size-w-8 wrap-pic-w hov1 trans-03 w-full-sr575 m-b-25">
+                                    <a href="{{ url('news/details/'.$related->id.'/'.$related->news_title_slug) }}" class="size-w-8 wrap-pic-w hov1 trans-03 w-full-sr575 m-b-25">
 
                                         <img src="{{ asset($related->image) }}" alt="IMG">
 
@@ -345,7 +345,7 @@
 
                                         <h5 class="p-b-12">
 
-                                            <a href="blog-detail-02.html" class="f1-l-1 cl2 hov-cl10 trans-03 respon2">
+                                            <a href="{{ url('news/details/'.$related->id.'/'.$related->news_title_slug) }}" class="f1-l-1 cl2 hov-cl10 trans-03 respon2">
 
                                                 {{ $related->news_title }}
 
@@ -355,7 +355,7 @@
 
                                         <div class="cl8 p-b-18">
 
-                                            <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                            <a href="{{ route('reporter.all.news',$related['userRelation']['id']) }}" class="f1-s-4 cl8 hov-cl10 trans-03">
 
                                                 by {{ $related['userRelation']['name'] }}
 
@@ -375,11 +375,11 @@
 
                                         </div>
 
-                                        <a href="blog-detail-02.html" class="f1-s-1 cl9 hov-cl10 trans-03">
+                                        <a href="{{ url('news/details/'.$related->id.'/'.$related->news_title_slug) }}" class="f1-s-1 cl9 hov-cl10 trans-03">
 
                                             Read More
 
-                                            <i class="m-l-2 fa fa-long-arrow-alt-right"></i>
+                                            <i class="m-l-2 fa fa-arrow-circle-right" aria-hidden="true"></i>
 
                                         </a>
 
@@ -427,7 +427,7 @@
 
                                     <li class="how-bor3 p-rl-4">
 
-                                        <a href="#" class="dis-block f1-s-10 text-uppercase cl2 hov-cl10 trans-03 p-tb-13">
+                                        <a href="{{ url('news/category/'.$categoryitem->id.'/'.$categoryitem->category_slug) }}" class="dis-block f1-s-10 text-uppercase cl2 hov-cl10 trans-03 p-tb-13">
 
                                             {{ $categoryitem->category_name }}
 
@@ -461,7 +461,7 @@
 
                                     <li class="flex-wr-sb-s p-b-30">
 
-                                        <a href="#" class="size-w-10 wrap-pic-w hov1 trans-03">
+                                        <a href="{{ url('news/details/'.$newspopularitem->id.'/'.$newspopularitem->news_title_slug) }}" class="size-w-10 wrap-pic-w hov1 trans-03">
 
                                             <img src="{{ asset($newspopularitem->image) }}" alt="IMG">
 
@@ -471,7 +471,7 @@
 
                                             <h6 class="p-b-4">
 
-                                                <a href="blog-detail-02.html" class="f1-s-5 cl3 hov-cl10 trans-03">
+                                                <a href="{{ url('news/details/'.$newspopularitem->id.'/'.$newspopularitem->news_title_slug) }}" class="f1-s-5 cl3 hov-cl10 trans-03">
 
                                                     {{ $newspopularitem->news_title }}
 
@@ -481,7 +481,7 @@
 
                                             <span class="cl8 txt-center p-b-24">
 
-                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
+                                                <a href="{{ url('news/details/'.$newspopularitem->category_id.'/'.$newspopularitem->news_title_slug) }}" class="f1-s-6 cl8 hov-cl10 trans-03">
 
                                                     {{ $newspopularitem['categoryRelation']['category_name'] }}
 

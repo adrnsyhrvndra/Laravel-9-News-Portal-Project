@@ -69,7 +69,7 @@ class IndexController extends Controller{
 
         $cat_id = $news->category_id;
 
-        $relatedNews = NewsPost::where('category_id',$cat_id)->where('id','!=',$id)->orderBy('id','ASC')->limit(2)->get();
+        $relatedNews = NewsPost::where('category_id',$cat_id)->where('id','!=',$id)->orderBy('id','ASC')->limit(3)->get();
 
         $newsKey = 'blog' . $news->id;
 
