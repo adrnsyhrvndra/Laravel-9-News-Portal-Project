@@ -100,7 +100,7 @@
 
                         <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
 
-                            <a href="{{ url('news/category/'.$section_one_a->id.'/'.$section_one_a->news_title_slug) }}" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
+                            <a href="{{ url('news/category/'.$section_one_a->category_id.'/'.$section_one_a->news_title_slug) }}" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
 
                                 {{ $section_one_a['categoryRelation']['category_name'] }}
 
@@ -158,10 +158,9 @@
 
 								<a href="{{ url('news/details/'.$section_one_b->id.'/'.$section_one_b->news_title_slug) }}" class="dis-block how1-child1 trans-03"></a>
 
-
 								<div class="flex-col-e-s s-full p-rl-25 p-tb-24">
 
-									<a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
+									<a href="{{ url('news/category/'.$section_one_b->category_id.'/'.$section_one_b->news_title_slug) }}" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
 
 										{{ $section_one_b['categoryRelation']['category_name'] }}
 
@@ -198,7 +197,7 @@
 
                                     <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
 
-                                        <a href="#" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
+                                        <a href="{{ url('news/category/'.$two->category_id.'/'.$two->news_title_slug) }}" class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
 
                                             {{ $two['categoryRelation']['category_name'] }}
 
@@ -342,7 +341,7 @@
 
                                                             <span class="cl8">
 
-                                                                <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                                                <a href="{{ url('news/category/'.$itemnews->category_id.'/'.$itemnews->news_title_slug) }}" class="f1-s-4 cl8 hov-cl10 trans-03">
 
                                                                     {{ $itemnews['categoryRelation']['category_name'] }}
 
@@ -400,7 +399,7 @@
 
                                                             <span class="cl8">
 
-                                                                <a href="{{ url('news/details/'.$itemnews->id.'/'.$itemnews->news_title_slug) }}" class="f1-s-6 cl8 hov-cl10 trans-03">
+                                                                <a href="{{ url('news/category/'.$itemnews->category_id.'/'.$itemnews->news_title_slug) }}" class="f1-s-6 cl8 hov-cl10 trans-03">
 
                                                                     {{ $itemnews['categoryRelation']['category_name'] }}
 
@@ -482,7 +481,7 @@
 
                                                                 <span class="cl8">
 
-                                                                    <a href="{{ url('news/details/'.$beritadenganSub->id.'/'.$beritadenganSub->news_title_slug) }}" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                                                    <a href="{{ url('news/details/'.$beritadenganSub->subcategory_id.'/'.$beritadenganSub->news_title_slug) }}" class="f1-s-4 cl8 hov-cl10 trans-03">
 
                                                                         {{ $beritadenganSub['subcategoryRelation']['subcategory_name'] }}
 
@@ -520,7 +519,7 @@
 
                                                         <div class="flex-wr-sb-s m-b-30">
 
-                                                            <a href="blog-detail-01.html" class="size-w-1 wrap-pic-w hov1 trans-03">
+                                                            <a href="{{ url('news/details/'.$beritadenganSub->id.'/'.$beritadenganSub->news_title_slug) }}" class="size-w-1 wrap-pic-w hov1 trans-03">
 
                                                                 <img src="{{ $beritadenganSub->image }}" alt="IMG">
 
@@ -530,7 +529,7 @@
 
                                                                 <h5 class="p-b-5">
 
-                                                                    <a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
+                                                                    <a href="{{ url('news/details/'.$beritadenganSub->id.'/'.$beritadenganSub->news_title_slug) }}" class="f1-s-5 cl3 hov-cl10 trans-03">
 
                                                                         {{ $beritadenganSub->news_title }}
 
@@ -540,7 +539,7 @@
 
                                                                 <span class="cl8">
 
-                                                                    <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
+                                                                    <a href="{{ url('news/details/'.$beritadenganSub->category_id.'/'.$beritadenganSub->news_title_slug) }}" class="f1-s-6 cl8 hov-cl10 trans-03">
 
                                                                         {{ $beritadenganSub['categoryRelation']['category_name'] }}
 
@@ -679,7 +678,7 @@
 
                                                             <span class="cl8">
 
-                                                                <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                                                <a href="{{ url('news/details/'.$itemnews->category_id.'/'.$itemnews->news_title_slug) }}" class="f1-s-4 cl8 hov-cl10 trans-03">
 
                                                                     {{ $itemnews['categoryRelation']['category_name'] }}
 
@@ -737,7 +736,7 @@
 
                                                             <span class="cl8">
 
-                                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
+                                                                <a href="{{ url('news/details/'.$itemnews->category_id.'/'.$itemnews->news_title_slug) }}" class="f1-s-6 cl8 hov-cl10 trans-03">
 
                                                                     {{ $itemnews['categoryRelation']['category_name'] }}
 
@@ -819,7 +818,7 @@
 
                                                                 <span class="cl8">
 
-                                                                    <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                                                    <a href="{{ url('news/details/'.$itemnews->subcategory_id.'/'.$itemnews->news_title_slug) }}" class="f1-s-4 cl8 hov-cl10 trans-03">
 
                                                                         {{ $beritadenganSub['subcategoryRelation']['subcategory_name'] }}
 
@@ -877,7 +876,7 @@
 
                                                                 <span class="cl8">
 
-                                                                    <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
+                                                                    <a href="{{ url('news/details/'.$beritadenganSub->category_id.'/'.$beritadenganSub->news_title_slug) }}" class="f1-s-6 cl8 hov-cl10 trans-03">
 
                                                                         {{ $beritadenganSub['categoryRelation']['category_name'] }}
 
@@ -902,7 +901,6 @@
                                                         </div>
 
                                                     @endif
-
 
                                                 @endforeach
 
@@ -1016,7 +1014,7 @@
 
                                                             <span class="cl8">
 
-                                                                <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                                                <a href="{{ url('news/details/'.$itemnews->category_id.'/'.$itemnews->news_title_slug) }}" class="f1-s-4 cl8 hov-cl10 trans-03">
 
                                                                     {{ $itemnews['categoryRelation']['category_name'] }}
 
@@ -1074,7 +1072,7 @@
 
                                                             <span class="cl8">
 
-                                                                <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
+                                                                <a href="{{ url('news/details/'.$itemnews->category_id.'/'.$itemnews->news_title_slug) }}" class="f1-s-6 cl8 hov-cl10 trans-03">
 
                                                                     {{ $itemnews['categoryRelation']['category_name'] }}
 
@@ -1156,7 +1154,7 @@
 
                                                                 <span class="cl8">
 
-                                                                    <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                                                    <a href="{{ url('news/details/'.$beritadenganSub->subcategory_id.'/'.$beritadenganSub->news_title_slug) }}" class="f1-s-4 cl8 hov-cl10 trans-03">
 
                                                                         {{ $beritadenganSub['subcategoryRelation']['subcategory_name'] }}
 
@@ -1214,7 +1212,7 @@
 
                                                                 <span class="cl8">
 
-                                                                    <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
+                                                                    <a href="{{ url('news/details/'.$beritadenganSub->category_id.'/'.$beritadenganSub->news_title_slug) }}" class="f1-s-6 cl8 hov-cl10 trans-03">
 
                                                                         {{ $beritadenganSub['categoryRelation']['category_name'] }}
 
