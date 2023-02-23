@@ -92,7 +92,7 @@
 
                         <div class="bg-img1 size-a-3 how1 pos-relative" style="background-image: url({{ asset($item->image) }});">
 
-                            <a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
+                            <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}" class="dis-block how1-child1 trans-03"></a>
 
                             <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
 
@@ -109,13 +109,14 @@
                                         {{ $item->news_title }}
 
                                     </a>
+
                                 </h3>
 
                                 <span class="how1-child2">
 
                                     <span class="f1-s-4 cl11">
 
-                                        {{ $item['userRelation']['name'] }}
+                                        <a class="cl11 hov-cl10 trans-03" href="{{ route('reporter.all.news',$item['userRelation']['id']) }}">{{ $item['userRelation']['name'] }}</a>
 
                                     </span>
 
@@ -151,7 +152,7 @@
 
                         <div class="bg-img1 size-a-14 how1 pos-relative" style="background-image: url({{ asset($item->image) }});">
 
-                            <a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
+                            <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}" class="dis-block how1-child1 trans-03"></a>
 
                             <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
 
@@ -209,7 +210,7 @@
 
                                 <div class="p-b-53">
 
-                                    <a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
+                                    <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}" class="wrap-pic-w hov1 trans-03">
 
                                         <img src="{{ asset($item->image) }}" alt="IMG">
 
@@ -219,7 +220,7 @@
 
                                         <h5 class="p-b-5 txt-center">
 
-                                            <a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
+                                            <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}" class="f1-m-3 cl2 hov-cl10 trans-03">
 
                                                 {{ $item->news_title }}
 
@@ -229,7 +230,7 @@
 
                                         <div class="cl8 txt-center p-b-17">
 
-                                            <a href="{{ url('news/category/'.$item->id.'/'.$item->category_slug) }}" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                            <a href="{{ url('news/category/'.$item->category_id.'/'.$item->category_slug) }}" class="f1-s-4 cl8 hov-cl10 trans-03">
 
                                                 {{ $item['categoryRelation']['category_name'] }}
 
@@ -259,7 +260,7 @@
 
                                             Read More
 
-                                            <i class="m-l-2 fa fa-long-arrow-alt-right"></i>
+                                            <i class="m-l-2 fa fa-arrow-circle-right" aria-hidden="true"></i>
 
                                         </a>
 
@@ -283,7 +284,7 @@
 
                                 <div class="p-b-53">
 
-                                    <a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
+                                    <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}" class="wrap-pic-w hov1 trans-03">
 
                                         <img src="{{ asset($item->image) }}" alt="IMG">
 
@@ -293,7 +294,7 @@
 
                                         <h5 class="p-b-5 txt-center">
 
-                                            <a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
+                                            <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}" class="f1-m-3 cl2 hov-cl10 trans-03">
 
                                                 {{ $item->news_title }}
 
@@ -303,7 +304,7 @@
 
                                         <div class="cl8 txt-center p-b-17">
 
-                                            <a href="{{ url('news/category/'.$item->id.'/'.$item->category_slug) }}" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                            <a href="{{ url('news/category/'.$item->category_id.'/'.$item->category_slug) }}" class="f1-s-4 cl8 hov-cl10 trans-03">
 
                                                 {{ $item['categoryRelation']['category_name'] }}
 
@@ -333,7 +334,7 @@
 
                                             Read More
 
-                                            <i class="m-l-2 fa fa-long-arrow-alt-right"></i>
+                                            <i class="m-l-2 fa fa-arrow-circle-right" aria-hidden="true"></i>
 
                                         </a>
 
@@ -383,7 +384,7 @@
 
                             <li class="how-bor3 p-rl-4">
 
-                                <a href="#" class="dis-block f1-s-10 text-uppercase cl2 hov-cl10 trans-03 p-tb-13">
+                                <a href="{{ url('news/category/'.$categoryitem->id.'/'.$categoryitem->category_slug) }}" class="dis-block f1-s-10 text-uppercase cl2 hov-cl10 trans-03 p-tb-13">
 
                                     {{ $categoryitem->category_name }}
 
@@ -417,7 +418,7 @@
 
                             <li class="flex-wr-sb-s p-b-30">
 
-                                <a href="#" class="size-w-10 wrap-pic-w hov1 trans-03">
+                                <a href="{{ url('news/details/'.$newspopularitem->id.'/'.$newspopularitem->news_title_slug) }}" class="size-w-10 wrap-pic-w hov1 trans-03">
 
                                     <img src="{{ asset($newspopularitem->image) }}" alt="IMG">
 
@@ -427,7 +428,7 @@
 
                                     <h6 class="p-b-4">
 
-                                        <a href="blog-detail-02.html" class="f1-s-5 cl3 hov-cl10 trans-03">
+                                        <a href="{{ url('news/details/'.$newspopularitem->id.'/'.$newspopularitem->news_title_slug) }}" class="f1-s-5 cl3 hov-cl10 trans-03">
 
                                             {{ $newspopularitem->news_title }}
 
@@ -437,7 +438,7 @@
 
                                     <span class="cl8 txt-center p-b-24">
 
-                                        <a href="#" class="f1-s-6 cl8 hov-cl10 trans-03">
+                                        <a href="{{ url('news/details/'.$newspopularitem->category_id.'/'.$newspopularitem->news_title_slug) }}" class="f1-s-6 cl8 hov-cl10 trans-03">
 
                                             {{ $newspopularitem['categoryRelation']['category_name'] }}
 
