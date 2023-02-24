@@ -62,17 +62,23 @@
 
             </div>
 
-			<div class="pos-relative size-a-2 bo-1-rad-22 of-hidden bocl11 m-tb-6">
+            <form action="{{ route('news.search') }}" method="post">
 
-				<input class="f1-s-1 cl6 plh9 s-full p-l-25 p-r-45" type="text" name="search" placeholder="Search">
+                @csrf
 
-				<button class="flex-c-c size-a-1 ab-t-r fs-20 cl2 hov-cl10 trans-03">
+                <div class="pos-relative size-a-2 bo-1-rad-22 of-hidden bocl11 m-tb-6">
 
-					<i class="zmdi zmdi-search"></i>
+                    <input class="f1-s-1 cl6 plh9 s-full p-l-25 p-r-45" type="text" name="search" placeholder="Search News">
 
-				</button>
+                    <button type="submit" class="flex-c-c size-a-1 ab-t-r fs-20 cl2 hov-cl10 trans-03">
 
-			</div>
+                        <i class="zmdi zmdi-search"></i>
+
+                    </button>
+
+                </div>
+
+            </form>
 
 		</div>
 
@@ -564,7 +570,6 @@
                                                         </div>
 
                                                     @endif
-
 
                                                 @endforeach
 
@@ -1267,6 +1272,38 @@
 
 								<h3 class="f1-m-2 cl3 tab01-title">
 
+									Search News By Date
+
+								</h3>
+
+							</div>
+
+                            <form action="{{ route('search-by-date') }}" method="post">
+
+                                @csrf
+
+                                <div class="pos-relative size-a-custom-brewok bo-1-rad-22 of-hidden bocl11 m-tb-32">
+
+                                    <input class="f1-s-1 cl6 plh9 s-full p-l-25 p-r-45 date-input" type="date" name="date" placeholder="Search">
+
+                                    <button type="submit" class="flex-c-c size-a-1 ab-t-r fs-20 cl2 hov-cl10 trans-03">
+
+                                        <i class="zmdi zmdi-calendar-alt"></i>
+
+                                    </button>
+
+                                </div>
+
+                            </form>
+
+						</div>
+
+                        <div>
+
+							<div class="how2 how2-cl4 flex-s-c">
+
+								<h3 class="f1-m-2 cl3 tab01-title">
+
 									Most Popular
 
 								</h3>
@@ -1688,6 +1725,7 @@
 						</div>
 
 						<!-- Subscribe -->
+
 						<div class="bg10 p-rl-35 p-t-28 p-b-35 m-b-55">
 
 							<h5 class="f1-m-5 cl0 p-b-10">

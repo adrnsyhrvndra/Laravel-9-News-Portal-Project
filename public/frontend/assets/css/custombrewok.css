@@ -121,3 +121,11 @@
     top: 10px;
     left: -6px;
 }
+
+/* Hide The Input Date Icons */
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}

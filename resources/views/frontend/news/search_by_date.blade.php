@@ -2,303 +2,313 @@
 
 @section('home')
 
-<div class="archive-page1">
+@section('title')
 
-    <div class="container">
+    Search News By Date | {{ $formatDate }}
 
-        <div class="row">
+@endsection
 
-            <div class="col-lg-12">
+<!-- Headline -->
 
-                <div class="archive-topAdd"></div>
+<div class="container">
 
-            </div>
+    <div class="bg0 flex-wr-sb-c p-rl-20 p-tb-8">
 
-        </div>
+        <div class="f2-s-1 p-r-30 size-w-0 m-tb-6 flex-wr-s-c">
 
-        <div class="row">
+            <span class="text-uppercase cl2 p-r-8">
 
-        <div class="col-lg-8 col-md-8">
+                Breaking News:
 
-            <div class="rachive-info-cats">
+            </span>
 
-                <a href=" "><i class="las la-home"></i> </a>
+            @php
 
-                <i class="las la-chevron-right"></i> Search By Date {{ $formatDate }}
+                $breaking_news = App\Models\NewsPost::where('status',1)->where('breaking_news',1)->orderBy('created_at','DESC')->limit(3)->get();
 
-            </div>
+            @endphp
 
-            <div class="row">
+            <span class="dis-inline-block cl6 slide100-txt pos-relative size-w-0" data-in="fadeInDown" data-out="fadeOutDown">
 
-                @foreach ($news as $item)
+                @foreach ($breaking_news as $beritabreaking)
 
-                    <div class="archive1-custom-col-3">
-                        <div class="archive-item-wrpp2">
-                        <div class="archive-shadow arch_margin">
-                            <div class="archive1_image2">
-                            <a href=" {{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} "
-                                ><img class="lazyload" src="{{ asset($item->image) }}"
-                            /></a>
-                            <div class="archive1-meta">
-                                <a href=" {{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} "
-                                ><i class="la la-tags"> </i>
-                                {{ $item->created_at->format('M d Y') }}
-                                </a>
-                            </div>
-                            </div>
+                    <span class="dis-inline-block slide100-txt-item animated visible-false">
 
-                            <div class="archive1-padding">
-                            <div class="archive1-title2">
-                                <a href=" {{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} ">{{ GoogleTranslate::trans($item->news_title, app()->getLocale()) }}</a>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
+                        {{ Str::limit($beritabreaking->news_title,70) }}
+
+                    </span>
 
                 @endforeach
 
-            </div>
-            <div class="archive1-margin">
-            <div class="archive-content">
-                <div class="row"></div>
-            </div>
-            </div>
+            </span>
 
-            <div class="row">
-            <div class="col-md-12">
-                <span aria-current="page" class="page-numbers current"
-                >1</span
-                >
-                <a class="page-numbers" href=" ">2</a>
-                <a class="next page-numbers" href=" ">Next »</a>
-            </div>
-            </div>
-
-            <br /><br />
-
-            <div class="row">
-            <div class="col-lg-12 col-md-12"></div>
-            </div>
         </div>
-        <div class="col-lg-4 col-md-4">
-            <div class="sitebar-fixd" style="position: sticky; top: 0">
-            <div class="archivePopular">
-                <ul
-                class="nav nav-pills"
-                id="archivePopular-tab"
-                role="tablist"
-                >
-                <li class="nav-item" role="presentation">
-                    <div
-                    class="nav-link active"
-                    data-bs-toggle="pill"
-                    data-bs-target="#archiveTab_recent"
-                    role="tab"
-                    aria-controls="archiveRecent"
-                    aria-selected="true"
-                    >
-                    LATEST
-                    </div>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <div
-                    class="nav-link"
-                    data-bs-toggle="pill"
-                    data-bs-target="#archiveTab_popular"
-                    role="tab"
-                    aria-controls="archivePopulars"
-                    aria-selected="false"
-                    >
-                    POPULAR
-                    </div>
-                </li>
-                </ul>
-            </div>
-            <div class="tab-content" id="pills-tabContentarchive">
-                <div
-                class="tab-pane fade active show"
-                id="archiveTab_recent"
-                role="tabpanel"
-                aria-labelledby="archiveRecent"
-                >
-                <div class="archiveTab-sibearNews">
-                    <div class="archive-tabWrpp archiveTab-border">
-                    <div class="archiveTab-image">
-                        <a href=" "
-                        ><img class="lazyload" src="assets/images/lazy.jpg"
-                        /></a>
-                    </div>
-                    <a href=" " class="archiveTab-icon2"
-                        ><i class="la la-play"></i
-                    ></a>
-                    <h4 class="archiveTab_hadding">
-                        <a href=" ">Why people are industry hopping </a>
-                    </h4>
-                    <div class="archive-conut">1</div>
-                    </div>
-                    <div class="archive-tabWrpp archiveTab-border">
-                    <div class="archiveTab-image">
-                        <a href=" "
-                        ><img class="lazyload" src="assets/images/lazy.jpg"
-                        /></a>
-                    </div>
-                    <h4 class="archiveTab_hadding">
-                        <a href=" ">Why people are industry hopping </a>
-                    </h4>
-                    <div class="archive-conut">2</div>
-                    </div>
-                    <div class="archive-tabWrpp archiveTab-border">
-                    <div class="archiveTab-image">
-                        <a href=" "
-                        ><img class="lazyload" src="assets/images/lazy.jpg"
-                        /></a>
-                    </div>
-                    <h4 class="archiveTab_hadding">
-                        <a href=" ">Why people are industry hopping</a>
-                    </h4>
-                    <div class="archive-conut">3</div>
-                    </div>
-                    <div class="archive-tabWrpp archiveTab-border">
-                    <div class="archiveTab-image">
-                        <a href=" "
-                        ><img class="lazyload" src="assets/images/lazy.jpg"
-                        /></a>
-                    </div>
-                    <h4 class="archiveTab_hadding">
-                        <a href=" ">Why people are industry hopping </a>
-                    </h4>
-                    <div class="archive-conut">4</div>
-                    </div>
-                    <div class="archive-tabWrpp archiveTab-border">
-                    <div class="archiveTab-image">
-                        <a href=" "
-                        ><img class="lazyload" src="assets/images/lazy.jpg"
-                        /></a>
-                    </div>
-                    <h4 class="archiveTab_hadding">
-                        <a href=" ">Why people are industry hopping </a>
-                    </h4>
-                    <div class="archive-conut">5</div>
-                    </div>
-                    <div class="archive-tabWrpp archiveTab-border">
-                    <div class="archiveTab-image">
-                        <a href=" "
-                        ><img class="lazyload" src="assets/images/lazy.jpg"
-                        /></a>
-                    </div>
-                    <h4 class="archiveTab_hadding">
-                        <a href=" ">Why people are industry hopping </a>
-                    </h4>
-                    <div class="archive-conut">6</div>
-                    </div>
-                    <div class="archive-tabWrpp archiveTab-border">
-                    <div class="archiveTab-image">
-                        <a href=" "
-                        ><img class="lazyload" src="assets/images/lazy.jpg"
-                        /></a>
-                    </div>
-                    <h4 class="archiveTab_hadding">
-                        <a href=" ">Why people are industry hopping</a>
-                    </h4>
-                    <div class="archive-conut">7</div>
-                    </div>
-                    <div class="archive-tabWrpp archiveTab-border">
-                    <div class="archiveTab-image">
-                        <a href=" "
-                        ><img class="lazyload" src="assets/images/lazy.jpg"
-                        /></a>
-                    </div>
-                    <h4 class="archiveTab_hadding">
-                        <a href=" ">Why people are industry hopping </a>
-                    </h4>
-                    <div class="archive-conut">8</div>
-                    </div>
-                    <div class="archive-tabWrpp archiveTab-border">
-                    <div class="archiveTab-image">
-                        <a href=" "
-                        ><img class="lazyload" src="assets/images/lazy.jpg"
-                        /></a>
-                    </div>
-                    <h4 class="archiveTab_hadding">
-                        <a href=" ">Why people are industry hopping </a>
-                    </h4>
-                    <div class="archive-conut">9</div>
-                    </div>
-                    <div class="archive-tabWrpp archiveTab-border">
-                    <div class="archiveTab-image">
-                        <a href=" "
-                        ><img class="lazyload" src="assets/images/lazy.jpg"
-                        /></a>
-                    </div>
-                    <h4 class="archiveTab_hadding">
-                        <a href=" ">Why people are industry hopping </a>
-                    </h4>
-                    <div class="archive-conut">10</div>
-                    </div>
-                </div>
-                </div>
-                <div
-                class="tab-pane fade"
-                id="archiveTab_popular"
-                role="tabpanel"
-                aria-labelledby="archivePopulars"
-                >
-                <div class="archiveTab-sibearNews">
-                    <div class="archive-tabWrpp archiveTab-border">
-                    <div class="archiveTab-image">
-                        <a href=" "
-                        ><img class="lazyload" src="assets/images/lazy.jpg"
-                        /></a>
-                    </div>
-                    <a href=" " class="archiveTab-icon2"
-                        ><i class="la la-play"></i
-                    ></a>
-                    <h4 class="archiveTab_hadding">
-                        <a href=" ">Why people are industry hopping </a>
-                    </h4>
-                    <div class="archive-conut">1</div>
-                    </div>
 
-                    <div class="archive-tabWrpp archiveTab-border">
-                    <div class="archiveTab-image">
-                        <a href=" "
-                        ><img class="lazyload" src="assets/images/lazy.jpg"
-                        /></a>
-                    </div>
-                    <a href=" " class="archiveTab-icon2"
-                        ><i class="la la-play"></i
-                    ></a>
-                    <h4 class="archiveTab_hadding">
-                        <a href=" ">Why people are industry hopping </a>
-                    </h4>
-                    <div class="archive-conut">1</div>
-                    </div>
+        <div class="form-group mt-3 mr-2">
 
-                    <div class="archive-tabWrpp archiveTab-border">
-                    <div class="archiveTab-image">
-                        <a href=" "
-                        ><img class="lazyload" src="assets/images/lazy.jpg"
-                        /></a>
-                    </div>
-                    <a href=" " class="archiveTab-icon2"
-                        ><i class="la la-play"></i
-                    ></a>
-                    <h4 class="archiveTab_hadding">
-                        <a href=" ">Why people are industry hopping </a>
-                    </h4>
-                    <div class="archive-conut">1</div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <div class="siteber-add2"></div>
-            </div>
+            <select class="form-control changeLang bo-1-rad-18 of-hidden bocl11 custom-select-lang-brewok" id="exampleFormControlSelect1">
+
+                <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }} >English</option>
+
+                <option value="id" {{ session()->get('locale') == 'id' ? 'selected' : '' }} >Indonesia</option>
+
+                <option value="ar" {{ session()->get('locale') == 'ar' ? 'selected' : '' }} >Arab</option>
+
+                <option value="nl" {{ session()->get('locale') == 'nl' ? 'selected' : '' }} >Dutch</option>
+
+                <option value="ja" {{ session()->get('locale') == 'ja' ? 'selected' : '' }} >Jepang</option>
+
+            </select>
+
         </div>
-        </div>
+
+        <form action="{{ route('news.search') }}" method="post">
+
+            @csrf
+
+            <div class="pos-relative size-a-2 bo-1-rad-22 of-hidden bocl11 m-tb-6">
+
+                <input class="f1-s-1 cl6 plh9 s-full p-l-25 p-r-45" type="text" name="search" placeholder="Search News">
+
+                <button type="submit" class="flex-c-c size-a-1 ab-t-r fs-20 cl2 hov-cl10 trans-03">
+
+                    <i class="zmdi zmdi-search"></i>
+
+                </button>
+
+            </div>
+
+        </form>
 
     </div>
 
 </div>
+
+<!-- Page heading -->
+
+<div class="container p-t-4 p-b-40">
+
+    <h2 class="f1-l-1 cl2">
+
+        Search Result By Date "{{ $formatDate }}"
+
+    </h2>
+
+</div>
+
+<!-- Post -->
+
+<section class="bg0 p-b-55">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-10 col-lg-8 p-b-80">
+
+                <div class="row">
+
+                    @foreach ($news as $item)
+
+                        <div class="col-sm-6 p-r-25 p-r-15-sr991">
+
+                            <!-- Item latest -->
+
+                            <div class="m-b-45">
+
+                                <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}" class="wrap-pic-w hov1 trans-03">
+
+                                    <img src="{{ asset($item->image) }}" alt="IMG">
+
+                                </a>
+
+                                <div class="p-t-16">
+
+                                    <h5 class="p-b-5">
+
+                                        <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}" class="f1-m-3 cl2 hov-cl10 trans-03">
+
+                                            {{ $item->news_title }}
+
+                                        </a>
+
+                                    </h5>
+
+                                    <span class="cl8">
+
+                                        <a href="{{ route('reporter.all.news',$item['userRelation']['id']) }}" class="f1-s-4 cl8 hov-cl10 trans-03">
+
+                                            by {{ $item['userRelation']['name'] }}
+
+                                        </a>
+
+                                        <span class="f1-s-3 m-rl-3">
+
+                                            -
+
+                                        </span>
+
+                                        <span class="f1-s-3">
+
+                                            {{ $item->created_at->format('M d Y') }}
+
+                                        </span>
+
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    @endforeach
+
+                </div>
+
+                <!-- Pagination -->
+
+                <div class="flex-wr-s-c m-rl--7 p-t-15">
+
+                    <a href="#" class="flex-c-c pagi-item hov-btn1 trans-03 m-all-7 pagi-active">1</a>
+
+                    <a href="#" class="flex-c-c pagi-item hov-btn1 trans-03 m-all-7">2</a>
+
+                </div>
+
+            </div>
+
+            <!-- Sidebar -->
+
+            <div class="col-md-10 col-lg-4 p-b-30">
+
+                <div class="p-l-10 p-rl-0-sr991">
+
+                    <!-- Subscribe -->
+
+                    <div class="bg10 p-rl-35 p-t-28 p-b-35 m-b-55">
+
+                        <h5 class="f1-m-5 cl0 p-b-10">
+
+                            Langganan
+
+                        </h5>
+
+                        <p class="f1-s-1 cl0 p-b-25">
+
+                            Dapatkan semua berita kami yang terupdate.
+
+                        </p>
+
+                        <form class="size-a-9 pos-relative">
+
+                            <input class="s-full f1-m-6 cl6 plh9 p-l-20 p-r-55" type="text" name="email" placeholder="Email">
+
+
+                            <button class="size-a-10 flex-c-c ab-t-r fs-16 cl9 hov-cl10 trans-03">
+
+                                <i class="fa fa-arrow-right"></i>
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                    <div>
+
+                        <div class="how2 how2-cl4 flex-s-c">
+
+                            <h3 class="f1-m-2 cl3 tab01-title">
+
+                                Most Popular
+
+                            </h3>
+
+                        </div>
+
+                        <ul class="p-t-35">
+
+                            @foreach ($newspopular as $key => $newsitem)
+
+                                <li class="flex-wr-sb-s p-b-22">
+
+                                    <div class="size-a-8 flex-c-c borad-3 size-a-8 bg9 f1-m-4 cl0 m-b-6">
+
+                                        {{ $key+1 }}
+
+                                    </div>
+
+                                    <a href="{{ url('news/details/'.$newsitem->id.'/'.$newsitem->news_title_slug) }}" class="size-w-3 f1-s-7 cl3 hov-cl10 trans-03">
+
+                                        {{ $newsitem->news_title }}
+
+                                    </a>
+
+                                </li>
+
+                            @endforeach
+
+                        </ul>
+
+                    </div>
+
+                    <!-- Banner Vertical -->
+
+                    <div class="flex-c-s p-t-8">
+
+                        <a href="#">
+
+                            @php
+
+                                $banners_vertical = App\Models\Banners::find(1);
+
+                            @endphp
+
+                            <img class="max-w-full" src="{{ asset($banners_vertical->vertical_banner) }}" alt="IMG">
+
+                        </a>
+
+                    </div>
+
+                    <!-- Tag -->
+
+                    <div>
+
+                        <div class="how2 how2-cl4 flex-s-c m-b-30">
+
+                            <h3 class="f1-m-2 cl3 tab01-title">
+
+                                Tags
+
+                            </h3>
+
+                        </div>
+
+                        <div class="flex-wr-s-s m-rl--5">
+
+                            @foreach ($uniqueTags as $uniqueTag)
+
+                                <a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">
+
+                                    {{ $uniqueTag }}
+
+                                </a>
+
+                            @endforeach
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 @endsection

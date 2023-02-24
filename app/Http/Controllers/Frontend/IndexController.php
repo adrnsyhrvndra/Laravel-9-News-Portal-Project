@@ -155,13 +155,29 @@ class IndexController extends Controller{
 
     public function SearchByDate(Request $request){
 
+        $newspopular = NewsPost::orderBy('view_count','DESC')->limit(3)->get();
+
+        // distinct() berguna agar tidak ada value yang sama itu tampil
+
+        $tags = DB::table('news_posts')->select('tags')->limit(15)->distinct()->get();
+
+        $tagArray = [];
+
+        foreach ($tags as $tag) {
+
+            $tagArray = array_merge($tagArray, explode(',', $tag->tags));
+
+        }
+
+        $uniqueTags = array_unique($tagArray);
+
         $date = new DateTime($request->date);
 
         $formatDate = $date->format('d-m-Y');
 
         $news = NewsPost::where('post_date',$formatDate)->latest()->get();
 
-        return view('frontend.news.search_by_date',compact('news','formatDate'));
+        return view('frontend.news.search_by_date',compact('news','formatDate','newspopular','uniqueTags'));
 
     }
 
@@ -175,9 +191,25 @@ class IndexController extends Controller{
 
         $item = $request->search;
 
+        $newspopular = NewsPost::orderBy('view_count','DESC')->limit(3)->get();
+
+        // distinct() berguna agar tidak ada value yang sama itu tampil
+
+        $tags = DB::table('news_posts')->select('tags')->limit(15)->distinct()->get();
+
+        $tagArray = [];
+
+        foreach ($tags as $tag) {
+
+            $tagArray = array_merge($tagArray, explode(',', $tag->tags));
+
+        }
+
+        $uniqueTags = array_unique($tagArray);
+
         $news = NewsPost::where('news_title','LIKE',"%$item%")->get();
 
-        return view('frontend.news.search',compact('news','item'));
+        return view('frontend.news.search',compact('news','item','newspopular','uniqueTags'));
 
     }
 

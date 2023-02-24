@@ -1381,6 +1381,11 @@ a.breadcrumb-item:hover {
   height: 100%;
 }
 
+.size-a-custom-brewok {
+    width: 100%;
+    height: 120px;
+}
+
 
 /*---------------------------------------------*/
 .size-a-11 {
