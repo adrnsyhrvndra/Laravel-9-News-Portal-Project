@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 
+// Rahasia Aplikasi Instagram : 679ff80994255ad537a33a7cdcf945b8
+// ID Aplikasi Instagram : 1569686626866284
+
 class IndexController extends Controller{
 
     public function Index(){

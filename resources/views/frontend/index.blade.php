@@ -1385,14 +1385,21 @@
 									</a>
 
 									<div class="size-w-3 flex-wr-sb-c">
+
 										<span class="f1-s-8 cl3 p-r-20">
+
 											6879 Fans
+
 										</span>
 
-										<a href="#" class="f1-s-9 text-uppercase cl3 hov-cl10 trans-03">
+										<a href="{{ $urlSettingSociale->facebook_url }}" class="f1-s-9 text-uppercase cl3 hov-cl10 trans-03">
+
 											Like
+
 										</a>
+
 									</div>
+
 								</li>
 
 								<li class="flex-wr-sb-c p-b-20">
@@ -1411,7 +1418,7 @@
 
 										</span>
 
-										<a href="#" class="f1-s-9 text-uppercase cl3 hov-cl10 trans-03">
+										<a href="{{ $urlSettingSociale->instagram_url }}" class="f1-s-9 text-uppercase cl3 hov-cl10 trans-03">
 
 											Follow
 
@@ -1437,7 +1444,7 @@
 
 										</span>
 
-										<a href="#" class="f1-s-9 text-uppercase cl3 hov-cl10 trans-03">
+										<a href="{{ $urlSettingSociale->youtube_url }}" class="f1-s-9 text-uppercase cl3 hov-cl10 trans-03">
 
 											Subscribe
 
@@ -1526,7 +1533,7 @@
 
                         @php
 
-                            $berita_latest = App\Models\NewsPost::where('status',1)->orderBy('created_at','DESC')->limit(6)->get();
+                            $berita_latest = App\Models\NewsPost::where('status',1)->orderBy('created_at','DESC')->limit(8)->get();
 
                         @endphp
 
