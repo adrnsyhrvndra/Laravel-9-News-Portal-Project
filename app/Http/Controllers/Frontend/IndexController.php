@@ -17,8 +17,15 @@ use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 
-// Rahasia Aplikasi Instagram : 679ff80994255ad537a33a7cdcf945b8
-// ID Aplikasi Instagram : 1569686626866284
+use Symfony\Component\DomCrawler\Crawler;
+use Symfony\Component\HttpClient\HttpClient;
+
+// App ID Instagram : 1633916863712355
+// Instagram APP Secret : 4c1fd56655ff5ab2b96c24b3fb08d2ed
+
+// Code : AQAB-j5QJFkyEWHlK6Lt9-zlZkPOBSUnMvUVaDhSMJc9hl5hFkxGpJn855Jxozq9k8eve8i_EogLq5WrLEPoGeDrw_FHE_mB9mV6_7MQu2cl_G0stWwejy96bKkiEVXkj4zgN3txqTB-i0TJaztFEM50hj0MJzDRUm9CJFv5TJyhEJsPxmPoTZH1bkMrmXGA9YxlW9pGvIie1OwzqptE10hGkPiMjkjRUrmeV73_CsNfNQ
+
+// Acces Token : IGQVJYMmdrQmRpYllRZAExrQkV0NWxqV3psWTRxclRkV3A3U2MxZA0hpS25JdWNwWXNXY2hZAUTNhUWdtS3pLeUlYaENYRlpoR2hhMmhnSy1IMEJZAdFJaUklPcGVXVnk3UjhoWUd4WWhpaXhGY3N3a29GdUdtSVE1amdfcG9V
 
 class IndexController extends Controller{
 
@@ -72,7 +79,11 @@ class IndexController extends Controller{
 
         $cat_id = $news->category_id;
 
-        $relatedNews = NewsPost::where('category_id',$cat_id)->where('id','!=',$id)->orderBy('id','ASC')->limit(3)->get();
+        $relatedNews = NewsPost::where('status', 1)
+                            ->where('category_id', $cat_id)
+                            ->where('id','!=',$id)
+                            ->orderBy('id', 'ASC')
+                            ->paginate(3);
 
         $newsKey = 'blog' . $news->id;
 
@@ -122,7 +133,10 @@ class IndexController extends Controller{
 
         $newsfour = NewsPost::where('status',1)->where('category_id',$id)->orderBy('id','DESC')->limit(5)->get();
 
-        $newsallbycategory = NewsPost::where('status',1)->where('category_id',$id)->orderBy('id','DESC')->get();
+        $newsallbycategory = NewsPost::where('status', 1)
+                            ->where('category_id', $id)
+                            ->orderBy('id', 'DESC')
+                            ->paginate(11);
 
         return view('frontend.news.category_news',compact('news','breadcat','newsfour','newsallbycategory','allcategories','newspopular'));
 
@@ -140,7 +154,10 @@ class IndexController extends Controller{
 
         $newsfour = NewsPost::where('status',1)->where('subcategory_id',$id)->orderBy('id','DESC')->limit(10)->get();
 
-        $newsallbysubcategory = NewsPost::where('status',1)->where('subcategory_id',$id)->orderBy('id','DESC')->get();
+        $newsallbysubcategory = NewsPost::where('status', 1)
+                            ->where('subcategory_id', $id)
+                            ->orderBy('id', 'DESC')
+                            ->paginate(11);
 
         return view('frontend.news.subcategory_news',compact('news','breadsubcat','newsfour','newsallbysubcategory','allcategories','newspopular'));
 
@@ -178,7 +195,9 @@ class IndexController extends Controller{
 
         $formatDate = $date->format('d-m-Y');
 
-        $news = NewsPost::where('post_date',$formatDate)->latest()->get();
+        $news = NewsPost::where('status', 1)
+                        ->where('post_date', $formatDate)
+                        ->paginate(9);
 
         return view('frontend.news.search_by_date',compact('news','formatDate','newspopular','uniqueTags'));
 
@@ -210,7 +229,9 @@ class IndexController extends Controller{
 
         $uniqueTags = array_unique($tagArray);
 
-        $news = NewsPost::where('news_title','LIKE',"%$item%")->get();
+        $news = NewsPost::where('status', 1)
+                        ->where('news_title','LIKE',"%$item%")
+                        ->paginate(9);
 
         return view('frontend.news.search',compact('news','item','newspopular','uniqueTags'));
 
@@ -220,9 +241,13 @@ class IndexController extends Controller{
 
         $reporter = User::findOrFail($id);
 
-        $news = NewsPost::where('user_id',$id)->limit(14)->get();
+        $newsallbyreporter = NewsPost::where('status', 1)
+                            ->where('user_id',$id)
+                            ->paginate(12);
 
-        $newsallbyreporter = NewsPost::where('user_id',$id)->get();
+        $newsallbyreportercount = NewsPost::where('status', 1)
+                            ->where('user_id',$id)
+                            ->get();
 
         $newnewspost = NewsPost::orderBy('id','DESC')->limit(3)->get();
 
@@ -242,7 +267,7 @@ class IndexController extends Controller{
 
         $uniqueTags = array_unique($tagArray);
 
-        return view('frontend.reporter.reporter_news_post',compact('news','reporter','newspopular','uniqueTags','newsallbyreporter'));
+        return view('frontend.reporter.reporter_news_post',compact('reporter','newspopular','uniqueTags','newsallbyreporter','newsallbyreportercount'));
 
     }
 

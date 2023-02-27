@@ -92,7 +92,7 @@
 
                         <div class="bg-img1 size-a-3 how1 pos-relative" style="background-image: url({{ asset($item->image) }});">
 
-                            <a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
+                            <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}" class="dis-block how1-child1 trans-03"></a>
 
                             <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
 
@@ -151,7 +151,7 @@
 
                         <div class="bg-img1 size-a-14 how1 pos-relative" style="background-image: url({{ asset($item->image) }});">
 
-                            <a href="blog-detail-01.html" class="dis-block how1-child1 trans-03"></a>
+                            <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}" class="dis-block how1-child1 trans-03"></a>
 
                             <div class="flex-col-e-s s-full p-rl-25 p-tb-20">
 
@@ -209,7 +209,7 @@
 
                                 <div class="p-b-53">
 
-                                    <a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
+                                    <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}" class="wrap-pic-w hov1 trans-03">
 
                                         <img src="{{ asset($item->image) }}" alt="IMG">
 
@@ -219,7 +219,7 @@
 
                                         <h5 class="p-b-5 txt-center">
 
-                                            <a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
+                                            <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}" class="f1-m-3 cl2 hov-cl10 trans-03">
 
                                                 {{ $item->news_title }}
 
@@ -283,7 +283,7 @@
 
                                 <div class="p-b-53">
 
-                                    <a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
+                                    <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}" class="wrap-pic-w hov1 trans-03">
 
                                         <img src="{{ asset($item->image) }}" alt="IMG">
 
@@ -293,7 +293,7 @@
 
                                         <h5 class="p-b-5 txt-center">
 
-                                            <a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
+                                            <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}" class="f1-m-3 cl2 hov-cl10 trans-03">
 
                                                 {{ $item->news_title }}
 
@@ -351,13 +351,7 @@
 
                 <!-- Pagination -->
 
-                <div class="flex-wr-c-c m-rl--7 p-t-28">
-
-                    <a href="#" class="flex-c-c pagi-item hov-btn1 trans-03 m-all-7 pagi-active">1</a>
-
-                    <a href="#" class="flex-c-c pagi-item hov-btn1 trans-03 m-all-7">2</a>
-
-                </div>
+                {{ $newsallbysubcategory->links('vendor.pagination.custom-num') }}
 
             </div>
 

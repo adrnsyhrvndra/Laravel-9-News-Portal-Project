@@ -391,11 +391,9 @@
 
 						</div>
 
-						<a href="#" class="flex-c-c size-a-13 bo-all-1 bocl11 f1-m-6 cl6 hov-btn1 trans-03">
+                        <!-- Pagination -->
 
-							Load More
-
-						</a>
+                        {{ $relatedNews->links('vendor.pagination.custom-num') }}
 
                     </div>
 

@@ -100,7 +100,7 @@
 
                                     <h6 class="p-b-5">
 
-                                        <a href="#" class="f1-s-5 cl11 hov-cl10 trans-03">
+                                        <a href="{{ url('news/details/'.$news_popular->id.'/'.$news_popular->news_title_slug) }}" class="f1-s-5 cl11 hov-cl10 trans-03">
 
                                             {{ $news_popular->news_title }}
 
@@ -147,7 +147,7 @@
 
                             <li class="how-bor1 p-rl-5 p-tb-10">
 
-                                <a href="#" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
+                                <a href="{{ url('news/category/'.$allcategory->id.'/'.$allcategory->category_slug) }}" class="f1-s-5 cl11 hov-cl10 trans-03 p-tb-8">
 
                                     {{ $allcategory->category_name }}
 

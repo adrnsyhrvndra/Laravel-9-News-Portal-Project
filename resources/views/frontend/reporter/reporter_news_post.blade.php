@@ -90,7 +90,7 @@
 
                 <div class="row">
 
-                    @foreach ($news as $item)
+                    @foreach ($newsallbyreporter as $item)
 
                         <div class="col-sm-6 p-r-25 p-r-15-sr991">
 
@@ -148,13 +148,7 @@
 
                 <!-- Pagination -->
 
-                <div class="flex-wr-s-c m-rl--7 p-t-15">
-
-                    <a href="#" class="flex-c-c pagi-item hov-btn1 trans-03 m-all-7 pagi-active">1</a>
-
-                    <a href="#" class="flex-c-c pagi-item hov-btn1 trans-03 m-all-7">2</a>
-
-                </div>
+                {{ $newsallbyreporter->links('vendor.pagination.custom-num') }}
 
             </div>
 
@@ -174,7 +168,7 @@
 
                                 <div class="rank-label-container-brewok">
 
-                                    <span class="label label-default rank-label">{{ count($newsallbyreporter) }} News</span>
+                                    <span class="label label-default rank-label">{{ count($newsallbyreportercount) }} News</span>
 
                                 </div>
 
