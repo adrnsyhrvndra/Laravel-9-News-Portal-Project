@@ -7,18 +7,9 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        <div class="row">
-            <div class="col-12">
-                <div class="page-title-box">
-                    <div class="page-title-right">
-                        <a href="{{ route('add.category') }}" class="btn btn-success waves-effect waves-light">
-                            Add Admin<span class="btn-label-right"><i class="mdi mdi-check-all"></i></span>
-                        </a>
-                    </div>
-                    <h4 class="page-title">Datatables</h4>
-                </div>
-            </div>
-        </div>
+
+        @include('admin.includescustom.start_page_title')
+
         <!-- end page title -->
 
         <!-- Form row -->
@@ -41,12 +32,12 @@
 
                             <div class="mb-3 form-group">
                                 <label for="video_title" class="form-label">Video Title</label>
-                                <input type="text" class="form-control" name="video_title" id="video_title" placeholder="1234 Main St">
+                                <input type="text" class="form-control" name="video_title" id="video_title" placeholder="Input Video Title">
                             </div>
 
                             <div class="mb-3 form-group">
                                 <label for="video_url" class="form-label">Video URL</label>
-                                <textarea class="form-control" name="video_url" id="video_url" rows="5">{{ $video->video_url }}</textarea>
+                                <textarea class="form-control" name="video_url" id="video_url" rows="5"></textarea>
                             </div>
 
                             <div class="mb-3 form-group">
@@ -56,7 +47,7 @@
 
                             <div class="mb-3 form-group">
                                 <label for="video_image" class="form-label"></label>
-                                <img id="showImage" src="{{  url('upload/no_image.jpg') }}" class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
+                                <img class="img-thumbnail" width="200" id="showImage" src="{{  url('upload/no_image.jpg') }}" class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
                             </div>
 
                             <button type="submit" class="btn btn-primary waves-effect waves-light">Save Data</button>

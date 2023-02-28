@@ -7,24 +7,53 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        <div class="row">
-            <div class="col-12">
-                <div class="page-title-box">
-                    <div class="page-title-right">
-                        <a href="{{ route('add.category') }}" class="btn btn-success waves-effect waves-light">
-                            Add Category<span class="btn-label-right"><i class="mdi mdi-check-all"></i></span>
-                        </a>
-                    </div>
-                    <h4 class="page-title">Datatables</h4>
-                </div>
-            </div>
-        </div>
+
+        @include('admin.includescustom.start_page_title')
+
         <!-- end page title -->
 
         <!-- Form row -->
+
         <div class="row">
-            <div class="col-12">
+
+            <div class="col-6">
+
+                <div class="widget-rounded-circle card">
+
+                    <div class="card-body">
+
+                        <div class="row">
+
+                            <div class="col-6">
+
+                                <div class="avatar-lg rounded-circle bg-primary border-primary border shadow">
+
+                                    <i class="mdi mdi-format-list-checkbox font-22 avatar-title text-white"></i>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-6">
+
+                                <div class="text-end">
+
+                                    <h3 class="text-dark mt-1"><span data-plugin="counterup">{{ count($photo) }}</span></h3>
+
+                                    <p class="text-muted mb-1 text-truncate">Total Of Photo Gallery</p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
                 <div class="card">
+
                     <div class="card-body">
 
                         <h4 class="header-title">Add Multi Photo</h4>
@@ -49,12 +78,68 @@
 
                         </form>
 
-                    </div> <!-- end card-body -->
-                </div> <!-- end card-->
-            </div> <!-- end col -->
-        </div>
-        <!-- end row -->
+                    </div>
 
+                </div>
+
+            </div>
+
+            <div class="col-6">
+
+                <div class="card">
+
+                    <div class="card-body">
+
+                        <h4 class="header-title">All Photo Gallery Data</h4>
+
+                        <table id="scroll-vertical-datatable" class="table dt-responsive nowrap w-100">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>No</th>
+
+                                    <th>Image</th>
+
+                                    <th>Date</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                @foreach ($photo as $key => $item)
+
+                                    <tr>
+
+                                        <td>{{ $key+1 }}</td>
+
+                                        <td>
+
+                                            <img class="img-thumbnail" width="100" src="{{ asset($item->photo_gallery) }}" alt="" srcset="">
+
+                                        </td>
+
+                                        <td>{{ $item->post_date }}</td>
+
+                                    </tr>
+
+                                @endforeach
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
@@ -87,37 +172,61 @@
         }else{
             alert("Your browser doesn't support File API!"); //if File API is absent
         }
-     });
+    });
     });
 
-    </script>
+</script>
 
 <script type="text/javascript">
 
     $(document).ready(function (){
+
         $('#myForm').validate({
+
             rules: {
-                category_name: {
+
+                multi_image[]: {
+
                     required : true,
+
                 },
+
             },
+
             messages :{
-                category_name: {
+
+                multi_image[]: {
+
                     required : 'Please Enter Category Name',
+
                 },
+
             },
+
             errorElement : 'span',
+
             errorPlacement: function (error,element) {
+
                 error.addClass('invalid-feedback');
+
                 element.closest('.form-group').append(error);
+
             },
+
             highlight : function(element, errorClass, validClass){
+
                 $(element).addClass('is-invalid');
+
             },
+
             unhighlight : function(element, errorClass, validClass){
+
                 $(element).removeClass('is-invalid');
+
             },
+
         });
+
     });
 
 </script>

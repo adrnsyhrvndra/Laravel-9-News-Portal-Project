@@ -7,18 +7,9 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        <div class="row">
-            <div class="col-12">
-                <div class="page-title-box">
-                    <div class="page-title-right">
-                        <a href="{{ route('add.video.gallery') }}" class="btn btn-success waves-effect waves-light">
-                            Add Photo Gallery<span class="btn-label-right"><i class="mdi mdi-check-all"></i></span>
-                        </a>
-                    </div>
-                    <h4 class="page-title">Datatables</h4>
-                </div>
-            </div>
-        </div>
+
+        @include('admin.includescustom.start_page_title')
+
         <!-- end page title -->
 
         <div class="row">
@@ -45,15 +36,18 @@
                                 <tr>
 
                                     <th>No</th>
+
                                     <th>Image</th>
+
                                     <th>Title</th>
+
                                     <th>Date</th>
+
                                     <th>Action</th>
 
                                 </tr>
 
                             </thead>
-
 
                             <tbody>
 
@@ -65,7 +59,7 @@
 
                                     <td>
 
-                                        <img width="100" src="{{ asset($item->video_image) }}" alt="" srcset="">
+                                        <img class="img-thumbnail" width="200" src="{{ asset($item->video_image) }}" alt="" srcset="">
 
                                     </td>
 

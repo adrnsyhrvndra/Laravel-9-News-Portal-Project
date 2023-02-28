@@ -177,6 +177,12 @@
 
                                 </li>
 
+                                <li>
+
+                                    <a href="{{ route('add.photo.gallery') }}">Add Photo Gallery</a>
+
+                                </li>
+
                             </ul>
 
                         </div>
@@ -205,6 +211,12 @@
 
                                 </li>
 
+                                <li>
+
+                                    <a href="{{ route('add.video.gallery') }}">Add Video Gallery</a>
+
+                                </li>
+
                             </ul>
 
                         </div>
@@ -213,29 +225,13 @@
 
                     <li>
 
-                        <a href="#livetvsetting" data-bs-toggle="collapse">
+                        <a href="{{ route('edit.live.tv') }}">
 
                             <i class="mdi mdi-youtube-tv"></i>
 
                             <span> Live Tv Setting </span>
 
-                            <span class="menu-arrow"></span>
-
                         </a>
-
-                        <div class="collapse" id="livetvsetting">
-
-                            <ul class="nav-second-level">
-
-                                <li>
-
-                                    <a href="{{ route('edit.live.tv') }}">Live TV</a>
-
-                                </li>
-
-                            </ul>
-
-                        </div>
 
                     </li>
 

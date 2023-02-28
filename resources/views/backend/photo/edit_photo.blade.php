@@ -7,24 +7,19 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        <div class="row">
-            <div class="col-12">
-                <div class="page-title-box">
-                    <div class="page-title-right">
-                        <a href="{{ route('add.category') }}" class="btn btn-success waves-effect waves-light">
-                            Add Category<span class="btn-label-right"><i class="mdi mdi-check-all"></i></span>
-                        </a>
-                    </div>
-                    <h4 class="page-title">Datatables</h4>
-                </div>
-            </div>
-        </div>
+
+        @include('admin.includescustom.start_page_title')
+
         <!-- end page title -->
 
         <!-- Form row -->
+
         <div class="row">
+
             <div class="col-12">
+
                 <div class="card">
+
                     <div class="card-body">
 
                         <h4 class="header-title">Edit Multi Photo</h4>
@@ -49,7 +44,7 @@
 
                                 <label for="multi_image" class="form-label"></label>
 
-                                <img src="{{ asset($photogallery->photo_gallery) }}" alt="" srcset="">
+                                <img class="img-thumbnail" width="500" src="{{ asset($photogallery->photo_gallery) }}" alt="" srcset="">
 
                             </div>
 
@@ -57,12 +52,13 @@
 
                         </form>
 
-                    </div> <!-- end card-body -->
-                </div> <!-- end card-->
-            </div> <!-- end col -->
-        </div>
-        <!-- end row -->
+                    </div>
 
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
@@ -95,37 +91,61 @@
         }else{
             alert("Your browser doesn't support File API!"); //if File API is absent
         }
-     });
+        });
     });
 
-    </script>
+</script>
 
 <script type="text/javascript">
 
     $(document).ready(function (){
+
         $('#myForm').validate({
+
             rules: {
-                category_name: {
+
+                multi_image[]: {
+
                     required : true,
+
                 },
+
             },
+
             messages :{
-                category_name: {
+
+                multi_image[]: {
+
                     required : 'Please Enter Category Name',
+
                 },
+
             },
+
             errorElement : 'span',
+
             errorPlacement: function (error,element) {
+
                 error.addClass('invalid-feedback');
+
                 element.closest('.form-group').append(error);
+
             },
+
             highlight : function(element, errorClass, validClass){
+
                 $(element).addClass('is-invalid');
+
             },
+
             unhighlight : function(element, errorClass, validClass){
+
                 $(element).removeClass('is-invalid');
+
             },
+
         });
+
     });
 
 </script>

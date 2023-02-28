@@ -24,7 +24,9 @@ class PhotoGalleryController extends Controller{
 
     public function AddPhotoGallery(){
 
-        return view('backend.photo.add_photo');
+        $photo = PhotoGalleries::all();
+
+        return view('backend.photo.add_photo',compact('photo'));
 
     }
 

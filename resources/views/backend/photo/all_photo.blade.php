@@ -7,18 +7,9 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        <div class="row">
-            <div class="col-12">
-                <div class="page-title-box">
-                    <div class="page-title-right">
-                        <a href="{{ route('add.photo.gallery') }}" class="btn btn-success waves-effect waves-light">
-                            Add Photo Gallery<span class="btn-label-right"><i class="mdi mdi-check-all"></i></span>
-                        </a>
-                    </div>
-                    <h4 class="page-title">Datatables</h4>
-                </div>
-            </div>
-        </div>
+
+        @include('admin.includescustom.start_page_title')
+
         <!-- end page title -->
 
         <div class="row">
@@ -29,7 +20,7 @@
 
                     <div class="card-body">
 
-                        <h4 class="header-title">Data Photo Gallery</h4>
+                        <h4 class="header-title">Data All Photo Gallery</h4>
 
                         <p class="text-muted font-13 mb-4">
 
@@ -45,40 +36,42 @@
                                 <tr>
 
                                     <th>No</th>
+
                                     <th>Image</th>
+
                                     <th>Date</th>
+
                                     <th>Action</th>
 
                                 </tr>
 
                             </thead>
 
-
                             <tbody>
 
                                 @foreach ($photo as $key => $item)
 
-                                <tr>
+                                    <tr>
 
-                                    <td>{{ $key+1 }}</td>
+                                        <td>{{ $key+1 }}</td>
 
-                                    <td>
+                                        <td>
 
-                                        <img src="{{ asset($item->photo_gallery) }}" alt="" srcset="">
+                                            <img class="img-thumbnail" width="200" src="{{ asset($item->photo_gallery) }}" alt="" srcset="">
 
-                                    </td>
+                                        </td>
 
-                                    <td>{{ $item->post_date }}</td>
+                                        <td>{{ $item->post_date }}</td>
 
-                                    <td>
+                                        <td>
 
-                                        <a href="{{ route('edit.photo.gallery',$item->id) }}" class="btn btn-success waves-effect waves-light"><i class="mdi mdi-lead-pencil"></i></a>
+                                            <a href="{{ route('edit.photo.gallery',$item->id) }}" class="btn btn-success waves-effect waves-light"><i class="mdi mdi-lead-pencil"></i></a>
 
-                                        <a id="delete" href="{{ route('delete.photo.gallery',$item->id) }}" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-delete"></i></a>
+                                            <a id="delete" href="{{ route('delete.photo.gallery',$item->id) }}" class="btn btn-danger waves-effect waves-light"><i class="mdi mdi-delete"></i></a>
 
-                                    </td>
+                                        </td>
 
-                                </tr>
+                                    </tr>
 
                                 @endforeach
 
