@@ -82,7 +82,13 @@
 
         <div class="row padding-top-custom-brewok-profile-page">
 
-            <div class="col-lg-8">
+            <div class="col-lg-7">
+
+                <h2 class="f1-l-1 cl2 p-b-30">
+
+                    Login Page
+
+                </h2>
 
                 <div class="p-r-10 p-r-0-sr991">
 
@@ -135,6 +141,78 @@
                         <input type="submit" class="size-a-20 bg2 borad-3 f1-s-12 cl0 hov-btn1 trans-03 p-rl-15 m-t-20" value="Login">
 
                     </form>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-5">
+
+                <div class="social-box-brewok">
+
+                    <div class="text-center">
+
+                        <div class="box">
+
+                            <div class="box-title">
+
+                                @php
+
+                                    $logoapp =  App\Models\Sitesetting::find(1);
+
+                                @endphp
+
+                                <img src="{{ asset($logoapp->site_logo) }}" alt="LOGO">
+
+                            </div>
+
+                            <div class="box-text">
+
+                                @php
+
+                                    $sitesetting =  App\Models\Sitesetting::find(1);
+
+                                @endphp
+
+                                <div style="color: black;"> {!! $sitesetting->footer_description !!} </div>
+
+                            </div>
+
+                            <div class="box-btn">
+
+                                <div class="p-t-10">
+
+                                    <a href="{{ $sitesetting->facebook_url }}" class="fs-18 cl11 hov-cl10 trans-03 m-r-5 m-l-5">
+
+                                        <span class="fab fa-facebook-f"></span>
+
+                                    </a>
+
+                                    <a href="{{ $sitesetting->instagram_url }}" class="fs-18 cl11 hov-cl10 trans-03 m-r-5 m-l-5">
+
+                                        <span class="fab fa-instagram"></span>
+
+                                    </a>
+
+                                    <a href="{{ $sitesetting->pinterest_url }}" class="fs-18 cl11 hov-cl10 trans-03 m-r-5 m-l-5">
+
+                                        <span class="fab fa-pinterest-p"></span>
+
+                                    </a>
+
+                                    <a href="{{ $sitesetting->youtube_url }}" class="fs-18 cl11 hov-cl10 trans-03 m-r-5 m-l-5">
+
+                                        <span class="fab fa-youtube"></span>
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
 
                 </div>
 

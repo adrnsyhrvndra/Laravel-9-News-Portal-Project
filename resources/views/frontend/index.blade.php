@@ -18,7 +18,7 @@
 
 				<span class="text-uppercase cl2 p-r-8">
 
-					Breaking News: <p>Jumlah Pengikut:  </p>
+					Breaking News:
 
 				</span>
 

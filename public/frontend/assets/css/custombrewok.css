@@ -129,3 +129,29 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     display: none;
     -webkit-appearance: none;
 }
+
+
+/* Card Login */
+
+.social-box-brewok .box {
+    padding: 40px 10px;
+    -webkit-box-shadow: 4px 4px 19px -1px rgba(0,0,0,0.09);
+    box-shadow: 4px 4px 19px -1px rgba(0,0,0,0.09);
+    border-radius: 10px;
+    margin-top:2%;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.social-box-brewok .box-text {
+    font-size: 150px;
+    line-height: 30px;
+    margin: 20px 0;
+    color: #FEAC04;
+}
+
+.social-box-brewok .box-btn a {
+    color: #222222;
+    font-size: 22px;
+    border-radius:10px;
+    text-decoration: none;
+}

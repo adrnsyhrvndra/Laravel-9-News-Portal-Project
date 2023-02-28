@@ -96,7 +96,7 @@
 
                             <div class="m-b-45">
 
-                                <a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
+                                <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}" class="wrap-pic-w hov1 trans-03">
 
                                     <img src="{{ asset($item->image) }}" alt="IMG">
 
@@ -106,7 +106,7 @@
 
                                     <h5 class="p-b-5">
 
-                                        <a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
+                                        <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}" class="f1-m-3 cl2 hov-cl10 trans-03">
 
                                             {{ $item->news_title }}
 
@@ -116,7 +116,7 @@
 
                                     <span class="cl8">
 
-                                        <a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
+                                        <a href="{{ route('reporter.all.news',$item['userRelation']['id']) }}" class="f1-s-4 cl8 hov-cl10 trans-03">
 
                                             by {{ $item['userRelation']['name'] }}
 

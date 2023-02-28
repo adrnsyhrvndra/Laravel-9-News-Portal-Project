@@ -279,7 +279,7 @@
 
                     <a class="logo-stick" href="index.html">
 
-                        <img src="images/icons/logo-01.png" alt="LOGO">
+                        <img src="{{ asset($logoapp->site_logo) }}" alt="LOGO">
 
                     </a>
 
