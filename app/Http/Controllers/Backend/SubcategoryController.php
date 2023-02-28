@@ -26,7 +26,9 @@ class SubcategoryController extends Controller{
 
         $categories = Category::latest()->get();
 
-        return view('backend.subcategory.subcategory_add',compact('categories'));
+        $subcategories = Subcategory::all();
+
+        return view('backend.subcategory.subcategory_add',compact('categories','subcategories'));
 
     }
 
@@ -62,7 +64,9 @@ class SubcategoryController extends Controller{
 
         $subcategory = Subcategory::findOrFail($id);
 
-        return view('backend.subcategory.subcategory_edit',compact('subcategory','categories'));
+        $subcategories = Subcategory::all();
+
+        return view('backend.subcategory.subcategory_edit',compact('subcategory','categories','subcategories'));
 
     }
 

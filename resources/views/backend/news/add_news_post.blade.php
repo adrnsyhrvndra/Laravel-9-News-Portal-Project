@@ -7,26 +7,23 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        <div class="row">
-            <div class="col-12">
-                <div class="page-title-box">
-                    <div class="page-title-right">
-                        <a href="{{ route('add.category') }}" class="btn btn-success waves-effect waves-light">
-                            Add News Post<span class="btn-label-right"><i class="mdi mdi-check-all"></i></span>
-                        </a>
-                    </div>
-                    <h4 class="page-title">Datatables</h4>
-                </div>
-            </div>
-        </div>
+
+        @include('admin.includescustom.start_page_title')
+
         <!-- end page title -->
 
         <!-- Form row -->
+
         <div class="row">
+
             <div class="col-12">
+
                 <div class="card">
+
                     <div class="card-body">
+
                         <h4 class="header-title">Add News Post</h4>
+
                         <p class="text-muted font-13">More complex layouts can also be created with the grid system.</p>
 
                         <form method="post" action="{{ route('news.post.store') }}" id="myForm" enctype="multipart/form-data">
@@ -57,7 +54,7 @@
 
                                 <select class="form-select" id="subcategory_id" name="subcategory_id">
 
-                                    <option> </option>
+                                    <option></option>
 
                                 </select>
 
@@ -85,7 +82,7 @@
 
                                 <label for="news_title" class="form-label">News Title</label>
 
-                                <input type="text" class="form-control" name="news_title" id="news_title" placeholder="1234 Main St">
+                                <input type="text" class="form-control" name="news_title" id="news_title" placeholder="Input News Title">
 
                             </div>
 
@@ -170,29 +167,69 @@
 <script type="text/javascript">
 
     $(document).ready(function (){
+
         $('#myForm').validate({
+
             rules: {
-                category_name: {
+                category_id: {
+                    required : true
+                },
+                subcategory_id: {
+                    required : true
+                },
+                user_id: {
+                    required : true
+                },
+                news_title: {
                     required : true,
+                    maxlength: 15
+                },
+                breaking_news: {
+                    required : true
+                },
+                top_slider: {
+                    required : true
+                },
+                first_section_three: {
+                    required : true
+                },
+                first_section_nine: {
+                    required : true
+                },
+                image: {
+                    required : true
+                },
+                news_details: {
+                    required : true
+                },
+                tags: {
+                    required : true
                 },
             },
+
             messages :{
-                category_name: {
+                category_id: {
                     required : 'Please Enter Category Name',
                 },
             },
+
             errorElement : 'span',
+
             errorPlacement: function (error,element) {
                 error.addClass('invalid-feedback');
                 element.closest('.form-group').append(error);
             },
+
             highlight : function(element, errorClass, validClass){
                 $(element).addClass('is-invalid');
             },
+
             unhighlight : function(element, errorClass, validClass){
                 $(element).removeClass('is-invalid');
             },
+
         });
+
     });
 
 </script>

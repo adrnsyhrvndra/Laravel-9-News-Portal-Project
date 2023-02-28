@@ -7,18 +7,9 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        <div class="row">
-            <div class="col-12">
-                <div class="page-title-box">
-                    <div class="page-title-right">
-                        <a href="{{ route('add.category') }}" class="btn btn-success waves-effect waves-light">
-                            Add Category<span class="btn-label-right"><i class="mdi mdi-check-all"></i></span>
-                        </a>
-                    </div>
-                    <h4 class="page-title">Datatables</h4>
-                </div>
-            </div>
-        </div>
+
+            @include('admin.includescustom.start_page_title')
+
         <!-- end page title -->
 
         <div class="row">
@@ -29,12 +20,11 @@
 
                     <div class="card-body">
 
-                        <h4 class="header-title">Data Category</h4>
+                        <h4 class="header-title">Data All Category</h4>
 
                         <p class="text-muted font-13 mb-4">
 
-                            The Buttons extension for DataTables provides a common set of options, API methods and styling to display buttons on a page
-                            that will interact with a DataTable. The core library provides the based framework upon which plug-ins can built.
+                            Pada tampilan ini, Anda bisa menemukan seluruh kategori berita yang tersedia dalam portal berita kami. Kategori berita ini disusun dalam urutan yang logis dan teratur sehingga para pembaca dapat dengan mudah menavigasi dan mencari berita yang diinginkan.
 
                         </p>
 

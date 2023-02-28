@@ -19,7 +19,9 @@ class CategoryController extends Controller{
 
     public function AddCategory(Request $request){
 
-        return view('backend.category.category_add');
+        $categories = Category::all();
+
+        return view('backend.category.category_add',compact('categories'));
 
     }
 
@@ -49,7 +51,9 @@ class CategoryController extends Controller{
 
         $category = Category::findOrFail($id);
 
-        return view('backend.category.category_edit',compact('category'));
+        $categories = Category::all();
+
+        return view('backend.category.category_edit',compact('category','categories'));
 
     }
 

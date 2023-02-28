@@ -7,18 +7,9 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        <div class="row">
-            <div class="col-12">
-                <div class="page-title-box">
-                    <div class="page-title-right">
-                        <a href="{{ route('add.sub.category') }}" class="btn btn-success waves-effect waves-light">
-                            Add Category<span class="btn-label-right"><i class="mdi mdi-check-all"></i></span>
-                        </a>
-                    </div>
-                    <h4 class="page-title">Datatables</h4>
-                </div>
-            </div>
-        </div>
+
+        @include('admin.includescustom.start_page_title')
+
         <!-- end page title -->
 
         <div class="row">
@@ -29,7 +20,7 @@
 
                     <div class="card-body">
 
-                        <h4 class="header-title">Data Sub Category</h4>
+                        <h4 class="header-title">Data All Sub Category</h4>
 
                         <p class="text-muted font-13 mb-4">
 
@@ -45,14 +36,16 @@
                                 <tr>
 
                                     <th>No</th>
+
                                     <th>Category Name</th>
+
                                     <th>Sub Category Name</th>
+
                                     <th>Action</th>
 
                                 </tr>
 
                             </thead>
-
 
                             <tbody>
 
