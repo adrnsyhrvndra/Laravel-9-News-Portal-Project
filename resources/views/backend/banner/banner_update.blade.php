@@ -7,13 +7,9 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        <div class="row">
-            <div class="col-12">
-                <div class="page-title-box">
-                    <h4 class="page-title">Datatables</h4>
-                </div>
-            </div>
-        </div>
+
+        @include('admin.includescustom.start_page_title')
+
         <!-- end page title -->
 
         <!-- Form row -->

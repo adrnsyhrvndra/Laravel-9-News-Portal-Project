@@ -237,29 +237,13 @@
 
                     <li>
 
-                        <a href="#banner" data-bs-toggle="collapse">
+                        <a href="{{ route('all.banners') }}">
 
                             <i class="mdi mdi-image-area-close"></i>
 
                             <span> Banner Setting </span>
 
-                            <span class="menu-arrow"></span>
-
                         </a>
-
-                        <div class="collapse" id="banner">
-
-                            <ul class="nav-second-level">
-
-                                <li>
-
-                                    <a href="{{ route('all.banners') }}">All Banner </a>
-
-                                </li>
-
-                            </ul>
-
-                        </div>
 
                     </li>
 
@@ -297,29 +281,13 @@
 
                     <li>
 
-                        <a href="#seosetting" data-bs-toggle="collapse">
+                        <a href="{{ route('seo.setting') }}">
 
                             <i class="mdi mdi-code-tags-check"></i>
 
-                            <span> SEO Setting </span>
-
-                            <span class="menu-arrow"></span>
+                            <span>Update SEO</span>
 
                         </a>
-
-                        <div class="collapse" id="seosetting">
-
-                            <ul class="nav-second-level">
-
-                                <li>
-
-                                    <a href="{{ route('seo.setting') }}">Update SEO</a>
-
-                                </li>
-
-                            </ul>
-
-                        </div>
 
                     </li>
 
@@ -361,9 +329,9 @@
 
                         <a href="#roles" data-bs-toggle="collapse">
 
-                            <i class="mdi mdi-account-cog-outline"></i>
+                            <i class="mdi mdi-account-arrow-right"></i>
 
-                            <span> Roles And Permission </span>
+                            <span> Roles </span>
 
                             <span class="menu-arrow"></span>
 
@@ -375,25 +343,81 @@
 
                                 <li>
 
-                                    <a href="{{ route('all.permission') }}">All Permission</a>
-
-                                </li>
-
-                                <li>
-
                                     <a href="{{ route('all.roles') }}">All Roles</a>
 
                                 </li>
 
                                 <li>
 
-                                    <a href="{{ route('add.roles.permission') }}">Roles In Permission</a>
+                                    <a href="{{ route('add.roles') }}">Add Roles</a>
+
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </li>
+
+                    <li>
+
+                        <a href="#permission" data-bs-toggle="collapse">
+
+                            <i class="mdi mdi-account-cog-outline"></i>
+
+                            <span> Permission </span>
+
+                            <span class="menu-arrow"></span>
+
+                        </a>
+
+                        <div class="collapse" id="permission">
+
+                            <ul class="nav-second-level">
+
+                                <li>
+
+                                    <a href="{{ route('all.permission') }}">All Permission</a>
 
                                 </li>
 
                                 <li>
 
+                                    <a href="{{ route('add.permission') }}">Add Permission</a>
+
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </li>
+
+                    <li>
+
+                        <a href="#rolespermission" data-bs-toggle="collapse">
+
+                            <i class="mdi mdi-account-details"></i>
+
+                            <span> Roles And Permission </span>
+
+                            <span class="menu-arrow"></span>
+
+                        </a>
+
+                        <div class="collapse" id="rolespermission">
+
+                            <ul class="nav-second-level">
+
+                                <li>
+
                                     <a href="{{ route('all.roles.permission') }}">All Roles In Permission</a>
+
+                                </li>
+
+                                <li>
+
+                                    <a href="{{ route('add.roles.permission') }}">Add Roles In Permission</a>
 
                                 </li>
 

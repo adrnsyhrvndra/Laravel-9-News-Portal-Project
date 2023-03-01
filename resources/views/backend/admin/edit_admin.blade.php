@@ -7,18 +7,9 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        <div class="row">
-            <div class="col-12">
-                <div class="page-title-box">
-                    <div class="page-title-right">
-                        <a href="{{ route('add.category') }}" class="btn btn-success waves-effect waves-light">
-                            Add Admin<span class="btn-label-right"><i class="mdi mdi-check-all"></i></span>
-                        </a>
-                    </div>
-                    <h4 class="page-title">Datatables</h4>
-                </div>
-            </div>
-        </div>
+
+        @include('admin.includescustom.start_page_title')
+
         <!-- end page title -->
 
         <!-- Form row -->
@@ -37,22 +28,22 @@
 
                             <div class="mb-3 form-group">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" name="name" id="name" placeholder="1234 Main St" value="{{ $adminuser->name }}">
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Input Your Name"  value="{{ $adminuser->name }}">
                             </div>
 
                             <div class="mb-3 form-group">
                                 <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control" name="username" id="username" placeholder="1234 Main St" value="{{ $adminuser->username }}">
+                                <input type="text" class="form-control" name="username" id="username" placeholder="Input Your Username"  value="{{ $adminuser->username }}">
                             </div>
 
                             <div class="mb-3 form-group">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="1234 Main St" value="{{ $adminuser->email }}">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Input Your Email"  value="{{ $adminuser->email }}">
                             </div>
 
                             <div class="mb-3 form-group">
                                 <label for="phone" class="form-label">Phone</label>
-                                <input type="text" class="form-control" name="phone" id="phone" placeholder="1234 Main St" value="{{ $adminuser->phone }}">
+                                <input type="text" class="form-control" name="phone" id="phone" placeholder="Input Your Phone"  value="{{ $adminuser->phone }}">
                             </div>
 
                             <div class="mb-3 form-group">

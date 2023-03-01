@@ -7,18 +7,9 @@
     <div class="container-fluid">
 
         <!-- start page title -->
-        <div class="row">
-            <div class="col-12">
-                <div class="page-title-box">
-                    <div class="page-title-right">
-                        <a href="{{ route('add.admin') }}" class="btn btn-success waves-effect waves-light">
-                            Add Admin<span class="btn-label-right"><i class="mdi mdi-check-all"></i></span>
-                        </a>
-                    </div>
-                    <h4 class="page-title">Datatables</h4>
-                </div>
-            </div>
-        </div>
+
+        @include('admin.includescustom.start_page_title')
+
         <!-- end page title -->
 
         <div class="row">

@@ -12,6 +12,12 @@
 
     <div class="container-fluid">
 
+        <!-- start page title -->
+
+        @include('admin.includescustom.start_page_title')
+
+        <!-- end page title -->
+
         <!-- Form row -->
 
         <div class="row">

@@ -381,6 +381,120 @@
 
     </div>
 
+@elseif(Request::segment(1) == "all" && Request::segment(2) == "banners")
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <div class="page-title-box">
+
+                <div class="page-title-right">
+
+                    <ol class="breadcrumb m-0">
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+
+                        <li class="breadcrumb-item">Banner Data</li>
+
+                        <li class="breadcrumb-item active">Update Banner Data</li>
+
+                    </ol>
+
+                </div>
+
+                <h4 class="page-title">Update Banner Data</h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+@elseif(Request::segment(1) == "pending" && Request::segment(2) == "review")
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <div class="page-title-box">
+
+                <div class="page-title-right">
+
+                    <ol class="breadcrumb m-0">
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+
+                        <li class="breadcrumb-item active">All Pending Review Data</li>
+
+                    </ol>
+
+                </div>
+
+                <h4 class="page-title">All Pending Review Data</h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+@elseif(Request::segment(1) == "approve" && Request::segment(2) == "review")
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <div class="page-title-box">
+
+                <div class="page-title-right">
+
+                    <ol class="breadcrumb m-0">
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+
+                        <li class="breadcrumb-item active">All Approve Review Data</li>
+
+                    </ol>
+
+                </div>
+
+                <h4 class="page-title">All Approve Review Data</h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+@elseif(Request::segment(1) == "seo" && Request::segment(2) == "setting" && Request::segment(3) == "update")
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <div class="page-title-box">
+
+                <div class="page-title-right">
+
+                    <ol class="breadcrumb m-0">
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+
+                        <li class="breadcrumb-item active">All Seo Data</li>
+
+                    </ol>
+
+                </div>
+
+                <h4 class="page-title">All Seo Data</h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
 @elseif(Request::segment(1) == "all" && Request::segment(2) == "video" && Request::segment(3) == "gallery")
 
     <div class="row">
@@ -462,6 +576,387 @@
                 </div>
 
                 <h4 class="page-title">Edit Video Gallery Data</h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    @elseif(Request::segment(1) == "all" && Request::segment(2) == "admin")
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <div class="page-title-box">
+
+                <div class="page-title-right">
+
+                    <ol class="breadcrumb m-0">
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+
+                        <li class="breadcrumb-item active">Admin Data</li>
+
+                    </ol>
+
+                </div>
+
+                <h4 class="page-title">All Admin Data</h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+@elseif(Request::segment(1) == "add" && Request::segment(2) == "admin")
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <div class="page-title-box">
+
+                <div class="page-title-right">
+
+                    <ol class="breadcrumb m-0">
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Admin Data</a></li>
+
+                        <li class="breadcrumb-item active">Add Admin Data</li>
+
+                    </ol>
+
+                </div>
+
+                <h4 class="page-title">Add Admin Data</h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+@elseif(Request::segment(1) == "edit" && Request::segment(2) == "admin")
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <div class="page-title-box">
+
+                <div class="page-title-right">
+
+                    <ol class="breadcrumb m-0">
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Admin Data</a></li>
+
+                        <li class="breadcrumb-item active">Add Admin Data</li>
+
+                    </ol>
+
+                </div>
+
+                <h4 class="page-title">Edit Admin Data</h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+@elseif(Request::segment(1) == "all" && Request::segment(2) == "roles" && Request::segment(3) == "permission")
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <div class="page-title-box">
+
+                <div class="page-title-right">
+
+                    <ol class="breadcrumb m-0">
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Roles & Permission Data</a></li>
+
+                        <li class="breadcrumb-item active">All Roles & Permission Data</li>
+
+                    </ol>
+
+                </div>
+
+                <h4 class="page-title">All Roles & Permission Data</h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    @elseif(Request::segment(1) == "add" && Request::segment(2) == "roles" && Request::segment(3) == "permission")
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <div class="page-title-box">
+
+                <div class="page-title-right">
+
+                    <ol class="breadcrumb m-0">
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Roles Permission Data</a></li>
+
+                        <li class="breadcrumb-item active">Add Roles Permission Data</li>
+
+                    </ol>
+
+                </div>
+
+                <h4 class="page-title">Add Roles Permission Data</h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+@elseif(Request::segment(1) == "edit" && Request::segment(2) == "roles" && Request::segment(3) == "permission")
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <div class="page-title-box">
+
+                <div class="page-title-right">
+
+                    <ol class="breadcrumb m-0">
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Roles & Permission Data</a></li>
+
+                        <li class="breadcrumb-item active">Edit Roles & Permission Data</li>
+
+                    </ol>
+
+                </div>
+
+                <h4 class="page-title">Edit Roles & Permission Data</h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+@elseif(Request::segment(1) == "all" && Request::segment(2) == "permission")
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <div class="page-title-box">
+
+                <div class="page-title-right">
+
+                    <ol class="breadcrumb m-0">
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Permission Data</a></li>
+
+                        <li class="breadcrumb-item active">Add Permission Data</li>
+
+                    </ol>
+
+                </div>
+
+                <h4 class="page-title">All Permission Data</h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+@elseif(Request::segment(1) == "all" && Request::segment(2) == "roles")
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <div class="page-title-box">
+
+                <div class="page-title-right">
+
+                    <ol class="breadcrumb m-0">
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+
+                        <li class="breadcrumb-item active">All Roles Data</li>
+
+                    </ol>
+
+                </div>
+
+                <h4 class="page-title">All Roles Data</h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+@elseif(Request::segment(1) == "add" && Request::segment(2) == "roles")
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <div class="page-title-box">
+
+                <div class="page-title-right">
+
+                    <ol class="breadcrumb m-0">
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+
+                        <li class="breadcrumb-item active">Add Roles Data</li>
+
+                    </ol>
+
+                </div>
+
+                <h4 class="page-title">Add Roles Data</h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+@elseif(Request::segment(1) == "edit" && Request::segment(2) == "roles")
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <div class="page-title-box">
+
+                <div class="page-title-right">
+
+                    <ol class="breadcrumb m-0">
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+
+                        <li class="breadcrumb-item active">Edit Roles Data</li>
+
+                    </ol>
+
+                </div>
+
+                <h4 class="page-title">Edit Roles Data</h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+@elseif(Request::segment(1) == "add" && Request::segment(2) == "permission")
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <div class="page-title-box">
+
+                <div class="page-title-right">
+
+                    <ol class="breadcrumb m-0">
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Permission Data</a></li>
+
+                        <li class="breadcrumb-item active">Add Permission Data</li>
+
+                    </ol>
+
+                </div>
+
+                <h4 class="page-title">Add Permission Data</h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+@elseif(Request::segment(1) == "edit" && Request::segment(2) == "permission")
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <div class="page-title-box">
+
+                <div class="page-title-right">
+
+                    <ol class="breadcrumb m-0">
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Permission Data</a></li>
+
+                        <li class="breadcrumb-item active">Edit Permission Data</li>
+
+                    </ol>
+
+                </div>
+
+                <h4 class="page-title">Edit Permission Data</h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+@elseif(Request::segment(1) == "edit" && Request::segment(2) == "sitesetting")
+
+    <div class="row">
+
+        <div class="col-12">
+
+            <div class="page-title-box">
+
+                <div class="page-title-right">
+
+                    <ol class="breadcrumb m-0">
+
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+
+                        <li class="breadcrumb-item active">Update Site Setting Data</li>
+
+                    </ol>
+
+                </div>
+
+                <h4 class="page-title">Update Site Setting Data</h4>
 
             </div>
 
