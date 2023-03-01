@@ -14,25 +14,12 @@
 
     <div class="content">
 
-        @if ($status == 'active')
-
-            <h4>Admin Account Is</h4>
-
-            <span class="text-success">Active</span>
-
-        @else
-
-            <h4>Admin Account Is</h4>
-
-            <span class="text-danger">InActive</span>
-
-        @endif
-
         <!-- Start Content-->
 
         <div class="container-fluid">
 
             <!-- start page title -->
+
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box">
@@ -59,25 +46,88 @@
             <!-- end page title -->
 
             <div class="row">
-                <div class="col-md-6 col-xl-3">
-                    <div class="widget-rounded-circle card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="avatar-lg rounded-circle bg-primary border-primary border shadow">
-                                        <i class="fe-heart font-22 avatar-title text-white"></i>
+
+                @if ($status == 'active')
+
+                    <div class="col-md-8 col-xl-5">
+
+                        <div class="widget-rounded-circle card">
+
+                            <div class="card-body">
+
+                                <div class="row">
+
+                                    <div class="col-3">
+
+                                        <div class="avatar-lg rounded-circle bg-success border-success border shadow">
+
+                                            <i class="fe-thumbs-up font-22 avatar-title text-white"></i>
+
+                                        </div>
+
                                     </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="text-end">
-                                        <h3 class="text-dark mt-1">$<span data-plugin="counterup">58,94</span></h3>
-                                        <p class="text-muted mb-1 text-truncate">Total Revenue</p>
+
+                                    <div class="col-8">
+
+                                        <div class="text-start">
+
+                                            <h3 class="text-dark mt-1">Your Account Status</h3>
+
+                                            <button type="button" class="btn btn-success btn-xs waves-effect mb-2 waves-light">Activated</button>
+
+                                        </div>
+
                                     </div>
+
                                 </div>
-                            </div> <!-- end row-->
+
+                            </div>
+
                         </div>
-                    </div> <!-- end widget-rounded-circle-->
-                </div> <!-- end col-->
+
+                    </div>
+
+                @else
+
+                <div class="col-md-8 col-xl-5">
+
+                    <div class="widget-rounded-circle card">
+
+                        <div class="card-body">
+
+                            <div class="row">
+
+                                <div class="col-3">
+
+                                    <div class="avatar-lg rounded-circle bg-danger border-danger border shadow">
+
+                                        <i class="fe-thumbs-down font-22 avatar-title text-white"></i>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-8">
+
+                                    <div class="text-start">
+
+                                        <h3 class="text-dark mt-1">Your Account Status</h3>
+
+                                        <button type="button" class="btn btn-danger btn-xs waves-effect mb-2 waves-light">Inactivated</button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                @endif
 
                 <div class="col-md-6 col-xl-3">
                     <div class="widget-rounded-circle card">
