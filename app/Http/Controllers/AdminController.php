@@ -4,19 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Admin;
+use App\Models\Reviews;
+use App\Models\Category;
+use App\Models\NewsPost;
+use App\Models\Subcategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
 class AdminController extends Controller{
 
     public function AdminDashboard(){
 
-        return view('admin.index');
+        $adminData = User::where('role','admin')->get();
+        $editorData = User::where('role','admin')->get();
+        $reporterData = User::where('role','admin')->get();
+        $categoryData = Category::all();
+        $subCategoryData = Subcategory::all();
+        $newsPostData = NewsPost::all();
+        $reviewPostData = Reviews::all();
+        $rolesPermissionData = Role::all();
+
+        return view('admin.index',compact('adminData','categoryData','subCategoryData','newsPostData','reviewPostData','rolesPermissionData','reporterData','editorData'));
 
     }
 
