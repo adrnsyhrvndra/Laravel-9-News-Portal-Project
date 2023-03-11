@@ -97,6 +97,51 @@ class CategoryController extends Controller{
 
     }
 
+    public function RestoreCategoryPage(){
+
+        $category_restore = Category::onlyTrashed()->get();
+
+        return view('backend.category.category_all_restore',compact('category_restore'));
+
+    }
+
+
+    public function DeleteTrashCategory($id){
+
+        $categories = Category::onlyTrashed()->findOrFail($id);
+
+        $categories->forceDelete();
+
+        $notification = array(
+
+            'pesanNotif' => 'Category Deleted Successfuly',
+
+            'alert-type' => 'success'
+
+        );
+
+        return redirect()->route('restore.category.page')->with($notification);
+
+    }
+
+    public function RestoreCategory($id){
+
+        $categories = Category::onlyTrashed()->findOrFail($id);
+
+        $categories->restore();
+
+        $notification = array(
+
+            'pesanNotif' => 'Category Deleted Successfuly',
+
+            'alert-type' => 'success'
+
+        );
+
+        return redirect()->route('restore.category.page')->with($notification);
+
+    }
+
     public function GetSubCategory($category_id){
 
         $subcat = Subcategory::where('category_id',$category_id)->orderBy('subcategory_name','ASC')->get();

@@ -111,6 +111,9 @@ Route::middleware('auth','role:admin')->group(function () {
         Route::get('/add/category', 'AddCategory')->name('add.category');
         Route::get('/edit/category/{id}', 'EditCategory')->name('edit.category');
         Route::get('/delete/category/{id}', 'DeleteCategory')->name('delete.category');
+        Route::get('/restore/category/page', 'RestoreCategoryPage')->name('restore.category.page');
+        Route::get('/delete/trash/category/{id}', 'DeleteTrashCategory')->name('category.trash.destroy');
+        Route::get('/restore/category/{id}', 'RestoreCategory')->name('restore.category');
         Route::post('/category/store', 'StoreCategory')->name('category.store');
         Route::post('/category/update', 'UpdateCategory')->name('category.update');
 

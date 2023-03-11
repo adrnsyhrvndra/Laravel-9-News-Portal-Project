@@ -66,6 +66,8 @@
 
                                     <option value="role">Role & Permission</option>
 
+                                    <option value="site">Site Setting </option>
+
                                 </select>
 
                             </div>

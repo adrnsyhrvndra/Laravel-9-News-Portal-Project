@@ -35,9 +35,15 @@
 
                 @if ($status == 'active')
 
-                    <li class="menu-title mt-2">Category News</li>
+                    @if (Auth::user()->can('category.menu') || Auth::user()->can('subcategory.menu'))
+
+                        <li class="menu-title mt-2">Category News</li>
+
+                    @endif
 
                     {{-- can() adalah fungsi dari laravel spattie --}}
+
+                    {{-- Category Menu --}}
 
                     @if (Auth::user()->can('category.menu'))
 
@@ -77,6 +83,12 @@
 
                                     @endif
 
+                                    <li>
+
+                                        <a href="{{ route('restore.category.page') }}">Restore Category </a>
+
+                                    </li>
+
                                 </ul>
 
                             </div>
@@ -85,377 +97,437 @@
 
                     @endif
 
-                    <li>
+                    @if (Auth::user()->can('subcategory.menu'))
 
-                        <a href="#subcategory" data-bs-toggle="collapse">
+                        <li>
 
-                            <i class="mdi mdi-format-list-bulleted-square"></i>
+                            <a href="#subcategory" data-bs-toggle="collapse">
 
-                            <span> Sub Category </span>
+                                <i class="mdi mdi-format-list-bulleted-square"></i>
 
-                            <span class="menu-arrow"></span>
+                                <span> Sub Category </span>
 
-                        </a>
+                                <span class="menu-arrow"></span>
 
-                        <div class="collapse" id="subcategory">
+                            </a>
 
-                            <ul class="nav-second-level">
+                            <div class="collapse" id="subcategory">
 
-                                <li>
+                                <ul class="nav-second-level">
 
-                                    <a href="{{ route('all.sub.category') }}">All Sub Category </a>
+                                    <li>
 
-                                </li>
+                                        <a href="{{ route('all.sub.category') }}">All Sub Category </a>
 
-                                <li>
+                                    </li>
 
-                                    <a href="{{ route('add.sub.category') }}">Add Sub Category </a>
+                                    <li>
 
-                                </li>
+                                        <a href="{{ route('add.sub.category') }}">Add Sub Category </a>
 
-                            </ul>
+                                    </li>
 
-                        </div>
+                                </ul>
 
-                    </li>
+                            </div>
 
-                    <li class="menu-title">News Page Setting</li>
+                        </li>
 
-                    <li>
+                    @endif
 
-                        <a href="#newspost" data-bs-toggle="collapse">
+                    @if (Auth::user()->can('news.menu'))
 
-                            <i class="mdi mdi-newspaper-variant-multiple-outline"></i>
+                        <li class="menu-title">News Page Setting</li>
 
-                            <span> News Post Setting </span>
+                        <li>
 
-                            <span class="menu-arrow"></span>
+                            <a href="#newspost" data-bs-toggle="collapse">
 
-                        </a>
+                                <i class="mdi mdi-newspaper-variant-multiple-outline"></i>
 
-                        <div class="collapse" id="newspost">
+                                <span> News Post Setting </span>
 
-                            <ul class="nav-second-level">
+                                <span class="menu-arrow"></span>
 
-                                <li>
+                            </a>
 
-                                    <a href="{{ route('all.news.post') }}">All News Post </a>
+                            <div class="collapse" id="newspost">
 
-                                </li>
+                                <ul class="nav-second-level">
 
-                                <li>
+                                    <li>
 
-                                    <a href="{{ route('add.news.post') }}">Add News Post </a>
+                                        <a href="{{ route('all.news.post') }}">All News Post </a>
 
-                                </li>
+                                    </li>
 
-                            </ul>
+                                    <li>
 
-                        </div>
+                                        <a href="{{ route('add.news.post') }}">Add News Post </a>
 
-                    </li>
+                                    </li>
 
-                    <li>
+                                </ul>
 
-                        <a href="#photoSetting" data-bs-toggle="collapse">
+                            </div>
 
-                            <i class="mdi mdi-camera-wireless-outline"></i>
+                        </li>
 
-                            <span> Photo Setting </span>
+                    @endif
 
-                            <span class="menu-arrow"></span>
+                    @if (Auth::user()->can('photo.menu'))
 
-                        </a>
+                        <li>
 
-                        <div class="collapse" id="photoSetting">
+                            <a href="#photoSetting" data-bs-toggle="collapse">
 
-                            <ul class="nav-second-level">
+                                <i class="mdi mdi-camera-wireless-outline"></i>
 
-                                <li>
+                                <span> Photo Setting </span>
 
-                                    <a href="{{ route('all.photo.gallery') }}">Photo Gallery</a>
+                                <span class="menu-arrow"></span>
 
-                                </li>
+                            </a>
 
-                                <li>
+                            <div class="collapse" id="photoSetting">
 
-                                    <a href="{{ route('add.photo.gallery') }}">Add Photo Gallery</a>
+                                <ul class="nav-second-level">
 
-                                </li>
+                                    <li>
 
-                            </ul>
+                                        <a href="{{ route('all.photo.gallery') }}">Photo Gallery</a>
 
-                        </div>
+                                    </li>
 
-                    </li>
+                                    <li>
 
-                    <li>
+                                        <a href="{{ route('add.photo.gallery') }}">Add Photo Gallery</a>
 
-                        <a href="#videoSetting" data-bs-toggle="collapse">
+                                    </li>
 
-                            <i class="mdi mdi-file-video-outline"></i>
+                                </ul>
 
-                            <span> Video Setting </span>
+                            </div>
 
-                            <span class="menu-arrow"></span>
+                        </li>
 
-                        </a>
+                    @endif
 
-                        <div class="collapse" id="videoSetting">
+                    @if (Auth::user()->can('video.menu'))
 
-                            <ul class="nav-second-level">
+                        <li>
 
-                                <li>
+                            <a href="#videoSetting" data-bs-toggle="collapse">
 
-                                    <a href="{{ route('all.video.gallery') }}">Video Gallery</a>
+                                <i class="mdi mdi-file-video-outline"></i>
 
-                                </li>
+                                <span> Video Setting </span>
 
-                                <li>
+                                <span class="menu-arrow"></span>
 
-                                    <a href="{{ route('add.video.gallery') }}">Add Video Gallery</a>
+                            </a>
 
-                                </li>
+                            <div class="collapse" id="videoSetting">
 
-                            </ul>
+                                <ul class="nav-second-level">
 
-                        </div>
+                                    <li>
 
-                    </li>
+                                        <a href="{{ route('all.video.gallery') }}">Video Gallery</a>
 
-                    <li>
+                                    </li>
 
-                        <a href="{{ route('edit.live.tv') }}">
+                                    <li>
 
-                            <i class="mdi mdi-youtube-tv"></i>
+                                        <a href="{{ route('add.video.gallery') }}">Add Video Gallery</a>
 
-                            <span> Live Tv Setting </span>
+                                    </li>
 
-                        </a>
+                                </ul>
 
-                    </li>
+                            </div>
 
-                    <li>
+                        </li>
 
-                        <a href="{{ route('all.banners') }}">
+                    @endif
 
-                            <i class="mdi mdi-image-area-close"></i>
+                    @if (Auth::user()->can('live.menu'))
 
-                            <span> Banner Setting </span>
+                        <li>
 
-                        </a>
+                            <a href="{{ route('edit.live.tv') }}">
 
-                    </li>
+                                <i class="mdi mdi-youtube-tv"></i>
 
-                    <li class="menu-title">Admin Authority Setting</li>
+                                <span> Live Tv Setting </span>
 
-                    <li>
+                            </a>
 
-                        <a href="#reviewcomment" data-bs-toggle="collapse">
+                        </li>
 
-                            <i class="mdi mdi-comment-multiple-outline"></i>
+                    @endif
 
-                            <span> Review Setting </span>
+                    @if (Auth::user()->can('banner.menu'))
 
-                            <span class="menu-arrow"></span>
+                        <li>
 
-                        </a>
+                            <a href="{{ route('all.banners') }}">
 
-                        <div class="collapse" id="reviewcomment">
+                                <i class="mdi mdi-image-area-close"></i>
 
-                            <ul class="nav-second-level">
+                                <span> Banner Setting </span>
 
-                                <li>
-                                    <a href="{{ route('pending.review') }}">Pending Review</a>
-                                </li>
+                            </a>
 
-                                <li>
-                                    <a href="{{ route('approve.review') }}">Approve Review</a>
-                                </li>
+                        </li>
 
-                            </ul>
+                    @endif
 
-                        </div>
+                    @if (Auth::user()->can('review.menu') || Auth::user()->can('seo.menu') || Auth::user()->can('admin.menu') || Auth::user()->can('role.menu') || Auth::user()->can('permission.menu') || Auth::user()->can('roles.permission.menu'))
 
-                    </li>
+                        <li class="menu-title">Admin Authority Setting</li>
 
-                    <li>
+                    @endif
 
-                        <a href="{{ route('seo.setting') }}">
+                    @if (Auth::user()->can('review.menu'))
 
-                            <i class="mdi mdi-code-tags-check"></i>
+                        <li>
 
-                            <span>Update SEO</span>
+                            <a href="#reviewcomment" data-bs-toggle="collapse">
 
-                        </a>
+                                <i class="mdi mdi-comment-multiple-outline"></i>
 
-                    </li>
+                                <span> Review Setting </span>
 
-                    <li>
+                                <span class="menu-arrow"></span>
 
-                        <a href="#sidebarAuth" data-bs-toggle="collapse">
+                            </a>
 
-                            <i class="mdi mdi-account-multiple-outline"></i>
+                            <div class="collapse" id="reviewcomment">
 
-                            <span> Setting Admin User </span>
+                                <ul class="nav-second-level">
 
-                            <span class="menu-arrow"></span>
+                                    <li>
+                                        <a href="{{ route('pending.review') }}">Pending Review</a>
+                                    </li>
 
-                        </a>
+                                    <li>
+                                        <a href="{{ route('approve.review') }}">Approve Review</a>
+                                    </li>
 
-                        <div class="collapse" id="sidebarAuth">
+                                </ul>
 
-                            <ul class="nav-second-level">
+                            </div>
 
-                                <li>
+                        </li>
 
-                                    <a href="{{ route('all.admin') }}">All Admin</a>
+                    @endif
 
-                                </li>
+                    @if (Auth::user()->can('seo.menu'))
 
-                                <li>
+                        <li>
 
-                                    <a href="{{ route('add.admin') }}">Add Admin</a>
+                            <a href="{{ route('seo.setting') }}">
 
-                                </li>
+                                <i class="mdi mdi-code-tags-check"></i>
 
-                            </ul>
+                                <span>Update SEO</span>
 
-                        </div>
+                            </a>
 
-                    </li>
+                        </li>
 
-                    <li>
+                    @endif
 
-                        <a href="#roles" data-bs-toggle="collapse">
+                    @if (Auth::user()->can('admin.menu'))
 
-                            <i class="mdi mdi-account-arrow-right"></i>
+                        <li>
 
-                            <span> Roles </span>
+                            <a href="#sidebarAuth" data-bs-toggle="collapse">
 
-                            <span class="menu-arrow"></span>
+                                <i class="mdi mdi-account-multiple-outline"></i>
 
-                        </a>
+                                <span> Setting Admin User </span>
 
-                        <div class="collapse" id="roles">
+                                <span class="menu-arrow"></span>
 
-                            <ul class="nav-second-level">
+                            </a>
 
-                                <li>
+                            <div class="collapse" id="sidebarAuth">
 
-                                    <a href="{{ route('all.roles') }}">All Roles</a>
+                                <ul class="nav-second-level">
 
-                                </li>
+                                    <li>
 
-                                <li>
+                                        <a href="{{ route('all.admin') }}">All Admin</a>
 
-                                    <a href="{{ route('add.roles') }}">Add Roles</a>
+                                    </li>
 
-                                </li>
+                                    <li>
 
-                            </ul>
+                                        <a href="{{ route('add.admin') }}">Add Admin</a>
 
-                        </div>
+                                    </li>
 
-                    </li>
+                                </ul>
 
-                    <li>
+                            </div>
 
-                        <a href="#permission" data-bs-toggle="collapse">
+                        </li>
 
-                            <i class="mdi mdi-account-cog-outline"></i>
+                    @endif
 
-                            <span> Permission </span>
+                    @if (Auth::user()->can('role.menu'))
 
-                            <span class="menu-arrow"></span>
+                        <li>
 
-                        </a>
+                            <a href="#roles" data-bs-toggle="collapse">
 
-                        <div class="collapse" id="permission">
+                                <i class="mdi mdi-account-arrow-right"></i>
 
-                            <ul class="nav-second-level">
+                                <span> Roles </span>
 
-                                <li>
+                                <span class="menu-arrow"></span>
 
-                                    <a href="{{ route('all.permission') }}">All Permission</a>
+                            </a>
 
-                                </li>
+                            <div class="collapse" id="roles">
 
-                                <li>
+                                <ul class="nav-second-level">
 
-                                    <a href="{{ route('add.permission') }}">Add Permission</a>
+                                    <li>
 
-                                </li>
+                                        <a href="{{ route('all.roles') }}">All Roles</a>
 
-                            </ul>
+                                    </li>
 
-                        </div>
+                                    <li>
 
-                    </li>
+                                        <a href="{{ route('add.roles') }}">Add Roles</a>
 
-                    <li>
+                                    </li>
 
-                        <a href="#rolespermission" data-bs-toggle="collapse">
+                                </ul>
 
-                            <i class="mdi mdi-account-details"></i>
+                            </div>
 
-                            <span> Roles And Permission </span>
+                        </li>
 
-                            <span class="menu-arrow"></span>
+                    @endif
 
-                        </a>
+                    @if (Auth::user()->can('permission.menu'))
 
-                        <div class="collapse" id="rolespermission">
+                        <li>
 
-                            <ul class="nav-second-level">
+                            <a href="#permission" data-bs-toggle="collapse">
 
-                                <li>
+                                <i class="mdi mdi-account-cog-outline"></i>
 
-                                    <a href="{{ route('all.roles.permission') }}">All Roles In Permission</a>
+                                <span> Permission </span>
 
-                                </li>
+                                <span class="menu-arrow"></span>
 
-                                <li>
+                            </a>
 
-                                    <a href="{{ route('add.roles.permission') }}">Add Roles In Permission</a>
+                            <div class="collapse" id="permission">
 
-                                </li>
+                                <ul class="nav-second-level">
 
-                            </ul>
+                                    <li>
 
-                        </div>
+                                        <a href="{{ route('all.permission') }}">All Permission</a>
 
-                    </li>
+                                    </li>
 
-                    <li class="menu-title mt-2">App Profile Setting</li>
+                                    <li>
 
-                    <li>
+                                        <a href="{{ route('add.permission') }}">Add Permission</a>
 
-                        <a href="#site" data-bs-toggle="collapse">
+                                    </li>
 
-                            <i class="mdi mdi-web-box"></i>
+                                </ul>
 
-                            <span> Site Setting </span>
+                            </div>
 
-                            <span class="menu-arrow"></span>
+                        </li>
 
-                        </a>
+                    @endif
 
-                        <div class="collapse" id="site">
+                    @if (Auth::user()->can('roles.permission.menu'))
 
-                            <ul class="nav-second-level">
+                        <li>
 
-                                <li>
+                            <a href="#rolespermission" data-bs-toggle="collapse">
 
-                                    <a href="{{ route('edit.sitesetting') }}">Site Setting</a>
+                                <i class="mdi mdi-account-details"></i>
 
-                                </li>
+                                <span> Roles And Permission </span>
 
-                            </ul>
+                                <span class="menu-arrow"></span>
 
-                        </div>
+                            </a>
 
-                    </li>
+                            <div class="collapse" id="rolespermission">
+
+                                <ul class="nav-second-level">
+
+                                    <li>
+
+                                        <a href="{{ route('all.roles.permission') }}">All Roles In Permission</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="{{ route('add.roles.permission') }}">Add Roles In Permission</a>
+
+                                    </li>
+
+                                </ul>
+
+                            </div>
+
+                        </li>
+
+                    @endif
+
+                    @if (Auth::user()->can('review.menu') || Auth::user()->can('seo.menu'))
+
+                        <li class="menu-title mt-2">App Profile Setting</li>
+
+                    @endif
+
+                    @if (Auth::user()->can('site.setting.menu'))
+
+                        <li>
+
+                            <a href="#site" data-bs-toggle="collapse">
+
+                                <i class="mdi mdi-web-box"></i>
+
+                                <span> Site Setting </span>
+
+                                <span class="menu-arrow"></span>
+
+                            </a>
+
+                            <div class="collapse" id="site">
+
+                                <ul class="nav-second-level">
+
+                                    <li>
+
+                                        <a href="{{ route('edit.sitesetting') }}">Site Setting</a>
+
+                                    </li>
+
+                                </ul>
+
+                            </div>
+
+                        </li>
+
+                    @endif
 
                 @else
 
