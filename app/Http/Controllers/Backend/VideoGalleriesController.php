@@ -135,12 +135,6 @@ class VideoGalleriesController extends Controller{
 
     public function DeleteVideoGallery($id){
 
-        $video = VideoGalleries::findOrFail($id);
-
-        $img = $video->video_image;
-
-        unlink($img);
-
         VideoGalleries::findOrFail($id)->delete();
 
         $notification = array(
@@ -152,6 +146,54 @@ class VideoGalleriesController extends Controller{
         );
 
         return redirect()->back()->with($notification);
+
+    }
+
+    public function RestoreVideoPage(){
+
+        $videogalleries_restore = VideoGalleries::onlyTrashed()->get();
+
+        return view('backend.video.all_video_restore',compact('videogalleries_restore'));
+
+    }
+
+    public function DeleteTrashVideo($id){
+
+        $video_galleries = VideoGalleries::onlyTrashed()->findOrFail($id);
+
+        $img_video = $video_galleries->video_image;
+
+        unlink($img_video);
+
+        $video_galleries->forceDelete();
+
+        $notification = array(
+
+            'pesanNotif' => 'Video Deleted Successfuly',
+
+            'alert-type' => 'success'
+
+        );
+
+        return redirect()->route('restore.video.page')->with($notification);
+
+    }
+
+    public function RestoreVideo($id){
+
+        $video_galleries = VideoGalleries::onlyTrashed()->findOrFail($id);
+
+        $video_galleries->restore();
+
+        $notification = array(
+
+            'pesanNotif' => 'Video Restore Successfuly',
+
+            'alert-type' => 'success'
+
+        );
+
+        return redirect()->route('restore.video.page')->with($notification);
 
     }
 

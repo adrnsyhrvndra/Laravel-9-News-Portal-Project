@@ -35,8 +35,8 @@
                             </div>
                             <div class="col-6">
                                 <div class="text-end">
-                                    <h3 class="text-dark mt-1"><span data-plugin="counterup">{{ count($allnews) }}</span></h3>
-                                    <p class="text-muted mb-1 text-truncate">All News Post</p>
+                                    <h3 class="text-dark mt-1"><span data-plugin="counterup">{{ count($newspost_restore) }}</span></h3>
+                                    <p class="text-muted mb-1 text-truncate">Restore News Post</p>
                                 </div>
                             </div>
                         </div> <!-- end row-->
@@ -113,7 +113,7 @@
 
                     <div class="card-body">
 
-                        <h4 class="header-title">Data All News Post <span class="btn btn-danger">{{ count($allnews) }}</span> </h4>
+                        <h4 class="header-title">Data Restore News Post <span class="btn btn-danger">{{ count($newspost_restore) }}</span> </h4>
 
                         <p class="text-muted font-13 mb-4">
 
@@ -153,7 +153,7 @@
 
                             <tbody>
 
-                                @foreach ($allnews as $key => $item)
+                                @foreach ($newspost_restore as $key => $item)
 
                                 <tr>
 
@@ -204,27 +204,17 @@
 
                                     <td>
 
-                                        <a href="{{ route('edit.news.post',$item->id) }}" class="btn btn-success waves-effect waves-light">
+                                        <a href="{{ route('restore.newspost',$item->id) }}" class="btn btn-success waves-effect waves-light">
 
-                                            <i class="mdi mdi-lead-pencil"></i>
+                                            <i class="mdi mdi-delete-restore"></i>
 
                                         </a>
 
-                                        <a id="delete" href="{{ route('delete.news.post',$item->id) }}" class="btn btn-danger waves-effect waves-light">
+                                        <a id="delete" href="{{ route('newspost.trash.destroy',$item->id) }}" class="btn btn-danger waves-effect waves-light">
 
                                             <i class="mdi mdi-delete"></i>
 
                                         </a>
-
-                                        @if ($item->status == 1)
-
-                                            <a href="{{ route('inactive.news.post',$item->id) }}" class="btn btn-danger waves-effect waves-light" title="Inactive"><i class="fa-solid fa-thumbs-down"></i></a>
-
-                                        @else
-
-                                            <a href="{{ route('active.news.post',$item->id) }}" class="btn btn-danger waves-effect waves-light" title="Active"><i class="fa-solid fa-thumbs-up"></i></a>
-
-                                        @endif
 
                                     </td>
 

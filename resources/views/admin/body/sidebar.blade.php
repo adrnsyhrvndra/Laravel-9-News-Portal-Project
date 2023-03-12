@@ -127,6 +127,12 @@
 
                                     </li>
 
+                                    <li>
+
+                                        <a href="{{ route('restore.sub.category.page') }}">Restore Sub Category </a>
+
+                                    </li>
+
                                 </ul>
 
                             </div>
@@ -164,6 +170,12 @@
                                     <li>
 
                                         <a href="{{ route('add.news.post') }}">Add News Post </a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="{{ route('restore.newspost.page') }}">Restore News Post </a>
 
                                     </li>
 
@@ -205,6 +217,12 @@
 
                                     </li>
 
+                                    <li>
+
+                                        <a href="{{ route('restore.photo.page') }}">Restore Photo</a>
+
+                                    </li>
+
                                 </ul>
 
                             </div>
@@ -240,6 +258,12 @@
                                     <li>
 
                                         <a href="{{ route('add.video.gallery') }}">Add Video Gallery</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="{{ route('restore.video.page') }}">Restore Video Gallery</a>
 
                                     </li>
 

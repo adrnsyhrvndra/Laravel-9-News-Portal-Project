@@ -111,9 +111,11 @@ Route::middleware('auth','role:admin')->group(function () {
         Route::get('/add/category', 'AddCategory')->name('add.category');
         Route::get('/edit/category/{id}', 'EditCategory')->name('edit.category');
         Route::get('/delete/category/{id}', 'DeleteCategory')->name('delete.category');
+
         Route::get('/restore/category/page', 'RestoreCategoryPage')->name('restore.category.page');
         Route::get('/delete/trash/category/{id}', 'DeleteTrashCategory')->name('category.trash.destroy');
         Route::get('/restore/category/{id}', 'RestoreCategory')->name('restore.category');
+
         Route::post('/category/store', 'StoreCategory')->name('category.store');
         Route::post('/category/update', 'UpdateCategory')->name('category.update');
 
@@ -129,6 +131,11 @@ Route::middleware('auth','role:admin')->group(function () {
         Route::get('/add/sub/category', 'AddSubCategory')->name('add.sub.category');
         Route::get('/edit/sub/category/{id}', 'EditSubCategory')->name('edit.sub.category');
         Route::get('/delete/sub/category/{id}', 'DeleteSubCategory')->name('delete.sub.category');
+
+        Route::get('/restore/sub/category/page', 'RestoreSubCategoryPage')->name('restore.sub.category.page');
+        Route::get('/delete/trash/sub/category/{id}', 'DeleteTrashSubCategory')->name('sub.category.trash.destroy');
+        Route::get('/restore/sub/category/{id}', 'RestoreSubCategory')->name('restore.sub.category');
+
         Route::post('/sub/category/store', 'StoreSubCategory')->name('sub.category.store');
         Route::post('/sub/category/update', 'UpdateSubCategory')->name('sub.category.update');
 
@@ -142,6 +149,7 @@ Route::middleware('auth','role:admin')->group(function () {
         Route::get('/add/admin', 'AddAdmin')->name('add.admin');
         Route::get('/edit/admin/{id}', 'EditAdmin')->name('edit.admin');
         Route::get('/delete/admin/{id}', 'DeleteAdmin')->name('delete.admin');
+
         Route::post('/store/admin', 'StoreAdmin')->name('admin.store');
         Route::post('/update/admin', 'UpdateAdmin')->name('admin.update');
         Route::get('/inactive/admin/{id}', 'InactiveAdminUser')->name('inactive.admin.user');
@@ -157,6 +165,11 @@ Route::middleware('auth','role:admin')->group(function () {
         Route::get('/add/news/post', 'AddNewsPost')->name('add.news.post');
         Route::get('/edit/news/post/{id}', 'EditNewsPost')->name('edit.news.post');
         Route::get('/delete/news/post/{id}', 'DeleteNewsPost')->name('delete.news.post');
+
+        Route::get('/restore/newspost/page', 'RestoreNewsPostPage')->name('restore.newspost.page');
+        Route::get('/delete/trash/newspost/{id}', 'DeleteTrashNewsPost')->name('newspost.trash.destroy');
+        Route::get('/restore/newspost/{id}', 'RestoreNewsPost')->name('restore.newspost');
+
         Route::post('/store/news/post', 'StoreNewsPost')->name('news.post.store');
         Route::post('/update/news/post', 'UpdateNewsPost')->name('news.post.update');
         Route::get('/inactive/news/post/{id}', 'InactiveNewsPost')->name('inactive.news.post');
@@ -169,7 +182,6 @@ Route::middleware('auth','role:admin')->group(function () {
     Route::controller(BannerController::class)->group(function () {
 
         Route::get('/all/banners', 'AllBanners')->name('all.banners');
-        Route::get('/delete/news/post/{id}', 'DeleteNewsPost')->name('delete.news.post');
         Route::post('/update/banners', 'UpdateBanners')->name('banners.update');
 
     });
@@ -182,6 +194,11 @@ Route::middleware('auth','role:admin')->group(function () {
         Route::get('/add/photo/gallery', 'AddPhotoGallery')->name('add.photo.gallery');
         Route::get('/edit/photo/gallery/{id}', 'EditPhotoGallery')->name('edit.photo.gallery');
         Route::get('/delete/photo/gallery/{id}', 'DeletePhotoGallery')->name('delete.photo.gallery');
+
+        Route::get('/restore/photo/page', 'RestorePhotoPage')->name('restore.photo.page');
+        Route::get('/delete/trash/photo/{id}', 'DeleteTrashPhoto')->name('photo.trash.destroy');
+        Route::get('/restore/photo/{id}', 'RestorePhoto')->name('restore.photo');
+
         Route::post('/store/photo/gallery', 'StorePhotoGallery')->name('store.photo.gallery');
         Route::post('/update/photo/gallery', 'UpdatePhotoGallery')->name('update.photo.gallery');
 
@@ -195,6 +212,11 @@ Route::middleware('auth','role:admin')->group(function () {
         Route::get('/add/video/gallery', 'AddVideoGallery')->name('add.video.gallery');
         Route::get('/edit/video/gallery/{id}', 'EditVideoGallery')->name('edit.video.gallery');
         Route::get('/delete/video/gallery/{id}', 'DeleteVideoGallery')->name('delete.video.gallery');
+
+        Route::get('/restore/video/page', 'RestoreVideoPage')->name('restore.video.page');
+        Route::get('/delete/trash/video/{id}', 'DeleteTrashVideo')->name('video.trash.destroy');
+        Route::get('/restore/video/{id}', 'RestoreVideo')->name('restore.video');
+
         Route::post('/store/video/gallery', 'StoreVideoGallery')->name('store.video.gallery');
         Route::post('/update/video/gallery', 'UpdateVideoGallery')->name('update.video.gallery');
 
@@ -237,6 +259,7 @@ Route::middleware('auth','role:admin')->group(function () {
         Route::get('/add/permission', 'AddPermission')->name('add.permission');
         Route::get('/edit/permission/{id}', 'EditPermission')->name('edit.permission');
         Route::get('/delete/permission/{id}', 'DeletePermission')->name('delete.permission');
+
         Route::post('/store/permission', 'StoreVPermission')->name('store.permission');
         Route::post('/update/permission', 'UpdateVPermission')->name('update.permission');
 

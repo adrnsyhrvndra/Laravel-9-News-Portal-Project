@@ -185,12 +185,6 @@ class NewsPostController extends Controller{
 
     public function DeleteNewsPost($id){
 
-        $post_image = NewsPost::findOrFail($id);
-
-        $img = $post_image->image;
-
-        unlink($img);
-
         NewsPost::findOrFail($id)->delete();
 
         $notification = array(
@@ -242,6 +236,54 @@ class NewsPostController extends Controller{
         );
 
         return redirect()->back()->with($notification);
+
+    }
+
+    public function RestoreNewsPostPage(){
+
+        $newspost_restore = NewsPost::onlyTrashed()->get();
+
+        return view('backend.news.all_news_post_restore',compact('newspost_restore'));
+
+    }
+
+    public function DeleteTrashNewsPost($id){
+
+        $newspost = NewsPost::onlyTrashed()->findOrFail($id);
+
+        $img_newspost = $newspost->image;
+
+        unlink($img_newspost);
+
+        $newspost->forceDelete();
+
+        $notification = array(
+
+            'pesanNotif' => 'News Post Deleted Successfuly',
+
+            'alert-type' => 'success'
+
+        );
+
+        return redirect()->route('restore.newspost.page')->with($notification);
+
+    }
+
+    public function RestoreNewsPost($id){
+
+        $newspost = NewsPost::onlyTrashed()->findOrFail($id);
+
+        $newspost->restore();
+
+        $notification = array(
+
+            'pesanNotif' => 'News Post Deleted Successfuly',
+
+            'alert-type' => 'success'
+
+        );
+
+        return redirect()->route('restore.newspost.page')->with($notification);
 
     }
 

@@ -117,7 +117,7 @@ class PhotoGalleryController extends Controller{
 
         $img = $photo->photo_gallery;
 
-        unlink($img);
+        // unlink($img);
 
         PhotoGalleries::findOrFail($id)->delete();
 
@@ -130,6 +130,50 @@ class PhotoGalleryController extends Controller{
         );
 
         return redirect()->back()->with($notification);
+
+    }
+
+    public function RestorePhotoPage(){
+
+        $photogalleries_restore = PhotoGalleries::onlyTrashed()->get();
+
+        return view('backend.photo.all_photo_restore',compact('photogalleries_restore'));
+
+    }
+
+    public function DeleteTrashPhoto($id){
+
+        $photo_galleries = PhotoGalleries::onlyTrashed()->findOrFail($id);
+
+        $photo_galleries->forceDelete();
+
+        $notification = array(
+
+            'pesanNotif' => 'Photo Gallery Deleted Successfuly',
+
+            'alert-type' => 'success'
+
+        );
+
+        return redirect()->route('restore.photo.page')->with($notification);
+
+    }
+
+    public function RestorePhoto($id){
+
+        $photo_galleries = PhotoGalleries::onlyTrashed()->findOrFail($id);
+
+        $photo_galleries->restore();
+
+        $notification = array(
+
+            'pesanNotif' => 'Photo Gallery Deleted Successfuly',
+
+            'alert-type' => 'success'
+
+        );
+
+        return redirect()->route('restore.photo.page')->with($notification);
 
     }
 

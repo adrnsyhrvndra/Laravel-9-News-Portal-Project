@@ -113,4 +113,48 @@ class SubcategoryController extends Controller{
 
     }
 
+    public function RestoreSubCategoryPage(){
+
+        $subcategory_restore = Subcategory::onlyTrashed()->get();
+
+        return view('backend.subcategory.subcategory_all_restore',compact('subcategory_restore'));
+
+    }
+
+    public function DeleteTrashSubCategory($id){
+
+        $subcategories = Subcategory::onlyTrashed()->findOrFail($id);
+
+        $subcategories->forceDelete();
+
+        $notification = array(
+
+            'pesanNotif' => 'Sub Category Deleted Successfuly',
+
+            'alert-type' => 'success'
+
+        );
+
+        return redirect()->route('restore.sub.category.page')->with($notification);
+
+    }
+
+    public function RestoreSubCategory($id){
+
+        $subcategories = Subcategory::onlyTrashed()->findOrFail($id);
+
+        $subcategories->restore();
+
+        $notification = array(
+
+            'pesanNotif' => 'Sub Category Deleted Successfuly',
+
+            'alert-type' => 'success'
+
+        );
+
+        return redirect()->route('restore.sub.category.page')->with($notification);
+
+    }
+
 }
